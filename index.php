@@ -18,7 +18,7 @@ if ($_SESSION['active'] == true){
     echo "      <a href = 'newChat.php'><button class = 'chat'>New Support Chat</button></a><br><br>\n";
     echo "      <a href = 'myChat.php'><button class = 'chat'>My Active Chat</button></a><br><br>\n";
     
-    echo "You are signed in as ($_SESSION['username'])"
+    echo "You are signed in! Cool!\n";
 
     if ($_SESSION['access'] == 10){
 
