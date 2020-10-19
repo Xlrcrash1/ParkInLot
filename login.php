@@ -3,7 +3,7 @@
 session_start();
 if ($_SESSION['active']){
 
-    header('location: final.php'); exit();
+    header('location: index.php'); exit();
 }
 
 require('SQLconnect.php');
@@ -50,7 +50,7 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
             //echo "<br>Session name = {$_SESSION['name']}<br>";
             //print_r($_SESSION);
             //echo "<br>user = {$_SESSION['username']}";
-            header("location: final.php");
+            header("location: index.php");
             exit();
         }
         else{
