@@ -62,6 +62,7 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
 
         echo "<br><br>Username or email does not exist.<br>\n";
         echo "Would you like to create an account?\n";
+        echo "Query failed, notify Admin\n";
     }
 }
 else{
