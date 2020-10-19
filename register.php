@@ -15,6 +15,7 @@ include('nav.php');
 echo "      <div class = 'register_box'>\n";
 echo "          <form method = 'POST'>\n";
 echo "              <h5>First Name: <input type = 'text' placeholder = 'Tony' name = 'name'></h5>\n";
+echo "              <h5>Last Name: <input type = 'text' placeholder = 'Cervantes' name = 'lname'></h5>\n"
 echo "              <h5>UserName: <input type = 'text' placeholder = 'XLR8' name = 'username'></h5>\n";
 echo "              <h5>Email: <input type = 'email' placeholder = 'email@email.com' name = 'email'></h5>\n";
 echo "              <h5>Password: <input type = 'password' placeholder = '*****' name = 'password'></h5>\n";
@@ -30,6 +31,7 @@ echo "</html>\n";
 if (!empty($_POST['name']) && !empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])){
 
     $name = $_POST['name'];
+    $lname = $_POST['lname'];
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -61,9 +63,9 @@ if (!empty($_POST['name']) && !empty($_POST['username']) && !empty($_POST['email
             else{
 
                 //echo "email or username is not taken<br>\n";
-                $sql = "insert into Users (user_name, user_email, user_password, user_fname) values('$username','$email','$password','$name');";
+                $sql = "insert into Users (firstName, lastname, username, password, email) values('$name','$lastname','$username','$password','$email');";
                 $db->query($sql);
-                header('Location: login.php');
+                header('Location: index.php');
             }
         }
         //echo "passwords matched\n";
