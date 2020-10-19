@@ -18,6 +18,8 @@ if ($_SESSION['active'] == true){
     echo "      <a href = 'newChat.php'><button class = 'chat'>New Support Chat</button></a><br><br>\n";
     echo "      <a href = 'myChat.php'><button class = 'chat'>My Active Chat</button></a><br><br>\n";
     
+    echo "You are signed in as ($_SESSION['username'])"
+
     if ($_SESSION['access'] == 10){
 
         echo "  <a href = 'allchats.php'><button class = 'chat'>View All Support Chats</button></a><br><br>\n";
