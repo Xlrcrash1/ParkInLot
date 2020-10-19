@@ -28,7 +28,7 @@ echo "  </body>\n";
 echo "</html>\n";
 
 
-if (!empty($_POST['name']) && !empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])){
+if (!empty($_POST['name']) && !empty($_POST['lname']) && !empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])){
 
     $name = $_POST['name'];
     $lname = $_POST['lname'];
