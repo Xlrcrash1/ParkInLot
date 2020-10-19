@@ -63,7 +63,7 @@ if (!empty($_POST['name']) && !empty($_POST['username']) && !empty($_POST['email
             else{
 
                 //echo "email or username is not taken<br>\n";
-                $sql = "insert into Users (firstName, lastname, username, password, email) values('$name','$lastname','$username','$password','$email');";
+                $sql = "insert into ParkInLot_Users (firstName, lastname, username, password, email) values('$name','$lastname','$username','$password','$email');";
                 $db->query($sql);
                 header('Location: index.php');
             }
