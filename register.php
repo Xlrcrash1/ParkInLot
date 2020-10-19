@@ -81,7 +81,11 @@ else{
     $error = 'You forgot to enter the following:<br><br>';
     if (empty($_POST['name'])){
 
-        $error .= 'NAME<br>';
+        $error .= 'FirstNAME<br>';
+    }
+    if (empty($_POST['lname'])){
+
+        $error .= 'LastNAME<br>';
     }
     if (empty($_POST['username'])){
 
