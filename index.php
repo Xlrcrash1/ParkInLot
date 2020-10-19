@@ -33,7 +33,7 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
     $username = htmlspecialchars(trim($_POST['Uname']));/////////////////ADD SANATIZATION
     $password = htmlspecialchars(trim($_POST['password']));
     echo "info: $username and $password";
-    $sql = "select * from Users where user_name = '$username' or user_email = '$username'";
+    $sql = "select * from ParkInLot_Users where user_name = '$username' or user_email = '$username'";
     if ($res = $db->query($sql)){
 
         $row = $res->FETCH_ASSOC();
@@ -58,10 +58,11 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
             echo "<br><br>Invalid username, email, or password.<br>\n";
         }
     }
-    //else{
+    else{
 
-        //echo "<br><br>Username or email does not exist.<br>\n";
-    //}
+        echo "<br><br>Username or email does not exist.<br>\n";
+        echo "Would you like to create an account?\n";
+    }
 }
 else{
 
