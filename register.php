@@ -15,7 +15,7 @@ include('nav.php');
 echo "      <div class = 'register_box'>\n";
 echo "          <form method = 'POST'>\n";
 echo "              <h5>First Name: <input type = 'text' placeholder = 'Tony' name = 'name'></h5>\n";
-echo "              <h5>Last Name: <input type = 'text' placeholder = 'Cervantes' name = 'lname'></h5>\n"
+echo "              <h5>Last Name: <input type = 'text' placeholder = 'Cervantes' name = 'lname'></h5>\n";
 echo "              <h5>UserName: <input type = 'text' placeholder = 'XLR8' name = 'username'></h5>\n";
 echo "              <h5>Email: <input type = 'email' placeholder = 'email@email.com' name = 'email'></h5>\n";
 echo "              <h5>Password: <input type = 'password' placeholder = '*****' name = 'password'></h5>\n";
