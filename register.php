@@ -41,7 +41,7 @@ if (!empty($_POST['name']) && !empty($_POST['username']) && !empty($_POST['email
 
     if ($password == $confirm_password){
 
-        $sql = "select * from Users where user_name = '$username' or user_email = '$email'";
+        $sql = "select * from ParkInLot_Users where user_name = '$username' or user_email = '$email'";
         if ($res = $db->query($sql)){
 
             $row = $res->FETCH_ASSOC();
