@@ -40,7 +40,7 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
 
         $row = $res->FETCH_ASSOC();
     
-        if ($row['user_password'] == $password){
+        if ($row['password'] == $password){
 
             $_SESSION['active'] = true;
             $_SESSION['name'] = $row['firstName'];
