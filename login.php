@@ -78,7 +78,7 @@ else{
 
 
 echo "      </div>\n";
-echo "  <a href = 'register.php'><button class = 'registration'>Register</button></a>\n";
+echo "              <a href = 'register.php'>Register</a>\n";
 echo "  </body>\n\n";
 echo "</html>\n";
 
