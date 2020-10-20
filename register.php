@@ -30,14 +30,21 @@ echo "</html>\n";
 
 if (!empty($_POST['name']) && !empty($_POST['lname']) && !empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])){
 
-    $name = $_POST['name'];
-    $lname = $_POST['lname'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
+    $name = htmlspecialchars(trim($_POST['name']));/////////////////ADD SANATIZATION
+    $lname = htmlspecialchars(trim($_POST['lname']));
+    $username = htmlspecialchars(trim($_POST['username']));/////////////////ADD SANATIZATION
+    $email = htmlspecialchars(trim($_POST['email']));
+    $password = htmlspecialchars(trim($_POST['password']));/////////////////ADD SANATIZATION
+    $confirm_password = htmlspecialchars(trim($_POST['confirm_password']));
 
-    //echo "name: $name , username: $username , email: $email , password: $password , confirm: $confirm_password";
+    //$name = $_POST['name'];
+    //$lname = $_POST['lname'];
+    //$username = $_POST['username'];
+    //$email = $_POST['email'];
+    //$password = $_POST['password'];
+    //$confirm_password = $_POST['confirm_password'];
+
+    //echo "name: $name , lastname: $lname, username: $username , email: $email , password: $password , confirm: $confirm_password";
 
     if ($password == $confirm_password){
 
