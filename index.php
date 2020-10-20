@@ -1,6 +1,10 @@
 <?php
 
 session_start();
+if ($_SESSION['active'] == false){
+
+    header('location: login.php'); exit();
+}
 
 echo "<!DOCTYPE HTML>\n";
 echo "<html>\n";
