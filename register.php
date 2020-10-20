@@ -65,7 +65,7 @@ if (!empty($_POST['name']) && !empty($_POST['lname']) && !empty($_POST['username
                 //echo "email or username is not taken<br>\n";
                 $sql = "insert into ParkInLot_Users (firstName, lastname, username, password, email) values('$name','$lname','$username','$password','$email');";
                 $db->query($sql);
-                header('Location: index.php');
+                header('Location: login.php');
             }
         }
         //echo "passwords matched\n";
