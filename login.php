@@ -28,7 +28,6 @@ echo "              <button class = 'nav_btn' type = 'submit'>Login</button\n";
 //echo "          <button type = "checkbox" checked = "checked" name = 'remeber'>Remember me
 echo "      </form>\n";
 
-echo "  <a href = 'register.php'><button class = 'registration'>Register</button></a>\n";
 
 if (!empty($_POST['Uname']) && !empty($_POST['password'])){
 
@@ -75,6 +74,8 @@ else{
 
 //$_session['uname'] = 'test';
 //$_session['password'] = 'password';
+
+echo "  <a href = 'register.php'><button class = 'registration'>Register</button></a>\n";
 
 echo "      </div>\n";
 echo "  </body>\n\n";
