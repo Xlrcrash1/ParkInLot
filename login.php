@@ -8,6 +8,8 @@ if ($_SESSION['active']){
 
 require('SQLconnect.php');
 
+echo "You're not sign in yet...";
+
 echo "<!DOCTYPE  HTML>\n";
 echo "<html>\n\n";
 echo "  <head>\n";
@@ -58,12 +60,12 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
             echo "<br><br>Invalid username, email, or password.<br>\n";
         }
     }
-    else{
+    //else{
 
-        echo "<br><br>Username or email does not exist.<br>\n";
-        echo "Would you like to create an account?\n";
-        echo "Query failed, notify Admin\n";
-    }
+        //echo "<br><br>Username or email does not exist.<br>\n";
+        //echo "Would you like to create an account?\n";
+        //echo "Query failed, notify Admin\n";
+    //}
 }
 else{
 
