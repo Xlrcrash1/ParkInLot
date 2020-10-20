@@ -35,7 +35,7 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
     $username = htmlspecialchars(trim($_POST['Uname']));/////////////////ADD SANATIZATION
     $password = htmlspecialchars(trim($_POST['password']));
     echo "info: $username and $password";
-    $sql = "select * from ParkInLot_Users where user_name = '$username' or user_email = '$username'";
+    $sql = "select * from ParkInLot_Users where username = '$username' or email = '$username'";
     if ($res = $db->query($sql)){
 
         $row = $res->FETCH_ASSOC();
