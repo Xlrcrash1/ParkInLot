@@ -43,10 +43,11 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
         if ($row['user_password'] == $password){
 
             $_SESSION['active'] = true;
-            $_SESSION['name'] = $row['user_fname'];
-            $_SESSION['access'] = $row['user_level'];
-            $_SESSION['email'] = $row['user_email'];
-            $_SESSION['username'] = $row['user_name'];
+            $_SESSION['name'] = $row['firstName'];
+            $_SESSION['lastname'] = $row['lastname'];
+            $_SESSION['access'] = $row['access'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['username'] = $row['username'];
             echo "email: {$_SESSION['email']}\n";
             echo "<br>Session active = {$_SESSION['active']}";
             echo "<br>Session name = {$_SESSION['name']}<br>";
@@ -60,12 +61,12 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
             echo "<br><br>Invalid username, email, or password.<br>\n";
         }
     }
-    //else{
+    else{
 
-        //echo "<br><br>Username or email does not exist.<br>\n";
-        //echo "Would you like to create an account?\n";
-        //echo "Query failed, notify Admin\n";
-    //}
+        echo "<br><br>Username or email does not exist.<br>\n";
+        echo "Would you like to create an account?\n";
+        echo "Query failed, notify Admin\n";
+    }
 }
 else{
 
