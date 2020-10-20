@@ -47,12 +47,12 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
             $_SESSION['access'] = $row['user_level'];
             $_SESSION['email'] = $row['user_email'];
             $_SESSION['username'] = $row['user_name'];
-            //echo "email: {$_SESSION['email']}\n";
-            //echo "<br>Session active = {$_SESSION['active']}";
-            //echo "<br>Session name = {$_SESSION['name']}<br>";
-            //print_r($_SESSION);
-            //echo "<br>user = {$_SESSION['username']}";
-            header("location: index.php");
+            echo "email: {$_SESSION['email']}\n";
+            echo "<br>Session active = {$_SESSION['active']}";
+            echo "<br>Session name = {$_SESSION['name']}<br>";
+            print_r($_SESSION);
+            echo "<br>user = {$_SESSION['username']}";
+            //header("location: index.php");
             exit();
         }
         else{
