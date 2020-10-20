@@ -73,11 +73,12 @@ if (!empty($_POST['name']) && !empty($_POST['lname']) && !empty($_POST['username
                 $sql = "insert into ParkInLot_Users (firstName, lastname, username, password, email) values('$name','$lname','$username','$password','$email');";
                 $db->query($sql);
 
-                //$_SESSION['active'] = true;
-                //$_SESSION['name'] = $row['user_fname'];
-                //$_SESSION['access'] = $row['user_level'];
-                //$_SESSION['email'] = $row['user_email'];
-                //$_SESSION['username'] = $row['user_name']
+                $_SESSION['active'] = true;
+                $_SESSION['name'] = $row['firstName'];
+                $_SESSION['lname'] = $row['lastname'];
+                $_SESSION['access'] = $row['access'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['username'] = $row['username'];
 
                 header('Location: login.php');
             }
