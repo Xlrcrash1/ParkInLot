@@ -75,9 +75,10 @@ else{
 //$_session['uname'] = 'test';
 //$_session['password'] = 'password';
 
-echo "  <a href = 'register.php'><button class = 'registration'>Register</button></a>\n";
+
 
 echo "      </div>\n";
+echo "  <a href = 'register.php'><button class = 'registration'>Register</button></a>\n";
 echo "  </body>\n\n";
 echo "</html>\n";
 
