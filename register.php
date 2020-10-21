@@ -91,7 +91,7 @@ if (!empty($_POST['name']) && !empty($_POST['lname']) && !empty($_POST['username
                 $db->query($sql);
 
                 $_SESSION['active'] = true;
-                $_SESSION['name'] = $row['firstName'];
+                $_SESSION['firstName'] = $row['firstName'];
                 $_SESSION['lname'] = $row['lastname'];
                 $_SESSION['access'] = $row['access'];
                 $_SESSION['email'] = $row['email'];
