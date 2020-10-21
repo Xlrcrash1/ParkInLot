@@ -11,7 +11,16 @@ if ($_SESSION['active'] == true){
     echo "      <link rel = 'stylesheet' type = 'text/css' href = 'style.css'>\n";
     echo "  </head>\n";
     echo "  <body>\n";
-    include('nav.php');
+    
+    echo "      <div class = 'dropdown'>\n";
+
+    echo "          <button class = 'dropbtn'>HI {$_SESSION['firstName']} ^</button>\n";
+    echo "          <div class = 'dropdown-content'>\n";
+    echo "              <a href = 'index.php'>Home</a>\n";
+    echo "              <a href = 'logout.php'>Log Out</a>\n";
+    echo "          </div>\n";
+    echo "      </div>\n";
+
 
     echo "      <form method = 'POST'>\n";
     echo "          <h3>Update your Profile {$_SESSION['firstName']}!</h3>\n";
