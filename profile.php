@@ -16,7 +16,8 @@ if ($_SESSION['active'] == true){
     echo "      <form method = 'POST'>\n";
     echo "          <h3>Update your Profile {$_SESSION['name']}!</h3>\n";
     echo "          <h4>Updating your username will cuase chats to be deleted.\n";
-    echo "          <h5> Name: <input type = 'text' name = 'updateName' placeholder = {$_SESSION['name']}></input></h5>\n";
+    echo "          <h5> First Name: <input type = 'text' name = 'updateName' placeholder = {$_SESSION['name']}></input></h5>\n";
+    echo "          <h5> Last Name: <input type = 'text' name = 'updatelName' placeholder = {$_SESSION['lname']}></input></h5>\n";
     echo "          <h5> Email: <input type = 'email' name = 'updateEmail' placeholder = {$_SESSION['email']}></input></h5>\n";
     echo "          <h5> UserName: <input type = 'text' name = 'updateUserName' placeholder = {$_SESSION['username']}></input></h5>\n";
     echo "          <button class = 'update' type = 'submit'>Update Profile</button>\n";
@@ -24,12 +25,13 @@ if ($_SESSION['active'] == true){
     echo "      </form>\n";
 
     $updateName = $_POST['updateName'];
+    $updatelname = $_POST['updatelName'];
     $updateEmail = $_POST['updateEmail'];
     $updateUserName = $_POST['updateUserName'];
 
     //echo "updateName = $updateName and updateEmail = $updateEmail and updateUserName = $updateUserName\n";
 
-    if (empty($_POST['updateName']) and empty($_POST['updateEmail']) and empty($_POST['updateUserName'])){
+    if (empty($_POST['updateName']) and empty($_POST['updatelName']) and empty($_POST['updateEmail']) and empty($_POST['updateUserName'])){
 
         //echo "Nothing to Update\n";
     }
@@ -37,7 +39,7 @@ if ($_SESSION['active'] == true){
         if (!empty($_POST['updateName'])){
 
             //echo "update name is set\n";
-            $sql = "update Users set user_fname = '{$_POST['updateName']}' where user_name = '{$_SESSION['username']}'";
+            $sql = "update ParkInLot_Users set firstName = '{$_POST['updateName']}' where username = '{$_SESSION['username']}'";
             //echo $sql;
 
             $db->query($sql);
@@ -53,11 +55,30 @@ if ($_SESSION['active'] == true){
             //echo "session name: {$_SESSION['name']}\n";
         }
 
+        if (!empty($_POST['updatelName'])){
+
+            //echo "update name is set\n";
+            $sql = "update ParkInLot_Users set lastname = '{$_POST['updatelName']}' where username = '{$_SESSION['username']}'";
+            //echo $sql;
+
+            $db->query($sql);
+            
+            //echo "Name has been updated to {$_POST['updateName']}\n<br><br>";
+            //echo "session name: {$_SESSION['name']}\n";
+            
+            $_SESSION['name'] = $_POST['updatelName'];
+
+            header('Location: profile.php');
+            echo "Last Name has been updated to {$_POST['updatelName']}\n<br><br>";
+            
+            //echo "session name: {$_SESSION['name']}\n";
+        }        
+
 
         if (!empty($_POST['updateEmail'])){
 
             //echo "update email is set\n";
-            $sql = "update Users set user_email = '{$_POST['updateEmail']}' where user_name = '{$_SESSION['username']}'";
+            $sql = "update ParkInLot_Users set email = '{$_POST['updateEmail']}' where username = '{$_SESSION['username']}'";
             //echo $sql;
 
             $db->query($sql);
@@ -75,7 +96,7 @@ if ($_SESSION['active'] == true){
 
             //echo "session username= {$_SESSION['username']}\n";
             //echo "update username is set\n";
-            $sql = "update Users set user_name = '{$_POST['updateUserName']}' where user_name = '{$_SESSION['username']}'";
+            $sql = "update ParkInLot_Users set username = '{$_POST['updateUserName']}' where username = '{$_SESSION['username']}'";
             //echo "sql statement: $sql\n";
             $db->query($sql);
 
@@ -194,7 +215,7 @@ if ($_SESSION['active'] == true){
     echo "      var txt;\n";
     echo "      var r = confirm('Are you sure you want to delete your account?');\n";
     echo "      if (r == true){\n";
-    $sql = "Delete from ParkInLot_Users where email = '{$_SESSION['email']}';";
+    $sql = "Delete from ParkInLot_Users where username = '{$_SESSION['username']}';";
     //$db->query($sql);//////////////////////////////////////////////////////////////////////////////////////////////////////////
     //echo "          txt = $sql;\n";
     //echo "          txt = 'name = {$_SESSION['email']}';\n";
