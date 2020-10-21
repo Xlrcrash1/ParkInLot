@@ -230,6 +230,7 @@ if ($_SESSION['active'] == true){
     //echo "          txt = $sql;\n";
     //echo "          txt = 'username = {$_SESSION['username']}';\n";
     echo "          txt = 'Account deleted';\n";
+    header('Location: index.php');
     echo "      }\n";
     echo "      else{\n";
     echo "          txt = 'Account deletion aborted';\n";
