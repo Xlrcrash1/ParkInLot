@@ -227,6 +227,7 @@ if ($_SESSION['active'] == true){
     echo "      if (r == true){\n";
     $sql = "delete from ParkInLot_Users where email = '{$_SESSION['email']}';";
     $db->query($sql);
+    $_SESSION['active'] = false;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     //echo "          txt = $sql;\n";
     //echo "          txt = 'username = {$_SESSION['username']}';\n";
