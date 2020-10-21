@@ -112,7 +112,7 @@ if ($_SESSION['active'] == true){
         echo "      <div class = 'car'>\n";
         echo "          Car Information";
         echo "          <h5> Make: <input type = 'text' name = 'make' placeholder = {$_SESSION['make']}></input></h5>\n";
-        echo "          <h5> Model: <input type = 'text' name = 'model' placeholder = {$_SESSION['name']}></input></h5>\n"; 
+        echo "          <h5> Model: <input type = 'text' name = 'model' placeholder = {$_SESSION['model']}></input></h5>\n"; 
         echo "          <h5> Year: <input type = 'text' name = 'year' placeholder = {$_SESSION['year']}></input></h5>\n"; 
         echo "          <h5> Color: <input type = 'text' name = 'color' placeholder = {$_SESSION['color']}></input></h5>\n";
         echo "          <h5> Last 4 of License Plate: <input type = 'text' name = 'licenseplate' placeholder = {$_SESSION['licensePlate']}></input></h5>\n";
