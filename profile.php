@@ -16,7 +16,7 @@ if ($_SESSION['active'] == true){
     echo "      <form method = 'POST'>\n";
     echo "          <h3>Update your Profile {$_SESSION['name']}!</h3>\n";
     echo "          <h4>Updating your username will cuase chats to be deleted.\n";
-    echo "          <h5> First Name: <input type = 'text' name = 'updateName' placeholder = {$_SESSION['name']}></input></h5>\n";
+    echo "          <h5> First Name: <input type = 'text' name = 'updateName' placeholder = {$_SESSION['firstName']}></input></h5>\n";
     echo "          <h5> Last Name: <input type = 'text' name = 'updatelName' placeholder = {$_SESSION['lastname']}></input></h5>\n";
     echo "          <h5> Email: <input type = 'email' name = 'updateEmail' placeholder = {$_SESSION['email']}></input></h5>\n";
     echo "          <h5> UserName: <input type = 'text' name = 'updateUserName' placeholder = {$_SESSION['username']}></input></h5>\n";
