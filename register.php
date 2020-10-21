@@ -24,7 +24,7 @@ echo "              <h5>Confirm Password: <input type = 'password' placeholder =
 echo "              <h5>Make: <input type = 'text' placeholder = 'Toyota' name = 'make'></h5>\n";
 echo "              <h5>Model: <input type = 'text' placeholder = 'GT86' name = 'model'></h5>\n";
 echo "              <h5>2017: <input type = 'number' placeholder = '2017' name = 'year'></h5>\n";
-echo "              <h5>Last 4 of LicensePlate: <input type = 'number' placeholder = 'C777' name = 'licensePlate'></h5>\n";
+echo "              <h5>Last 4 of LicensePlate: <input type = 'text' placeholder = 'C777' name = 'licensePlate'></h5>\n";
 echo "              <h5>Color: <input type = 'text' placeholder = 'Grey' name = 'color'></h5>\n";
 echo "              <button class = 'nav_btn' type = 'submit'>Create</button>\n";
 echo "          </form>\n";
