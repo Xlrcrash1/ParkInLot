@@ -26,6 +26,7 @@ echo "              <h5>Model: <input type = 'text' placeholder = 'GT86' name = 
 echo "              <h5>2017: <input type = 'number' placeholder = '2017' name = 'year'></h5>\n";
 echo "              <h5>Last 4 of LicensePlate: <input type = 'text' placeholder = 'C777' name = 'licensePlate'></h5>\n";
 echo "              <h5>Color: <input type = 'text' placeholder = 'Grey' name = 'color'></h5>\n";
+echo "              <h5>Photo: <input type = 'text' placeholder = 'asdf.jpg' name = 'photo'></h5>\n";
 echo "              <button class = 'nav_btn' type = 'submit'>Create</button>\n";
 echo "          </form>\n";
 echo "      </div>\n";
@@ -102,6 +103,7 @@ if (!empty($_POST['name']) && !empty($_POST['lname']) && !empty($_POST['username
                 $_SESSION['year'] = $row['year'];
                 $_SESSION['color'] = $row['color'];
                 $_SESSION['licensePlate'] = $row['licensePlate'];
+                $_SESSION['photo'] = $row['photo'];
 
                 header('Location: login.php');
             }
