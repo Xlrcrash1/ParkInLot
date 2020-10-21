@@ -47,6 +47,11 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
             $_SESSION['access'] = $row['access'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['username'] = $row['username'];
+            $_SESSION['make'] = $row['make'];
+            $_SESSION['model'] = $row['model'];
+            $_SESSION['year'] = $row['year'];
+            $_SESSION['color'] = $row['color'];
+            $_SESSION['photo'] = $row['photo'];
             //echo "email: {$_SESSION['email']}\n";
             //echo "<br>Session active = {$_SESSION['active']}";
             //echo "<br>Session name = {$_SESSION['name']}<br>";
