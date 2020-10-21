@@ -7,7 +7,7 @@ if ($_SESSION['active'] == true){
     echo "<!DOCTYPE = html>\n";
     echo "<html>\n";
     echo "  <head>\n";
-    echo "      <title>{$_SESSION['name']}'s Profile</title>\n";
+    echo "      <title>{$_SESSION['firstName']}'s Profile</title>\n";
     echo "      <link rel = 'stylesheet' type = 'text/css' href = 'style.css'>\n";
     echo "  </head>\n";
     echo "  <body>\n";
