@@ -21,7 +21,7 @@ if ($_SESSION['active'] == true){
 
     echo "      <div class = 'dropdown'>\n";
 
-    echo "          <button class = 'dropbtn'>HI {$_SESSION['name']} ^</button>\n";
+    echo "          <button class = 'dropbtn'>HI {$_SESSION['firstName']} ^</button>\n";
     echo "          <div class = 'dropdown-content'>\n";
     echo "              <a href = 'profile.php'>View Profile</a>\n";
     echo "              <a href = 'logout.php'>Log Out</a>\n";
