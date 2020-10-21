@@ -126,7 +126,7 @@ if ($_SESSION['active'] == true){
         if ($new_password == $confirm_password){
 
             echo "passwords matched\n";
-            $sql = "select * from Users where user_name = '{$_SESSION['username']}'";
+            $sql = "select * from ParkInLot_Users where username = '{$_SESSION['username']}'";
             //echo $sql;
 
             if ($res = $db->query($sql)){
@@ -134,13 +134,13 @@ if ($_SESSION['active'] == true){
                 //echo "sql statement query successfull\n";
                 $row = $res->FETCH_ASSOC();
 
-                $currentPassword = $row['user_password'];
+                $currentPassword = $row['password'];
                 echo "current password: $currentPassword\n";
                 
                 if ($currentPassword == $current_password){
 
                     echo "echo password matched sql password\n";
-                    $sql = "update Users set user_password = '$new_password' where user_name = '{$_SESSION['username']}'";
+                    $sql = "update ParkInLot_Users set password = '$new_password' where username = '{$_SESSION['username']}'";
                     $db->query($sql);
                     //echo "sql: $sql";
                     header('Location: profile.php');
@@ -194,7 +194,7 @@ if ($_SESSION['active'] == true){
     echo "      var txt;\n";
     echo "      var r = confirm('Are you sure you want to delete your account?');\n";
     echo "      if (r == true){\n";
-    $sql = "Delete from Users where user_email = '{$_SESSION['email']}';";
+    $sql = "Delete from ParkInLot_Users where useremail = '{$_SESSION['email']}';";
     //$db->query($sql);//////////////////////////////////////////////////////////////////////////////////////////////////////////
     //echo "          txt = $sql;\n";
     //echo "          txt = 'name = {$_SESSION['email']}';\n";
