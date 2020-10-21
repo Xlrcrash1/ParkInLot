@@ -194,7 +194,7 @@ if ($_SESSION['active'] == true){
     echo "      var txt;\n";
     echo "      var r = confirm('Are you sure you want to delete your account?');\n";
     echo "      if (r == true){\n";
-    $sql = "Delete from ParkInLot_Users where useremail = '{$_SESSION['email']}';";
+    $sql = "Delete from ParkInLot_Users where email = '{$_SESSION['email']}';";
     //$db->query($sql);//////////////////////////////////////////////////////////////////////////////////////////////////////////
     //echo "          txt = $sql;\n";
     //echo "          txt = 'name = {$_SESSION['email']}';\n";
