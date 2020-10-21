@@ -9,7 +9,7 @@ if ($_SESSION['active'] == false){
 echo "<!DOCTYPE HTML>\n";
 echo "<html>\n";
 echo "  <head>\n";
-echo "      <title>Final Project - Chat Support</title>\n";
+echo "      <title>ParkInLot</title>\n";
 echo "      <link rel = 'stylesheet' type='text/css' href = 'style.css'>\n";
 echo "  </head>\n";
 echo "  <body>\n";
