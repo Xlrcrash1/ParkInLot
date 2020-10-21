@@ -26,28 +26,18 @@ if ($_SESSION['active'] == true){
     echo "              <a href = 'profile.php'>View Profile</a>\n";
     echo "              <a href = 'logout.php'>Log Out</a>\n";
     echo "          </div>\n";
-    
     echo "      </div>\n";
-
-    echo "<div class = 'center_chat'>\n";
-    echo "  <div class = 'chat_options'>\n";
-    echo "      <a href = 'newChat.php'><button class = 'chat'>New Support Chat</button></a><br><br>\n";
-    echo "      <a href = 'myChat.php'><button class = 'chat'>My Active Chat</button></a><br><br>\n";
     
     echo "You are signed in! Cool!\n";
 
     if ($_SESSION['access'] == 10){
 
-        echo "  <a href = 'allchats.php'><button class = 'chat'>View All Support Chats</button></a><br><br>\n";
-        echo "  <button class = 'chat'>View All Logs</button><br><br>\n";
+        //This is where I will add an option to view our Database and be able to send queries and all that 
+        echo "  This is where the text input for sql queries will take place; ";
+
+        echo "              <h5>SQL Query: <input type = 'text' placeholder = 'Enter Query' name = 'test'></h5>\n";
     }
-    echo "  </div>\n";
-    if ($_SESSION['access'] == 10){
-        echo "  <div class = 'Logs'>\n";
-        echo "      TEST\n";
-        echo "  </div>\n";
-        echo "</div>\n";
-    }
+    
 
 }
 
