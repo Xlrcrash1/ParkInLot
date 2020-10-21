@@ -226,11 +226,8 @@ if ($_SESSION['active'] == true){
     echo "      var r = confirm('Are you sure you want to delete your account?');\n";
     echo "      if (r == true){\n";
     $sql = "delete from ParkInLot_Users where email = '{$_SESSION['email']}';";
-    if ($db->query($sql)){
-
-        $_SESSION['active'] = false;
-        header('Location: index.php');
-    }//////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $db->query($sql);
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
     //echo "          txt = $sql;\n";
     //echo "          txt = 'username = {$_SESSION['username']}';\n";
     echo "          txt = 'Account deleted';\n";
