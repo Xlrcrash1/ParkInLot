@@ -47,7 +47,7 @@ if ($_SESSION['active'] == true){
             //echo "Name has been updated to {$_POST['updateName']}\n<br><br>";
             //echo "session name: {$_SESSION['name']}\n";
             
-            $_SESSION['name'] = $_POST['updateName'];
+            $_SESSION['firstName'] = $_POST['updateName'];
 
             header('Location: profile.php');
             echo "Name has been updated to {$_POST['updateName']}\n<br><br>";
@@ -66,7 +66,7 @@ if ($_SESSION['active'] == true){
             //echo "Name has been updated to {$_POST['updateName']}\n<br><br>";
             //echo "session name: {$_SESSION['name']}\n";
             
-            $_SESSION['name'] = $_POST['updatelName'];
+            $_SESSION['lastname'] = $_POST['updatelName'];
 
             header('Location: profile.php');
             echo "Last Name has been updated to {$_POST['updatelName']}\n<br><br>";
