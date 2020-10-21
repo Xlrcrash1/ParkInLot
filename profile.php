@@ -115,6 +115,7 @@ if ($_SESSION['active'] == true){
         echo "          <h5> Model: <input type = 'text' name = 'model' placeholder = {$_SESSION['name']}></input></h5>\n"; 
         echo "          <h5> Year: <input type = 'text' name = 'year' placeholder = {$_SESSION['year']}></input></h5>\n"; 
         echo "          <h5> Color: <input type = 'text' name = 'color' placeholder = {$_SESSION['color']}></input></h5>\n";
+        echo "          <h5> Last 4 of License Plate: <input type = 'text' name = 'licenseplate' placeholder = {$_SESSION['licensePlate']}></input></h5>\n";
         echo "          <h5> Picture: <input type = 'text' name = 'pic' placeholder = {$_SESSION['photo']}></input></h5>\n";  
         echo "      </div>\n";
 
