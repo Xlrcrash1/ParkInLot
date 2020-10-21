@@ -14,7 +14,7 @@ if ($_SESSION['active'] == true){
     include('nav.php');
 
     echo "      <form method = 'POST'>\n";
-    echo "          <h3>Update your Profile {$_SESSION['name']}!</h3>\n";
+    echo "          <h3>Update your Profile {$_SESSION['firstName']}!</h3>\n";
     echo "          <h4>Updating your username will cuase chats to be deleted.\n";
     echo "          <h5> First Name: <input type = 'text' name = 'updateName' placeholder = {$_SESSION['firstName']}></input></h5>\n";
     echo "          <h5> Last Name: <input type = 'text' name = 'updatelName' placeholder = {$_SESSION['lastname']}></input></h5>\n";
