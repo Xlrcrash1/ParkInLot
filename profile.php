@@ -217,9 +217,9 @@ if ($_SESSION['active'] == true){
     echo "      if (r == true){\n";
     $sql = "Delete from ParkInLot_Users where email = '{$_SESSION['email']}';";
     //$db->query($sql);//////////////////////////////////////////////////////////////////////////////////////////////////////////
-    echo "          txt = $sql;\n";
+    //echo "          txt = $sql;\n";
     //echo "          txt = 'username = {$_SESSION['username']}';\n";
-    //echo "          txt = 'Account deleted';\n";
+    echo "          txt = 'Account deleted';\n";
     echo "      }\n";
     echo "      else{\n";
     echo "          txt = 'Account deletion aborted';\n";
