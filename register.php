@@ -62,14 +62,14 @@ if (!empty($_POST['name']) && !empty($_POST['lname']) && !empty($_POST['username
 
     if ($password == $confirm_password){
 
-        $sql = "select * from ParkInLot_Users where username = '$username' or email = '$email' or licensePlate = '$licensePlate'";
+        $sql = "select * from Users where userName = '$username' or email = '$email' or licensePlate = '$licensePlate'";
         if ($res = $db->query($sql)){
 
             $row = $res->FETCH_ASSOC();
             
             $exists = '';
             
-            if ($row['username'] == $username){
+            if ($row['userName'] == $username){
 
                 $exists .= 'UserName taken<br>';
             }
@@ -81,22 +81,22 @@ if (!empty($_POST['name']) && !empty($_POST['lname']) && !empty($_POST['username
 
                 $exists .= 'License Plate already exists<br>';
             }
-            if ($row['user_name'] == $username or $row['user_email'] == $email or $row['licensePlate'] == $licensePlate){
+            if ($row['userName'] == $username or $row['email'] == $email or $row['licensePlate'] == $licensePlate){
 
                 echo $exists;
             }
             else{
 
                 //echo "email or username is not taken<br>\n";
-                $sql = "insert into ParkInLot_Users (firstName, lastname, username, password, email, make, model, year, color, licensePlate) values('$name','$lname','$username','$password','$email', '$make', '$model', '$year', '$color', '$licensePlate');";
+                $sql = "insert into Users (firstName, lastName, userName, password, email, make, model, year, color, licensePlate) values('$name','$lname','$username','$password','$email', '$make', '$model', '$year', '$color', '$licensePlate');";
                 $db->query($sql);
 
                 $_SESSION['active'] = true;
                 $_SESSION['firstName'] = $row['firstName'];
-                $_SESSION['lname'] = $row['lastname'];
+                $_SESSION['lname'] = $row['lastName'];
                 $_SESSION['access'] = $row['access'];
                 $_SESSION['email'] = $row['email'];
-                $_SESSION['username'] = $row['username'];
+                $_SESSION['username'] = $row['userName'];
 
                 $_SESSION['make'] = $row['make'];
                 $_SESSION['model'] = $row['model'];

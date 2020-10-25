@@ -28,7 +28,7 @@ if ($_SESSION['active'] == true){
     echo "          <h5> First Name: <input type = 'text' name = 'updateName' placeholder = {$_SESSION['firstName']}></input></h5>\n";
     echo "          <h5> Last Name: <input type = 'text' name = 'updatelName' placeholder = {$_SESSION['lastname']}></input></h5>\n";
     echo "          <h5> Email: <input type = 'email' name = 'updateEmail' placeholder = {$_SESSION['email']}></input></h5>\n";
-    echo "          <h5> UserName: <input type = 'text' name = 'updateUserName' placeholder = {$_SESSION['username']}></input></h5>\n";
+    echo "          <h5> UserName: <input type = 'text' name = 'updateUserName' placeholder = {$_SESSION['userName']}></input></h5>\n";
     echo "          <button class = 'update' type = 'submit'>Update Profile</button>\n";
     //echo "          <p id = 'UpdateError'>Error Test</p>\n";
     echo "      </form>\n";
@@ -48,7 +48,7 @@ if ($_SESSION['active'] == true){
         if (!empty($_POST['updateName'])){
 
             //echo "update name is set\n";
-            $sql = "update ParkInLot_Users set firstName = '{$_POST['updateName']}' where username = '{$_SESSION['username']}'";
+            $sql = "update Users set firstName = '{$_POST['updateName']}' where userName = '{$_SESSION['firstName']}'";
             //echo $sql;
 
             $db->query($sql);
@@ -67,7 +67,7 @@ if ($_SESSION['active'] == true){
         if (!empty($_POST['updatelName'])){
 
             //echo "update name is set\n";
-            $sql = "update ParkInLot_Users set lastname = '{$_POST['updatelName']}' where username = '{$_SESSION['username']}'";
+            $sql = "update Users set lastName = '{$_POST['updatelName']}' where userName = '{$_SESSION['userName']}'";
             //echo $sql;
 
             $db->query($sql);
@@ -75,7 +75,7 @@ if ($_SESSION['active'] == true){
             //echo "Name has been updated to {$_POST['updateName']}\n<br><br>";
             //echo "session name: {$_SESSION['name']}\n";
             
-            $_SESSION['lastname'] = $_POST['updatelName'];
+            $_SESSION['lastnName'] = $_POST['updatelName'];
 
             header('Location: profile.php');
             echo "Last Name has been updated to {$_POST['updatelName']}\n<br><br>";
@@ -87,7 +87,7 @@ if ($_SESSION['active'] == true){
         if (!empty($_POST['updateEmail'])){
 
             //echo "update email is set\n";
-            $sql = "update ParkInLot_Users set email = '{$_POST['updateEmail']}' where username = '{$_SESSION['username']}'";
+            $sql = "update Users set email = '{$_POST['updateEmail']}' where userName = '{$_SESSION['userName']}'";
             //echo $sql;
 
             $db->query($sql);
@@ -105,14 +105,14 @@ if ($_SESSION['active'] == true){
 
             //echo "session username= {$_SESSION['username']}\n";
             //echo "update username is set\n";
-            $sql = "update ParkInLot_Users set username = '{$_POST['updateUserName']}' where username = '{$_SESSION['username']}'";
+            $sql = "update Users set userName = '{$_POST['updateUserName']}' where userName = '{$_SESSION['userName']}'";
             //echo "sql statement: $sql\n";
             $db->query($sql);
 
             //echo "Username has been updated to {$_POST['updateUserName']}\n<br><br>";
             //header('Location: profile.php');
 
-            $_SESSION['username'] = $_POST['updateUserName'];
+            $_SESSION['userName'] = $_POST['updateUserName'];
             header('Location: profile.php');
             echo "Username has been updated to {$_POST['updateUserName']}\n<br><br>";
         }
@@ -157,7 +157,7 @@ if ($_SESSION['active'] == true){
         if ($new_password == $confirm_password){
 
             echo "passwords matched\n";
-            $sql = "select * from ParkInLot_Users where username = '{$_SESSION['username']}'";
+            $sql = "select * from Users where userName = '{$_SESSION['userName']}'";
             //echo $sql;
 
             if ($res = $db->query($sql)){
@@ -171,7 +171,7 @@ if ($_SESSION['active'] == true){
                 if ($currentPassword == $current_password){
 
                     echo "echo password matched sql password\n";
-                    $sql = "update ParkInLot_Users set password = '$new_password' where username = '{$_SESSION['username']}'";
+                    $sql = "update Users set password = '$new_password' where userName = '{$_SESSION['userName']}'";
                     $db->query($sql);
                     //echo "sql: $sql";
                     header('Location: profile.php');

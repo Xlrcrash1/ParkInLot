@@ -34,7 +34,7 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
     $username = htmlspecialchars(trim($_POST['Uname']));/////////////////ADD SANATIZATION
     $password = htmlspecialchars(trim($_POST['password']));
     echo "info: $username and $password";
-    $sql = "select * from ParkInLot_Users where username = '$username' or email = '$username'";
+    $sql = "select * from ParkInLot_Users where username = '$userName' or email = '$userName'";
     if ($res = $db->query($sql)){
 
         $row = $res->FETCH_ASSOC();
@@ -43,10 +43,10 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
 
             $_SESSION['active'] = true;
             $_SESSION['firstName'] = $row['firstName'];
-            $_SESSION['lastname'] = $row['lastname'];
+            $_SESSION['lastname'] = $row['lastName'];
             $_SESSION['access'] = $row['access'];
             $_SESSION['email'] = $row['email'];
-            $_SESSION['username'] = $row['username'];
+            $_SESSION['username'] = $row['userName'];
             $_SESSION['make'] = $row['make'];
             $_SESSION['model'] = $row['model'];
             $_SESSION['year'] = $row['year'];

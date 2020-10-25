@@ -6,9 +6,9 @@
  
     //Connect to database
     $server =  'localhost';
-    $user = 'tcervantes';
-    $password = 'Tony101677';
-    $database = 'tcervantes';
+    $user = 'spstudios';
+    $password = 'Rew3zdupxe';
+    $database = 'spstudios';
     $db = new mysqli($server, $user, $password, $database);
     // oop $obj->member
  
