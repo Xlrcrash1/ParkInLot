@@ -232,7 +232,7 @@ if ($_SESSION['active'] == true){
     //echo "          txt = $sql;\n";
     //echo "          txt = 'userName = {$_SESSION['userName']}';\n";
     echo "          txt = 'Account deleted';\n";
-    
+    echo "          setTimeout(location.reload.bind(location), 50000);"; 
     echo "      }\n";
     echo "      else{\n";
     echo "          txt = 'Account deletion aborted';\n";
