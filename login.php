@@ -33,7 +33,7 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
 
     $userName = htmlspecialchars(trim($_POST['Uname']));/////////////////ADD SANATIZATION
     $password = htmlspecialchars(trim($_POST['password']));
-    echo "info: $username and $password";
+    echo "info: $userName and $password";
     $sql = "select * from Users where userName = '$userName' or email = '$userName'";
     if ($res = $db->query($sql)){
 
@@ -46,7 +46,7 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
             $_SESSION['lastname'] = $row['lastName'];
             $_SESSION['access'] = $row['access'];
             $_SESSION['email'] = $row['email'];
-            $_SESSION['username'] = $row['userName'];
+            $_SESSION['userName'] = $row['userName'];
             $_SESSION['make'] = $row['make'];
             $_SESSION['model'] = $row['model'];
             $_SESSION['year'] = $row['year'];
@@ -57,25 +57,25 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
             //echo "<br>Session active = {$_SESSION['active']}";
             //echo "<br>Session name = {$_SESSION['name']}<br>";
             //print_r($_SESSION);
-            //echo "<br>user = {$_SESSION['username']}";
+            //echo "<br>user = {$_SESSION['userName']}";
             header("location: index.php");
             exit();
         }
         else{
 
-            echo "<br><br>Invalid username, email, or password.<br>\n";
+            echo "<br><br>Invalid userName, email, or password.<br>\n";
         }
     }
     else{
 
-        echo "<br><br>Username or email does not exist.<br>\n";
+        echo "<br><br>UserName or email does not exist.<br>\n";
         echo "Would you like to create an account?\n";
         echo "Query failed, notify Admin\n";
     }
 }
 else{
 
-    echo "<br><br>Please enter Username/Email with Password.<br>\n";
+    echo "<br><br>Please enter UserName/Email with Password.<br>\n";
 }
 
 //$_session['uname'] = 'test';
