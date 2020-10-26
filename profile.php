@@ -114,7 +114,7 @@ if ($_SESSION['active'] == true){
 
             $_SESSION['userName'] = $_POST['updateUserName'];
             header('Location: profile.php');
-            echo "Username has been updated to {$_POST['updateUserName']}\n<br><br>";
+            echo "UserName has been updated to {$_POST['updateUserName']}\n<br><br>";
         }
 
 
