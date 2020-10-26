@@ -96,7 +96,7 @@ if (!empty($_POST['name']) && !empty($_POST['lname']) && !empty($_POST['username
                 $_SESSION['lname'] = $row['lastName'];
                 $_SESSION['access'] = $row['access'];
                 $_SESSION['email'] = $row['email'];
-                $_SESSION['username'] = $row['userName'];
+                $_SESSION['userName'] = $row['userName'];
 
                 $_SESSION['make'] = $row['make'];
                 $_SESSION['model'] = $row['model'];
