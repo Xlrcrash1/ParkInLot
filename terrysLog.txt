@@ -1,0 +1,32 @@
+Below is a log of my activities throughout the semester:
+
+Week 1: Searching for group
+
+Week 2: Transferred to Albert's Class
+
+Week 3: First team check-in, deciding placement of members
+
+Week 4: Team Check-in/Discussing Stack with Group. Looking into PHP
+
+Week 5: Created Collaborative Project Document on Google Docs/Began working on Individual Contribution
+
+Week 5/6: Worked on Sections 1 and 2 of the Collaborative document. Created Tables for Work Plan.
+
+Week 6: Completed Individual Contribution/Executive Summary and Introduction sections of collaborative portion.
+
+Week 7: Looked into PHP more.
+        Created Project Presentation and populated a majority of the slides with information. Waiting on 
+        people's info.
+Link for future reference: https://www.youtube.com/watch?v=OK_JCtrrv-c <- Link on freeCodeCamp PHP
+
+Week 8: Learning about SQL implementations, differences and similarities.
+        Practiced project Presentation.
+        Presented project presentation (Think we did pretty well!)
+
+Week 9-10: Practicing SQL implementation in 3420, implementing tables and writing queries.
+
+Week 11-12: Working heavily in SQL. Realized that a majority of the projects features will be nearly entirely
+            SQL driven. Still studying up on PHP.
+
+Week 12-13: Looking into Map implementations. How to use Google Maps in web apps. How to properly get users
+            locations. As well as the limitations we might face going into it.
