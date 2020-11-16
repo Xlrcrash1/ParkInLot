@@ -22,8 +22,10 @@ Link for future reference: https://www.youtube.com/watch?v=OK_JCtrrv-c <- Link o
 Week 8: Learning about SQL implementations, differences and similarities.
         Practiced project Presentation.
         Presented project presentation (Think we did pretty well!)
+        Created my Git Branch!
 
-Week 9-10: Practicing SQL implementation in 3420, implementing tables and writing queries.
+Week 9-10: Practicing SQL implementation in 3420, implementing tables and writing queries. Reading over Tony's code
+           to better understand.
 
 Week 11-12: Working heavily in SQL. Realized that a majority of the projects features will be nearly entirely
             SQL driven. Still studying up on PHP.
