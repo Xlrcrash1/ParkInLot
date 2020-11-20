@@ -16,7 +16,8 @@ Week 6: Completed Individual Contribution/Executive Summary and Introduction sec
 
 Week 7: Looked into PHP more.
         Created Project Presentation and populated a majority of the slides with information. Waiting on 
-        people's info.
+        people's info
+        Created phptest.php.
 Link for future reference: https://www.youtube.com/watch?v=OK_JCtrrv-c <- Link on freeCodeCamp PHP
 
 Week 8: Learning about SQL implementations, differences and similarities.
@@ -32,3 +33,6 @@ Week 11-12: Working heavily in SQL. Realized that a majority of the projects fea
 
 Week 12-13: Looking into Map implementations. How to use Google Maps in web apps. How to properly get users
             locations. As well as the limitations we might face going into it.
+            Created loctest.php using the geolocation plugin geoplugin.
+            It can find users longitude and latitude based on IP address. It should be helpful should we implement
+            a map in our application.
