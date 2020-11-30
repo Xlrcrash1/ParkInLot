@@ -37,4 +37,4 @@ Week 12-13: Looking into Map implementations. How to use Google Maps in web apps
             It can find users longitude and latitude based on IP address. It should be helpful should we implement
             a map in our application.
 
-Week 14-15: Looking into the SQL database. Created the Spots table. Created the Spots table for use in the future.
+Week 14-15: Looking into the SQL database. Created the Spots table. Created the Spots table for use in the future. Fixed my commit messages to be from my account.
