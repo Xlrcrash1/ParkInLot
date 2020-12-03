@@ -225,8 +225,8 @@ if ($_SESSION['active'] == true){
     echo "      var txt;\n";
     echo "      var r = confirm('Are you sure you want to delete your account?');\n";
     echo "      if (r == true){\n";
-    $sql = "delete from Users where email = '{$_SESSION['email']}';";
-    $db->query($sql);
+    //$sql = "delete from Users where email = '{$_SESSION['email']}';";
+    //$db->query($sql);
     //$_SESSION['active'] = false;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     //echo "          txt = $sql;\n";
