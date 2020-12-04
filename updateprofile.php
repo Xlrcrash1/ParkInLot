@@ -7,7 +7,7 @@
     <body>
         <div class = 'dropdown'>
             <?php 
-            echo "<button class = 'dropbtn'>HI " . $_SESSION["firstName"] . "^</button>\n";?>
+            echo "<button class = 'dropbtn'>Hi " . $_SESSION["firstName"] . "^</button>\n";?>
             <div class = 'dropdown-content'>
                 <a href = 'index.php'>Home</a>
                 <a href = 'logout.php'>Log Out</a>
@@ -18,7 +18,7 @@
                 echo "<h3>Update your Profile {$_SESSION['firstName']}!</h3>\n";
                 echo "\t\t\t\t<h4>Updating your username will cause chats to be deleted.\n";
                 echo "\t\t\t\t<h5>First Name: <input type = 'text' name = 'updateName' placeholder = {$_SESSION['firstName']}></input></h5>\n";
-                echo "\t\t\t\t<h5>Last Name: <input type = 'text' name = 'updatelName' placeholder = {$_SESSION['lastname']}></input></h5>\n";
+                echo "\t\t\t\t<h5>Last Name: <input type = 'text' name = 'updatelName' placeholder = {$_SESSION['lastName']}></input></h5>\n";
                 echo "\t\t\t\t<h5>Email: <input type = 'email' name = 'updateEmail' placeholder = {$_SESSION['email']}></input></h5>\n";
                 echo "\t\t\t\t<h5>UserName: <input type = 'text' name = 'updateUserName' placeholder = {$_SESSION['userName']}></input></h5>\n";
             ?>
@@ -61,7 +61,7 @@
                         
                 //echo "Name has been updated to {$_POST['updateName']}\n<br><br>";
                 //echo "session name: {$_SESSION['name']}\n";
-                $_SESSION['lastnName'] = $_POST['updatelName'];
+                $_SESSION['lastName'] = $_POST['updatelName'];
 
                 header('Location: profile.php');
                 echo "Last Name has been updated to {$_POST['updatelName']}\n<br><br>";
@@ -100,7 +100,7 @@
                     echo "\t\t\t\t<h5> Year: <input type = 'text' name = 'updateYear' placeholder = {$_SESSION['year']}></input></h5>\n"; 
                     echo "\t\t\t\t<h5> Color: <input type = 'text' name = 'updateColor' placeholder = {$_SESSION['color']}></input></h5>\n";
                     echo "\t\t\t\t<h5> Last 4 of License Plate: <input type = 'text' name = 'updateLicensePlate' placeholder = {$_SESSION['licensePlate']}></input></h5>\n";
-                    echo "\t\t\t\t<h5> Picture: <input type = 'text' name = 'updatePhoto' placeholder = {$_SESSION['carPhoto']}></input></h5>\n";  
+                    echo "\t\t\t\t<h5> Picture: <input type = 'text' name = 'updatePhoto' placeholder = {$_SESSION['photo']}></input></h5>\n";  
                 ?>
             <button class = 'update' type = 'submit'>Update Profile</button>
             </form>
@@ -153,7 +153,7 @@
             if (!empty($_POST['updatePhoto'])){
                 $sql = "UPDATE Users SET carPhoto = '{$_POST['updatePhoto']}' WHERE userName = '{$_SESSION['userName']}'";
                 $db->query($sql);
-                $_SESSION['carPhoto'] = $_POST['updatePic'];
+                $_SESSION['photo'] = $_POST['updatePhoto'];
                 header('Location:profile.php');
                 echo "Car Photo has been updated to {$_POST['updatePhoto']}\n<br><br>";
             }
