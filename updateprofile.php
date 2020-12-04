@@ -192,11 +192,14 @@
                     $row = $res->FETCH_ASSOC();
 
                     $currentPassword = $row['password'];
+
                     echo "current password: $currentPassword\n";
-                        
-                    if ($currentPassword == $current_password){
+
+                    if(password_verify($current_password, $row['password'])) {
+                    // if ($currentPassword == $current_password){
                         echo "echo password matched sql password\n";
-                        $sql = "update Users set password = '$new_password' where userName = '{$_SESSION['userName']}'";
+                        $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
+                        $sql = "UPDATE Users SET password = '$hashedPassword' WHERE userName = '{$_SESSION['userName']}'";
                         $db->query($sql);
                         //echo "sql: $sql";
                         header('Location: profile.php');
