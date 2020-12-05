@@ -41,5 +41,6 @@ Week 14-15: Looking into the SQL database. Created the Spots table. Created the 
             Learned about Triggers, Views, and Stored Procedures in mySQL.
             Read through a majority of the articles at: https://www.w3schools.com/sql/default.asp
             Tinkering with the Profile.php file written by Tony to try to understand a bug where profiles are deleted when they log out from the profile.php page.
+            Added reCaptcha to the registration page for increased bot defense. Glad to be working with some Google api.
 
 Week 16: Studying for Finals. Overall feel prepared for Spring Semester. Feel most confident in SQL so I plan on talking to the Group about focusing mainly on features that utilize this. Still will probably help some on the front end, but I feel more confident with SQL than PHP for sure. I also really want to help with the Spot/Queue algorithm, that I believe will mainly be written using SQL queries, I also want to work on the Tokens feature we planned.
