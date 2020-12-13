@@ -91,11 +91,12 @@
 
 .nav_btn{
 
-    background-color: #00CCFF;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
+  float: right;
+  background-color: #00CCFF;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
 }
 
 /* Dropdown Button */
