@@ -14,7 +14,9 @@
     </head>
     <body>
     
-        <p>DataBase Tables: <?php $_POST['UsersTable']?></p>
+        <?php
+            echo "POSt: {$_POST['UserTable']}<br>\n";
+        ?>   
     </body>
 
 </html>
