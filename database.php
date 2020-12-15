@@ -14,7 +14,7 @@
     </head>
     <body>
     
-        <p>DataBase Tables: <?php {$_POST['Users']}?></p>
+        <p>DataBase Tables: <?php $_POST['Users'];?></p>
     </body>
 
 </html>
@@ -22,7 +22,7 @@
                 <?php
                 }else{
 
-                    eader('location: login.php'); 
+                    header('location: login.php'); 
                     exit();
                 }
                 ?>
