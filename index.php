@@ -44,7 +44,6 @@ if ($_SESSION['active'] == true){
         echo "                      <input type ='submit' value = 'Submit'>\n";
         echo "                  </form\n";
         echo "              </div>\n";
-        echo "checking: $_POST['UsersTable']\n";
     }
     
 
