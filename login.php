@@ -8,7 +8,7 @@ if ($_SESSION['active']){
 
 require('SQLconnect.php');
 
-echo "You're not sign in yet...";
+echo "You're not signed in yet...";
 
 echo "<!DOCTYPE  HTML>\n";
 echo "<html>\n\n";
