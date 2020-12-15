@@ -99,7 +99,7 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
             else{
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 //echo "email or userName is not taken<br>\n";
-                $sql = "insert into Users (firstName, lastName, userName, password, email, make, model, year, color, licensePlate, carPhoto) values('$name','$lname','$userName','$hashedPassword','$email', '$make', '$model', '$year', '$color', '$licensePlate');";
+                $sql = "insert into Users (firstName, lastName, userName, password, email, make, model, year, color, licensePlate) values('$name','$lname','$userName','$hashedPassword','$email', '$make', '$model', '$year', '$color', '$licensePlate');";
                 $db->query($sql);
 
                 $_SESSION['active'] = true;
