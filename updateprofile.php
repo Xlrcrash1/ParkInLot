@@ -100,7 +100,7 @@
                     echo "\t\t\t\t<h5> Year: <input type = 'text' name = 'updateYear' placeholder = {$_SESSION['year']}></input></h5>\n"; 
                     echo "\t\t\t\t<h5> Color: <input type = 'text' name = 'updateColor' placeholder = {$_SESSION['color']}></input></h5>\n";
                     echo "\t\t\t\t<h5> Last 4 of License Plate: <input type = 'text' name = 'updateLicensePlate' placeholder = {$_SESSION['licensePlate']}></input></h5>\n";
-                    echo "\t\t\t\t<h5> Picture: <input type = 'text' name = 'updatePhoto' placeholder = {$_SESSION['photo']}></input></h5>\n";  
+                    //echo "\t\t\t\t<h5> Picture: <input type = 'text' name = 'updatePhoto' placeholder = {$_SESSION['photo']}></input></h5>\n";  
                 ?>
             <button class = 'update' type = 'submit'>Update Profile</button>
             </form>
@@ -111,7 +111,7 @@
             $updateYear = $_POST['updateYear'];
             $updateColor = $_POST['updateColor'];
             $updateLicensePlate = $_POST['updateLicensePlate'];
-            $updatePhoto = $_POST['updatePhoto'];
+            //$updatePhoto = $_POST['updatePhoto'];
 
             if (empty($_POST['updateMake']) and empty($_POST['updateModel']) and empty($_POST['updateYear']) and empty($_POST['updateColor']) and empty($_POST['updateLicensePlate']) and empty($_POST['updatePic'])){
             }
@@ -150,13 +150,13 @@
                 header('Location:profile.php');
                 echo "License Plate has been updated to {$_POST['updateLicensePlate']}\n<br><br>";
             }
-            if (!empty($_POST['updatePhoto'])){
-                $sql = "UPDATE Users SET carPhoto = '{$_POST['updatePhoto']}' WHERE userName = '{$_SESSION['userName']}'";
-                $db->query($sql);
-                $_SESSION['photo'] = $_POST['updatePhoto'];
-                header('Location:profile.php');
-                echo "Car Photo has been updated to {$_POST['updatePhoto']}\n<br><br>";
-            }
+            // if (!empty($_POST['updatePhoto'])){
+            //     $sql = "UPDATE Users SET carPhoto = '{$_POST['updatePhoto']}' WHERE userName = '{$_SESSION['userName']}'";
+            //     $db->query($sql);
+            //     $_SESSION['photo'] = $_POST['updatePhoto'];
+            //     header('Location:profile.php');
+            //     echo "Car Photo has been updated to {$_POST['updatePhoto']}\n<br><br>";
+            // }
 
         ?>
 
