@@ -40,7 +40,7 @@ if ($_SESSION['active'] == true){
         
         echo "                  <form action = ./database.php' target='_blank' method='post'>\n";
         echo "                       <input type='radio' id='UsersTable' name='Users' value='select * from Users;'>\n";
-        echo "                      <label for='UsersTable'>Male</label><br>\n";
+        echo "                      <label for='UsersTable'>UsersTable</label><br>\n";
         echo "                      <input type ='submit' value = 'Submit'>\n";
         echo "                  </form\n";
         echo "              </div>\n";
