@@ -15,7 +15,7 @@
     <body>
     
         <?php
-            echo "POSt: {$_POST['UserTable']}<br>\n";
+            echo "POST: {$_POST['UsersTable']}<br>\n";
         ?>   
     </body>
 
