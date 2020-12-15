@@ -39,7 +39,7 @@ if ($_SESSION['active'] == true){
         echo "              Which table would you like to look at?<br> \n";
         
         echo "                  <form action = './database.php' target='_blank' method='post'>\n";
-        echo "                       <input type='radio' id='UsersTable' name='Users' value='select * from Users;'>\n";
+        echo "                       <input type='radio' id='UsersTable' name='UsersTable' value='select * from Users;'>\n";
         echo "                      <label for='UsersTable'>UsersTable</label><br><br>\n";
         echo "                      <input type ='submit' value = 'Submit'>\n";
         echo "                  </form\n";
