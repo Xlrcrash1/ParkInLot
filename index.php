@@ -33,12 +33,14 @@ if ($_SESSION['active'] == true){
     if ($_SESSION['access'] == 10){
 
         //This is where I will add an option to view our Database and be able to send queries and all that 
-        echo "  Which table would you like to look at? \n";
 
+        echo "<br><br>\n";
         echo "              <div id = 'Database_Query_Options'>\n";
-        echo "                  <form action = ./database.php'>\n";
+        echo "              Which table would you like to look at? \n";
+        
+        echo "                  <form action = ./database.php' target='_blank' method='post'>\n";
         echo "                      <input type='checkbox' id='Users' name='Users' value='select * from Users'>\n";
-        echo "                      <label for='vehicle1> View Users Table</label><br>\n";
+        echo "                      <label for='Users> View Users Table</label><br>\n";
         echo "                      <input type ='submit' value = 'Submit'>\n";
         echo "                  </form\n";
         echo "              </div>\n";
