@@ -39,8 +39,8 @@ if ($_SESSION['active'] == true){
         echo "              Which table would you like to look at? \n";
         
         echo "                  <form action = ./database.php' target='_blank' method='post'>\n";
-        echo "                       <input type='radio' id='male' name='gender' value='male'>\n";
-        echo "                      <label for='male'>Male</label><br>\n";
+        echo "                       <input type='radio' id='UsersTable' name='Users' value='select * from Users;'>\n";
+        echo "                      <label for='UsersTable'>Male</label><br>\n";
         echo "                      <input type ='submit' value = 'Submit'>\n";
         echo "                  </form\n";
         echo "              </div>\n";
