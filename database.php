@@ -39,29 +39,31 @@
                     $sql = "{$_POST['UsersTable']}";
                     //echo "$sql";
                  
-                         //echo "for loop $sql<br>\n";
+                    //echo "for loop $sql<br>\n";
                  
-                         if ($res = $db->query($sql)){
+                    if ($res = $db->query($sql)){
                  
-                             //echo "success<br>\n";
+                        //echo "success<br>\n";
                  
-                             $row = $res->FETCH_ASSOC();
+                        $row = $res->FETCH_ASSOC();
                  
-                             if($row['username']==$_SESSION['username']){
+                        if($row['username']==$_SESSION['username']){
                  
-                                echo "<div class = 'chatMessages'>\n";
-                                echo "  <div class = 'chat_username'>\n";
-                                echo "  {$row['firstName']} \n";
-                                echo "  </div>\n";
+                            echo "<div class = 'chatMessages'>\n";
+                            echo "  <div class = 'chat_username'>\n";
+                            echo "  {$row['firstName']} \n";
+                            echo "  </div>\n";
                  
-                                echo "  <div class = 'chat_chat'>\n";
-                                echo "  {$row['userName']}\n";
-                                echo "  </div>\n";
+                            echo "  <div class = 'chat_chat'>\n";
+                            echo "  {$row['userName']}\n";
+                            echo "  </div>\n";
                  
-                                echo "  <div class = 'chat_time'>\n";
-                                echo "  {$row['password']}\n";
-                                echo "  </div>\n";
-                                echo "</div><br>\n";
+                            echo "  <div class = 'chat_time'>\n";
+                            echo "  {$row['password']}\n";
+                            echo "  </div>\n";
+                            echo "</div><br>\n";
+                        }
+                    }
                 }
             }
                 
