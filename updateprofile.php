@@ -195,8 +195,8 @@
 
                     echo "current password: $currentPassword\n";
 
-                    if(password_verify($current_password, $row['password'])) {
-                    // if ($currentPassword == $current_password){
+                    if(password_verify($current_password, $row['password']) OR $currentPassword == $current_password) {
+                        // if ($currentPassword == $current_password){
                         echo "echo password matched sql password\n";
                         $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
                         $sql = "UPDATE Users SET password = '$hashedPassword' WHERE userName = '{$_SESSION['userName']}'";

@@ -38,8 +38,8 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
     if ($res = $db->query($sql)){
 
         $row = $res->FETCH_ASSOC();
-        if(password_verify($password, $row['password'])) {
-        // if ($row['password'] == $password){
+        if(password_verify($password, $row['password']) OR $row['password'] == $password) {
+            // if ($row['password'] == $password){
             $_SESSION['active'] = true;
             $_SESSION['firstName'] = $row['firstName'];
             $_SESSION['lastName'] = $row['lastName'];
@@ -79,8 +79,6 @@ else{
 
 //$_session['uname'] = 'test';
 //$_session['password'] = 'password';
-
-
 
 echo "      </div>\n";
 echo "              <a href = 'register.php'>Register</a>\n";
