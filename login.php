@@ -38,7 +38,7 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
     if ($res = $db->query($sql)){
 
         $row = $res->FETCH_ASSOC();
-        if(password_verify($password, $row['password']) || $row['password'] == $password) {
+        if(password_verify($password, $row['password']) OR $row['password'] == $password) {
             // if ($row['password'] == $password){
             $_SESSION['active'] = true;
             $_SESSION['firstName'] = $row['firstName'];
