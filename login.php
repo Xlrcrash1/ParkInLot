@@ -52,6 +52,7 @@ if (!empty($_POST['Uname']) && !empty($_POST['password'])){
             $_SESSION['color'] = $row['color'];
             $_SESSION['licensePlate'] = $row['licensePlate'];
             $_SESSION['photo'] = $row['carPhoto'];
+            $_SESSION['tokens'] = $row['tokens'];
             //echo "email: {$_SESSION['email']}\n";
             //echo "<br>Session active = {$_SESSION['active']}";
             //echo "<br>Session name = {$_SESSION['name']}<br>";

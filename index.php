@@ -29,7 +29,7 @@ if ($_SESSION['active'] == true){
     echo "      </div>\n";
     
     echo "You are signed in! Cool!\n";
-
+    echo "You currently have {$_SESSION['tokens']} tokens!\n";
     if ($_SESSION['access'] == 10){
 
         //This is where I will add an option to view our Database and be able to send queries and all that 
