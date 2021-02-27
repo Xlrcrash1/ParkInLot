@@ -21,7 +21,7 @@ echo "  <body>\n";
 include_once('nav.php');
 //echo "      </div><br>\n\n";
 echo "      <div class = 'container'>\n";      
-echo "          <form method = 'POST'>\n";
+echo "          <form method = 'POST' class = loginForm>\n";
 echo "              <input type = 'Uname' placeholder = 'User Name or Email' name = 'Uname'>\n";
 echo "              <input type = 'password' placeholder = 'Password' name = 'password'>\n";
 echo "              <button class = 'nav_btn' type = 'submit'>Login</button\n";
