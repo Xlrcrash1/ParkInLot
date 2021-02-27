@@ -27,6 +27,7 @@ echo "          <form method = 'POST' class = loginForm>\n";
 echo "              <input type = 'Uname' placeholder = 'User Name or Email' name = 'Uname'>\n";
 echo "              <br>\n";
 echo "              <input type = 'password' placeholder = 'Password' name = 'password'>\n";
+echo "              <br>\n";
 echo "              <button class = 'nav_btn' type = 'submit'>Login</button\n";
 //echo "          <button type = "checkbox" checked = "checked" name = 'remeber'>Remember me
 echo "      </form>\n";
