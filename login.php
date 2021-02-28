@@ -19,9 +19,9 @@ echo "  </head>\n\n";
 echo "  <body>\n";
 //echo "      <div class = 'nav'>\n";
 include_once('nav.php');
-//echo "      </div><br>\n\n";
+echo "      </div><br>\n\n";
 
-echo "      <img src = './Images/ParkInLot.jpg'\n";
+echo "      <img class ='ParkInLot' src = './Images/ParkInLot.jpg'\n";
 
 echo "      <div class = 'container'>\n";      
 echo "          <form method = 'POST' class = loginForm>\n";
