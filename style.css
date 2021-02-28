@@ -13,16 +13,17 @@
 
 /*      Login.php       */
 
+.ParkInLot{
+
+  size: 50%;
+}
+
 .loginForm{
 
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   top: 50%;
-}
-
-.container.input{
-
   border: 0;
   outline: 0;
   background: transparent;
