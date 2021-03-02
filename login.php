@@ -22,7 +22,7 @@ include_once('nav.php');
 echo "      <br>\n\n";
 
 echo "      <div class ='ParkInLotLogo'>\n";
-echo "           <img src = './Images/ParkInLot.jpg'\n";
+echo "           <img src = './Images/ParkInLot.jpg'>\n";
 echo "      </div>\n";
 
 echo "      <div class = 'container'>\n";      
