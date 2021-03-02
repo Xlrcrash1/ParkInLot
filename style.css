@@ -20,7 +20,7 @@
 
 .loginLogo{
 
-  width: 50%;
+  width: 100%;
 }
 
 .loginInput{
@@ -29,6 +29,9 @@
   outline: 0;
   background: transparent;
   border-bottom: 1px solid black;
+
+  font-size: 50px;
+  width: 80%;
 }
 
 .loginForm{
