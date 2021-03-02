@@ -21,7 +21,9 @@ echo "  <body>\n";
 include_once('nav.php');
 echo "      </div><br>\n\n";
 
-echo "      <img class ='ParkInLot' src = './Images/ParkInLot.jpg'\n";
+echo "      <div class ='ParkInLotLogo'>\n";
+echo "           <img src = './Images/ParkInLot.jpg'\n";
+echo "      </div>\n";
 
 echo "      <div class = 'container'>\n";      
 echo "          <form method = 'POST' class = loginForm>\n";
