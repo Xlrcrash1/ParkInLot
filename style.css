@@ -15,7 +15,8 @@
 
 .ParkInLotLogo{
 
-  size: 50%;
+  text-align: center;
+  width: 50%;
 }
 
 .loginForm{
