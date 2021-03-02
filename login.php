@@ -19,7 +19,7 @@ echo "  </head>\n\n";
 echo "  <body>\n";
 //echo "      <div class = 'nav'>\n";
 include_once('nav.php');
-echo "      </div><br>\n\n";
+echo "      <br>\n\n";
 
 echo "      <div class ='ParkInLotLogo'>\n";
 echo "           <img src = './Images/ParkInLot.jpg'\n";
