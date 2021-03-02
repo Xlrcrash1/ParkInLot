@@ -32,6 +32,9 @@ echo "              <br>\n";
 echo "              <input class = 'loginInput' type = 'password' placeholder = 'Password' name = 'password'>\n";
 echo "              <br>\n";
 echo "              <button class = 'nav_btn' type = 'submit'>Login</button\n";
+echo "              <button class = 'reg_btn'>
+                        <a href = 'register.php'>Register</a>
+                    </button>\n";
 //echo "          <button type = "checkbox" checked = "checked" name = 'remeber'>Remember me
 echo "      </form>\n";
 
@@ -88,7 +91,6 @@ else{
 //$_session['password'] = 'password';
 
 echo "      </div>\n";
-echo "              <a href = 'register.php'>Register</a>\n";
 echo "  </body>\n\n";
 echo "</html>\n";
 
