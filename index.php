@@ -13,6 +13,7 @@ echo "      <title>ParkInLot</title>\n";
 echo "      <link rel = 'stylesheet' type='text/css' href = 'style.css'>\n";
 echo "  </head>\n";
 echo "  <body>\n";
+echo "  <div class ='appBackground'>\n";
 include('nav.php');
 
 
@@ -48,7 +49,7 @@ if ($_SESSION['active'] == true){
     
 
 }
-
+echo "</div>\n";
 echo "  </body>\n";
 echo "</html>\n";
 

@@ -6,7 +6,10 @@
   
   background-color: black;
 }
+.appBackground{
 
+  background-color: black;;
+}
 /*      Index & Login   */
 
 .sign_in{
