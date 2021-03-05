@@ -17,6 +17,7 @@ echo "      <title>Login</title>\n";
 echo "      <link rel = 'stylesheet' type = 'text/css' href = 'style.css'>\n";
 echo "  </head>\n\n";
 echo "  <body>\n";
+echo "  <div class ='appBackground'>\n";
 //echo "      <div class = 'nav'>\n";
 include_once('nav.php');
 echo "      <br>\n\n";
@@ -91,6 +92,7 @@ else{
 //$_session['password'] = 'password';
 
 echo "      </div>\n";
+echo "  </div>\n";
 echo "  </body>\n\n";
 echo "</html>\n";
 
