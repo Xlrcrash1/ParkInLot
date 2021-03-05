@@ -27,7 +27,7 @@ echo "              <h5>Model: <input type = 'text' placeholder = 'GT86' name = 
 echo "              <h5>Year: <input type = 'number' placeholder = '2017' name = 'year'></h5>\n";
 echo "              <h5>Last 4 of LicensePlate: <input type = 'text' placeholder = 'C777' name = 'licensePlate'></h5>\n";
 echo "              <h5>Color: <input type = 'text' placeholder = 'Grey' name = 'color'></h5>\n";
-echo "              <h5>Photo: <input type = 'text' placeholder = 'asdf.jpg' name = 'photo'></h5>\n";
+//echo "              <h5>Photo: <input type = 'text' placeholder = 'asdf.jpg' name = 'photo'></h5>\n";
 echo "              <div class='g-recaptcha' data-sitekey='6LcdvfkZAAAAANZYnLTRvlsXFYDtim_Kz33h16m5'></div>";
 echo "              <button class = 'nav_btn' type = 'submit'>Create</button>\n";
 echo "          </form>\n";
@@ -61,7 +61,7 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
     $year = htmlspecialchars(trim($_POST['year']));/////////////////ADD SANATIZATION
     $licensePlate = htmlspecialchars(trim($_POST['licensePlate']));
     $color = htmlspecialchars(trim($_POST['color']));
-
+    //$photo = htmlspecialchars(trim($_POST['photo']));
     //$name = $_POST['name'];
     //$lname = $_POST['lname'];
     //$userName = $_POST['userName'];
@@ -97,9 +97,9 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
                 echo $exists;
             }
             else{
-
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 //echo "email or userName is not taken<br>\n";
-                $sql = "insert into Users (firstName, lastName, userName, password, email, make, model, year, color, licensePlate) values('$name','$lname','$userName','$password','$email', '$make', '$model', '$year', '$color', '$licensePlate');";
+                $sql = "insert into Users (firstName, lastName, userName, password, email, make, model, year, color, licensePlate) values('$name','$lname','$userName','$hashedPassword','$email', '$make', '$model', '$year', '$color', '$licensePlate');";
                 $db->query($sql);
 
                 $_SESSION['active'] = true;
@@ -108,13 +108,12 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
                 $_SESSION['access'] = $row['access'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['userName'] = $row['userName'];
-
                 $_SESSION['make'] = $row['make'];
                 $_SESSION['model'] = $row['model'];
                 $_SESSION['year'] = $row['year'];
                 $_SESSION['color'] = $row['color'];
                 $_SESSION['licensePlate'] = $row['licensePlate'];
-                $_SESSION['photo'] = $row['photo'];
+                //$_SESSION['photo'] = $row['carPhoto'];
 
                 header('Location: login.php');
             }
