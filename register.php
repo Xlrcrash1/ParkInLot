@@ -1,51 +1,62 @@
 <?php
 
 require('SQLconnect.php');
+?>
 
-echo "<!DOCTYPE = HTML>\n";
-echo "<html>\n";
-echo "  <head>\n";
-echo "      <title>REGISTER</title>\n";
-echo "      <link rel = 'stylesheet' type = 'text/css' href = 'style.css'>\n";
-echo "      <script src='https://www.google.com/recaptcha/api.js'></script>\n";
-echo "  </head>\n";
-echo "  <body>\n";
+<!DOCTYPE = HTML>\n";
+<html>\n";
+    <head>\n";
+        
+        <title>REGISTER</title>\n";
+        <link rel = 'stylesheet' type = 'text/css' href = 'style.css'>\n";
+        <script src='https://www.google.com/recaptcha/api.js'></script>\n";
+    </head>\n";
+    
+    <body>\n";
 
-include('nav.php');
+        <?php   include('nav.php');   ?>
 
-echo "      <div class = 'register_box'>\n";
-echo "          <form method = 'POST'>\n";
-echo "              <h5>First Name: <input type = 'text' placeholder = 'Tony' name = 'name'></h5>\n";
-echo "              <h5>Last Name: <input type = 'text' placeholder = 'Cervantes' name = 'lname'></h5>\n";
-echo "              <h5>UserName: <input type = 'text' placeholder = 'XLR8' name = 'userName'></h5>\n";
-echo "              <h5>Email: <input type = 'email' placeholder = 'email@email.com' name = 'email'></h5>\n";
-echo "              <h5>Password: <input type = 'password' placeholder = '*****' name = 'password'></h5>\n";
-echo "              <h5>Confirm Password: <input type = 'password' placeholder = '*****' name = 'confirm_password'></h5>\n";
+        <div class = 'register_box'>\n";
+    
+            <form method = 'POST'>\n";
+        
+                <h5>First Name: <input type = 'text' placeholder = 'Tony' name = 'name'></h5>\n";
+                <h5>Last Name: <input type = 'text' placeholder = 'Cervantes' name = 'lname'></h5>\n";
+                <h5>UserName: <input type = 'text' placeholder = 'XLR8' name = 'userName'></h5>\n";
+                <h5>Email: <input type = 'email' placeholder = 'email@email.com' name = 'email'></h5>\n";
+                <h5>Password: <input type = 'password' placeholder = '*****' name = 'password'></h5>\n";
+                <h5>Confirm Password: <input type = 'password' placeholder = '*****' name = 'confirm_password'></h5>\n";
 
-echo "              <h5>Make: <input type = 'text' placeholder = 'Toyota' name = 'make'></h5>\n";
-echo "              <h5>Model: <input type = 'text' placeholder = 'GT86' name = 'model'></h5>\n";
-echo "              <h5>Year: <input type = 'number' placeholder = '2017' name = 'year'></h5>\n";
-echo "              <h5>Last 4 of LicensePlate: <input type = 'text' placeholder = 'C777' name = 'licensePlate'></h5>\n";
-echo "              <h5>Color: <input type = 'text' placeholder = 'Grey' name = 'color'></h5>\n";
-//echo "              <h5>Photo: <input type = 'text' placeholder = 'asdf.jpg' name = 'photo'></h5>\n";
-echo "              <div class='g-recaptcha' data-sitekey='6LcdvfkZAAAAANZYnLTRvlsXFYDtim_Kz33h16m5'></div>";
-echo "              <button class = 'nav_btn' type = 'submit'>Create</button>\n";
-echo "          </form>\n";
-echo "      </div>\n";
+                <h5>Make: <input type = 'text' placeholder = 'Toyota' name = 'make'></h5>\n";
+                <h5>Model: <input type = 'text' placeholder = 'GT86' name = 'model'></h5>\n";
+                <h5>Year: <input type = 'number' placeholder = '2017' name = 'year'></h5>\n";
+                <h5>Last 4 of LicensePlate: <input type = 'text' placeholder = 'C777' name = 'licensePlate'></h5>\n";
+                <h5>Color: <input type = 'text' placeholder = 'Grey' name = 'color'></h5>\n";
+                <h5>Photo: <input type = 'text' placeholder = 'asdf.jpg' name = 'photo'></h5>\n";
+                <div class='g-recaptcha' data-sitekey='6LcdvfkZAAAAANZYnLTRvlsXFYDtim_Kz33h16m5'></div>";
+                <button class = 'nav_btn' type = 'submit'>Create</button>\n";
+            </form>\n";
+        </div>\n";
 
-echo "  </body>\n";
-echo "</html>\n";
+    </body>\n";
+</html>\n";
 
-//echo "<script>\n";
-//echo "function checkCaptcha(){\n";
-//echo "var response = grecaptcha.getResponse();\n";
-//echo "if (response.length == 0)\n";
-//echo "{ alert('Please verify you are human!')\n";
-//echo "return false;\n}\n";
-//echo "else{return true;}\n}\n";
-//echo "</script>\n";
+<!--<script>
+    function checkCaptcha(){
 
+        var response = grecaptcha.getResponse();
+        if (response.length == 0){
+        
+            alert('Please verify you are human!')
+            return false;\n}
+        else{
+            
+            return true;
+        }
+    }
+</script>-->
 
+<?php
 if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($_POST['lname']) && !empty($_POST['userName']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])){
 
     //this converts the post parameters from HTML into PHP parameters as well as we sanatize it to avoid sql queries being interjected
