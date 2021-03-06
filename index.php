@@ -26,7 +26,7 @@ if ($_SESSION['active'] == false){
 
             <div class = 'dropdown'>
         
-                <button class = 'dropbtn'>HI {$_SESSION['firstName']} ^</button>
+                <button class = 'dropbtn'>HI <?php  echo"{$_SESSION['firstName']}" ?>^</button>
                 <div class = 'dropdown-content'>
             
                     <a href = 'profile.php'>View Profile</a>
