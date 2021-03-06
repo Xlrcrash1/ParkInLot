@@ -101,11 +101,23 @@
                     echo "\t\t\t\t<h5> Color: <input type = 'text' name = 'updateColor' placeholder = {$_SESSION['color']}></input></h5>\n";
                     echo "\t\t\t\t<h5> Last 4 of License Plate: <input type = 'text' name = 'updateLicensePlate' placeholder = {$_SESSION['licensePlate']}></input></h5>\n";
                     //echo "\t\t\t\t<h5> Picture: <input type = 'text' name = 'updatePhoto' placeholder = {$_SESSION['photo']}></input></h5>\n";  
+                    echo "<img src='{$_SESSION['photo']}' alt='Car Photo'\n";
+                    echo "style='max-width: 50%;'><br><br>\n"
                 ?>
             <button class = 'update' type = 'submit'>Update Profile</button>
             </form>
         </div>
+
+        <form action="upload.php" enctype="multipart/form-data" method="POST">
+                Choose Image : <input name="img" size="35" type="file"/><br/>
+                <input type="submit" name="submit" value="Upload"/>
+        </form>
+        
+        
+
         <?php
+            echo $_SESSION['link'];
+
             $updateMake = $_POST['updateMake'];
             $updateModel = $_POST['updateModel'];
             $updateYear = $_POST['updateYear'];
