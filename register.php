@@ -3,43 +3,43 @@
 require('SQLconnect.php');
 ?>
 
-<!DOCTYPE = HTML>\n";
-<html>\n";
-    <head>\n";
+<!DOCTYPE = HTML>
+<html>
+    <head>
         
-        <title>REGISTER</title>\n";
-        <link rel = 'stylesheet' type = 'text/css' href = 'style.css'>\n";
-        <script src='https://www.google.com/recaptcha/api.js'></script>\n";
-    </head>\n";
+        <title>REGISTER</title>
+        <link rel = 'stylesheet' type = 'text/css' href = 'style.css'>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+    </head>
     
-    <body>\n";
+    <body>
 
         <?php   include('nav.php');   ?>
 
-        <div class = 'register_box'>\n";
+        <div class = 'register_box'>
     
-            <form method = 'POST'>\n";
+            <form method = 'POST'>
         
-                <h5>First Name: <input type = 'text' placeholder = 'Tony' name = 'name'></h5>\n";
-                <h5>Last Name: <input type = 'text' placeholder = 'Cervantes' name = 'lname'></h5>\n";
-                <h5>UserName: <input type = 'text' placeholder = 'XLR8' name = 'userName'></h5>\n";
-                <h5>Email: <input type = 'email' placeholder = 'email@email.com' name = 'email'></h5>\n";
-                <h5>Password: <input type = 'password' placeholder = '*****' name = 'password'></h5>\n";
-                <h5>Confirm Password: <input type = 'password' placeholder = '*****' name = 'confirm_password'></h5>\n";
+                <h5>First Name: <input type = 'text' placeholder = 'Tony' name = 'name'></h5>
+                <h5>Last Name: <input type = 'text' placeholder = 'Cervantes' name = 'lname'></h5>
+                <h5>UserName: <input type = 'text' placeholder = 'XLR8' name = 'userName'></h5>
+                <h5>Email: <input type = 'email' placeholder = 'email@email.com' name = 'email'></h5>
+                <h5>Password: <input type = 'password' placeholder = '*****' name = 'password'></h5>
+                <h5>Confirm Password: <input type = 'password' placeholder = '*****' name = 'confirm_password'></h5>
 
-                <h5>Make: <input type = 'text' placeholder = 'Toyota' name = 'make'></h5>\n";
-                <h5>Model: <input type = 'text' placeholder = 'GT86' name = 'model'></h5>\n";
-                <h5>Year: <input type = 'number' placeholder = '2017' name = 'year'></h5>\n";
-                <h5>Last 4 of LicensePlate: <input type = 'text' placeholder = 'C777' name = 'licensePlate'></h5>\n";
-                <h5>Color: <input type = 'text' placeholder = 'Grey' name = 'color'></h5>\n";
-                <h5>Photo: <input type = 'text' placeholder = 'asdf.jpg' name = 'photo'></h5>\n";
-                <div class='g-recaptcha' data-sitekey='6LcdvfkZAAAAANZYnLTRvlsXFYDtim_Kz33h16m5'></div>";
-                <button class = 'nav_btn' type = 'submit'>Create</button>\n";
-            </form>\n";
-        </div>\n";
+                <h5>Make: <input type = 'text' placeholder = 'Toyota' name = 'make'></h5>
+                <h5>Model: <input type = 'text' placeholder = 'GT86' name = 'model'></h5>
+                <h5>Year: <input type = 'number' placeholder = '2017' name = 'year'></h5>
+                <h5>Last 4 of LicensePlate: <input type = 'text' placeholder = 'C777' name = 'licensePlate'></h5>
+                <h5>Color: <input type = 'text' placeholder = 'Grey' name = 'color'></h5>
+                <h5>Photo: <input type = 'text' placeholder = 'asdf.jpg' name = 'photo'></h5>
+                <div class='g-recaptcha' data-sitekey='6LcdvfkZAAAAANZYnLTRvlsXFYDtim_Kz33h16m5'></div>
+                <button class = 'nav_btn' type = 'submit'>Create</button>
+            </form>
+        </div>
 
-    </body>\n";
-</html>\n";
+    </body>
+</html>
 
 <!--<script>
     function checkCaptcha(){
