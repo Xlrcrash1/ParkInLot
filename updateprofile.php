@@ -2,7 +2,7 @@
 <html>
     <head>
         <title><?php echo "{$_SESSION['firstName']}'s Profile</title>\n";?>
-        <link rel = 'stylesheet' type = 'text/css' href = 'style.css'>
+        <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
     </head>
     <body>
         <div class = 'dropdown'>
