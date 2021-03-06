@@ -12,7 +12,7 @@ if ($_SESSION['active'] == false){
 <html>
     <head>
         <title>ParkInLot</title>
-        <link rel = 'stylesheet' type='text/css' href = 'style.css'>
+        <link rel = 'stylesheet' type='text/css' href = './CSS/style.css'>
     </head>
     
     <body>
