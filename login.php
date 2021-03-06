@@ -43,9 +43,9 @@ require('SQLconnect.php'); ?>
                 <button class = 'reg_btn'>
                     
                     <a href = 'register.php'>Register</a>
-                </button>\n";
+                </button>
                 <button type = "checkbox" checked = "checked" name = 'remeber'>Remember me</button>
-            </form>\n";
+            </form>
 
             <?php
             if (!empty($_POST['Uname']) && !empty($_POST['password'])){
