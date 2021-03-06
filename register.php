@@ -8,7 +8,7 @@ require('SQLconnect.php');
     <head>
         
         <title>REGISTER</title>
-        <link rel = 'stylesheet' type = 'text/css' href = 'style.css'>
+        <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
         <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     
