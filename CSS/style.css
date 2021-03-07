@@ -8,15 +8,26 @@
 }
 .appBackground{
 
-  background-color: black;;
+  background-color: black;
+  color: white;
 }
-/*      Index & Login   */
+/*            Index & Login          */
 
-.sign_in{
+/*.sign_in{
+
+  float: right;
+}*/
+
+/*              Nav             */
+.navigation{
+
+  padding: 10px;
+}
+
+.dropdown{
 
   float: right;
 }
-
 
 /*      Login.php       */
 
@@ -30,7 +41,7 @@
   width: 500px;
 }
 
-.loginInput{
+.form-control{
   
   border: 0;
   outline: 0;
@@ -43,17 +54,13 @@
 
 .loginForm{
 
-  text-align: center;
   margin-top: 5%;
-  margin-left: auto;
-  margin-right: auto;
-  top: 50%;
 }
 
 
 
 
-
+/*        Profile Page        */
 
 
 

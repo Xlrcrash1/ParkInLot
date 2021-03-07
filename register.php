@@ -8,6 +8,8 @@ require('SQLconnect.php');
     <head>
         
         <title>REGISTER</title>
+
+        <?php   include("./CSS/bootStrap.html");    ?>
         <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
         <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
@@ -37,7 +39,7 @@ require('SQLconnect.php');
                 <button class = 'nav_btn' type = 'submit'>Create</button>
             </form>
         </div>
-
+        <?php   include("./javaScript/javaScript.html"); ?>
     </body>
 </html>
 
