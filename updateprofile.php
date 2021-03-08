@@ -97,7 +97,7 @@
             }?>
 
 <div class = 'profileCar'>
-        Car Information
+        <h3>Car Information</h3>
             <form method = 'POST'>
                 <?php
                     echo "<h5> Make: <input type = 'text' name = 'updateMake' placeholder = {$_SESSION['make']}></input></h5>\n";
@@ -121,8 +121,7 @@
         
 
         <?php
-            echo $_SESSION['link'];
-
+            //echo $_SESSION['link'];
             $updateMake = $_POST['updateMake'];
             $updateModel = $_POST['updateModel'];
             $updateYear = $_POST['updateYear'];
@@ -167,13 +166,6 @@
                 header('Location:profile.php');
                 echo "License Plate has been updated to {$_POST['updateLicensePlate']}\n<br><br>";
             }
-            // if (!empty($_POST['updatePhoto'])){
-            //     $sql = "UPDATE Users SET carPhoto = '{$_POST['updatePhoto']}' WHERE userName = '{$_SESSION['userName']}'";
-            //     $db->query($sql);
-            //     $_SESSION['photo'] = $_POST['updatePhoto'];
-            //     header('Location:profile.php');
-            //     echo "Car Photo has been updated to {$_POST['updatePhoto']}\n<br><br>";
-            // }
 
         ?>
 
