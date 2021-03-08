@@ -39,7 +39,7 @@ if ($_SESSION['active']){
             <div class="form-group">
                 <!--<label for="exampleInputEmail1">UserName/Email</label>-->
                 <input type="Uname" class="form-control" id="Uname" aria-describedby="emailHelp" placeholder="Enter UserName or Email" name = "Uname">
-                <small id="emailHelp" class="form-text text-muted"><a href="#">Forgot your username/email?</a></small>
+                <small id="emailHelp" class="form-text text-muted"><a href="#">Forgot your username?</a></small>
             </div>
             <div class="form-group">
                 <!--<label for="exampleInputPassword1">Password</label>-->

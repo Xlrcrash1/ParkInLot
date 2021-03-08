@@ -1,8 +1,3 @@
-<?php
-
-require('SQLconnect.php');
-?>
-
 <!DOCTYPE = HTML>
 <html>
     <head>
@@ -16,7 +11,9 @@ require('SQLconnect.php');
     
     <body>
 
-        <?php   include('nav.php');   ?>
+        <?php   include('nav.php');   
+        
+        require('SQLconnect.php');?>
 
         <div class = 'register_box'>
     
