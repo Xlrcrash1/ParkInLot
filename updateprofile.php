@@ -1,19 +1,23 @@
 <!DOCTYPE = html>
 <html>
     <head>
-        <title><?php echo "{$_SESSION['firstName']}'s Profile</title>\n";?>
+        
+        <title>
+            
+            <?php echo "{$_SESSION['firstName']}'s Profile\n";?>
+        </title>
+
+        <?php   include('./CSS/bootStrap.html');   ?>     
         <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
+        
     </head>
     <body>
-        <div class = 'dropdown'>
-            <?php 
-            echo "<button class = 'dropbtn'>Hi " . $_SESSION["firstName"] . "^</button>\n";?>
-            <div class = 'dropdown-content'>
-                <a href = 'index.php'>Home</a>
-                <a href = 'logout.php'>Log Out</a>
-            </div>
-        </div>
-        <form method = 'POST'>
+
+        <?php   include('nav.php'); 
+        require('SQLconnect.php');  ?>
+
+        
+        <form method = 'POST' class = "viewProfile">
             <?php
                 echo "<h3>Update your Profile {$_SESSION['firstName']}!</h3>\n";
                 echo "\t\t\t\t<h4>Updating your username will cause chats to be deleted.\n";
@@ -91,7 +95,8 @@
                 header('Location: profile.php');
                 echo "UserName has been updated to {$_POST['updateUserName']}\n<br><br>";
             }?>
-<div class = 'car'>
+
+<div class = 'profileCar'>
         Car Information
             <form method = 'POST'>
                 <?php
@@ -271,5 +276,7 @@
                 document.getElementById('delete_check').innerHTML = txt;
             }
         </script>
+
+        <?php   include('./javaScript/javaScript.html');  ?>
     </body>
 </html>
