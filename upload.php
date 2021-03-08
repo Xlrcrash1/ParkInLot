@@ -5,7 +5,7 @@ session_start();
 $img=$_FILES['img'];
 if(isset($_POST['submit'])){ 
  if($img['name']==''){  
-  echo "<h2>An Image Please.</h2>";
+  echo "<h2>Please Upload An Image.</h2>";
  }else{
   $filename = $img['tmp_name'];
   $client_id="23de5a82f549b92";
@@ -26,14 +26,15 @@ if(isset($_POST['submit'])){
   $url=$pms['data']['link'];
   if($url!=""){
    echo "<h2>Uploaded Without Any Problem</h2>";
-   echo "<img src='$url'/>";
-   echo "$url";
+   //echo "<img src='$url'/>";
+   //echo "$url";
 
    $safe_url = mysqli_real_escape_string($database_connection_object, $url);
    $sql = "UPDATE Users SET carPhoto = '$url' WHERE userName = '{$_SESSION['userName']}'";
    $db->query($sql);
-   $_SESSION['photo'] = $row['carPhoto'];
+   //$_SESSION['photo'] = $row['carPhoto'];
 
+   $_SESSION['photo'] = $url;
    $_SESSION['link'] = $url;
    header("location: profile.php");
 
