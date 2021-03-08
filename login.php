@@ -5,11 +5,9 @@ session_start();
 if ($_SESSION['active']){
 
     header('location: index.php'); exit();
-}
+}   ?>
 
-require('SQLconnect.php'); ?>
 
-<p>You're not signed in yet...</p>
 
 <!DOCTYPE  HTML>
 <html>
@@ -17,35 +15,46 @@ require('SQLconnect.php'); ?>
     <head>
 
         <title>Login</title>
+
+        <?php   include('./CSS/bootStrap.html');    ?>
         <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
     </head>
     
     <body>
         
-        <div class = 'nav'>
-            <?php include_once('nav.php');  ?>
-        </div>
-
+        <?php   include('nav.php'); 
+        
+        require('SQLconnect.php'); ?>
+        
+        <p>You're not signed in yet...</p>
+        
         <div class ='ParkInLotLogo'>
             
             <img src = './Images/ParkInLot.jpg' class='loginLogo'>
         </div>
         
         <div class = 'container'>
+        
+        <form method = "POST" class = "loginForm">
+            <div class="form-group">
+                <!--<label for="exampleInputEmail1">UserName/Email</label>-->
+                <input type="Uname" class="form-control" id="Uname" aria-describedby="emailHelp" placeholder="Enter UserName or Email" name = "Uname">
+                <small id="emailHelp" class="form-text text-muted"><a href="#">Forgot your username?</a></small>
+            </div>
+            <div class="form-group">
+                <!--<label for="exampleInputPassword1">Password</label>-->
+                <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Password" name = "password">
+                <small id="passwordHelp" class="form-text text-muted"><a href="#">Forgot your password?</a></small>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">Remember Me</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <p>Don't have an account? <a href="register.php">Sign Up</a></p>
             
-            <form method = 'POST' class = loginForm>
-                
-                <input class = 'loginInput' type = 'Uname' placeholder = 'User Name or Email' name = 'Uname'>
-                <br>
-                <input class = 'loginInput' type = 'password' placeholder = 'Password' name = 'password'>
-                <br>
-                <button class = 'nav_btn' type = 'submit'>Login</button\n">
-                <button class = 'reg_btn'>
-                    
-                    <a href = 'register.php'>Register</a>
-                </button>
-                <button type = "checkbox" checked = "checked" name = 'remeber'>Remember me</button>
-            </form>
 
             <?php
             if (!empty($_POST['Uname']) && !empty($_POST['password'])){
@@ -101,5 +110,6 @@ require('SQLconnect.php'); ?>
             ?>
 
         </div>
+        <?php   include('./javaScript/javaScript.html');    ?>
     </body>
 </html>
