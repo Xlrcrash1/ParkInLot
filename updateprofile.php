@@ -17,6 +17,7 @@
         require('SQLconnect.php');  ?>
 
         
+        <div class = 'profileUser'>
         <form method = 'POST' class = "viewProfile">
             <?php
                 echo "<h3>Update your Profile {$_SESSION['firstName']}!</h3>\n";
@@ -26,14 +27,33 @@
                 echo "\t\t\t\t<h5>Email: <input type = 'email' name = 'updateEmail' placeholder = {$_SESSION['email']}></input></h5>\n";
                 echo "\t\t\t\t<h5>UserName: <input type = 'text' name = 'updateUserName' placeholder = {$_SESSION['userName']}></input></h5>\n";
             ?>
+        </div>
+        <div class = 'profileCar'>
+        <h3>Car Information</h3>
+            <?php
+                echo "<h5> Make: <input type = 'text' name = 'updateMake' placeholder = {$_SESSION['make']}></input></h5>\n";
+                echo "\t\t\t\t<h5> Model: <input type = 'text' name = 'updateModel' placeholder = {$_SESSION['model']}></input></h5>\n"; 
+                echo "\t\t\t\t<h5> Year: <input type = 'text' name = 'updateYear' placeholder = {$_SESSION['year']}></input></h5>\n"; 
+                echo "\t\t\t\t<h5> Color: <input type = 'text' name = 'updateColor' placeholder = {$_SESSION['color']}></input></h5>\n";
+                echo "\t\t\t\t<h5> Last 4 of License Plate: <input type = 'text' name = 'updateLicensePlate' placeholder = {$_SESSION['licensePlate']}></input></h5>\n";
+                echo "<img src='{$_SESSION['photo']}' alt='Car Photo'\n";
+                echo "style='max-width: 50%;'><br><br>\n"
+            ?>
             <button class = 'update' type = 'submit'>Update Profile</button>
-        </form>
+            </form>
+        </div>
 
         <?php
             $updateName = $_POST['updateName'];
             $updatelname = $_POST['updatelName'];
             $updateEmail = $_POST['updateEmail'];
             $updateUserName = $_POST['updateUserName'];
+
+            $updateMake = $_POST['updateMake'];
+            $updateModel = $_POST['updateModel'];
+            $updateYear = $_POST['updateYear'];
+            $updateColor = $_POST['updateColor'];
+            $updateLicensePlate = $_POST['updateLicensePlate'];
 
             //echo "updateName = $updateName and updateEmail = $updateEmail and updateUserName = $updateUserName\n";
 
@@ -94,24 +114,47 @@
                 $_SESSION['userName'] = $_POST['updateUserName'];
                 header('Location: profile.php');
                 echo "UserName has been updated to {$_POST['updateUserName']}\n<br><br>";
-            }?>
+            }
+            //echo $_SESSION['link'];
 
-<div class = 'profileCar'>
-        <h3>Car Information</h3>
-            <form method = 'POST'>
-                <?php
-                    echo "<h5> Make: <input type = 'text' name = 'updateMake' placeholder = {$_SESSION['make']}></input></h5>\n";
-                    echo "\t\t\t\t<h5> Model: <input type = 'text' name = 'updateModel' placeholder = {$_SESSION['model']}></input></h5>\n"; 
-                    echo "\t\t\t\t<h5> Year: <input type = 'text' name = 'updateYear' placeholder = {$_SESSION['year']}></input></h5>\n"; 
-                    echo "\t\t\t\t<h5> Color: <input type = 'text' name = 'updateColor' placeholder = {$_SESSION['color']}></input></h5>\n";
-                    echo "\t\t\t\t<h5> Last 4 of License Plate: <input type = 'text' name = 'updateLicensePlate' placeholder = {$_SESSION['licensePlate']}></input></h5>\n";
-                    //echo "\t\t\t\t<h5> Picture: <input type = 'text' name = 'updatePhoto' placeholder = {$_SESSION['photo']}></input></h5>\n";  
-                    echo "<img src='{$_SESSION['photo']}' alt='Car Photo'\n";
-                    echo "style='max-width: 50%;'><br><br>\n"
-                ?>
-            <button class = 'update' type = 'submit'>Update Profile</button>
-            </form>
-        </div>
+            if (empty($_POST['updateMake']) and empty($_POST['updateModel']) and empty($_POST['updateYear']) and empty($_POST['updateColor']) and empty($_POST['updateLicensePlate']) and empty($_POST['updatePic'])){
+            }
+            if (!empty($_POST['updateMake'])){
+                $sql = "UPDATE Users SET make = '{$_POST['updateMake']}' WHERE userName = '{$_SESSION['userName']}'";
+                $db->query($sql);
+                $_SESSION['make'] = $_POST['updateMake'];
+                header('Location:profile.php');
+                echo "Make has been updated to {$_POST['updateMake']}\n<br><br>";
+            }
+            if (!empty($_POST['updateModel'])){
+                $sql = "UPDATE Users SET model = '{$_POST['updateModel']}' WHERE userName = '{$_SESSION['userName']}'";
+                $db->query($sql);
+                $_SESSION['model'] = $_POST['updateModel'];
+                header('Location:profile.php');
+                echo "Model has been updated to {$_POST['updateModel']}\n<br><br>";
+            }
+            if (!empty($_POST['updateYear'])){
+                $sql = "UPDATE Users SET year = '{$_POST['updateYear']}' WHERE userName = '{$_SESSION['userName']}'";
+                $db->query($sql);
+                $_SESSION['year'] = $_POST['updateYear'];
+                header('Location:profile.php');
+                echo "Year has been updated to {$_POST['updateYear']}\n<br><br>";
+            }
+            if (!empty($_POST['updateColor'])){
+                $sql = "UPDATE Users SET color = '{$_POST['updateColor']}' WHERE userName = '{$_SESSION['userName']}'";
+                $db->query($sql);
+                $_SESSION['color'] = $_POST['updateColor'];
+                header('Location:profile.php');
+                echo "Color has been updated to {$_POST['updateColor']}\n<br><br>";
+            }
+            if (!empty($_POST['updateLicensePlate'])){
+                $sql = "UPDATE Users SET licensePlate = '{$_POST['updateLicensePlate']}' WHERE userName = '{$_SESSION['userName']}'";
+                $db->query($sql);
+                $_SESSION['licensePlate'] = $_POST['updateLicensePlate'];
+                header('Location:profile.php');
+                echo "License Plate has been updated to {$_POST['updateLicensePlate']}\n<br><br>";
+            }
+        ?>
 
         <form action="upload.php" enctype="multipart/form-data" method="POST">
                 Choose Image : <input name="img" size="35" type="file"/><br/>
@@ -119,7 +162,6 @@
         </form>
         
         
-
         <?php
             //echo $_SESSION['link'];
             $updateMake = $_POST['updateMake'];
@@ -127,7 +169,6 @@
             $updateYear = $_POST['updateYear'];
             $updateColor = $_POST['updateColor'];
             $updateLicensePlate = $_POST['updateLicensePlate'];
-            //$updatePhoto = $_POST['updatePhoto'];
 
             if (empty($_POST['updateMake']) and empty($_POST['updateModel']) and empty($_POST['updateYear']) and empty($_POST['updateColor']) and empty($_POST['updateLicensePlate']) and empty($_POST['updatePic'])){
             }
