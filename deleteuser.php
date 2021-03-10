@@ -9,5 +9,6 @@
 
     if($sql->execute()){
         echo "<div class ='alert alert-success'>User: $userName has been deleted</div>";
+        echo "<div class ='alert alert-info'>You will be redirected in a few seconds.</div>";
     };
 ?>

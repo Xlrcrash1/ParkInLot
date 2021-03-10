@@ -6,12 +6,17 @@
         </title>
         <?php   include('./CSS/bootStrap.html');   ?>     
         <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script> -->
+        <!-- <script src="./javaScript/jquery-3.6.0.js"></script> -->
+        <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
     </head>
     <body>
-
-        <?php   include('nav.php'); ?>
-        <div class = 'profileUser'>
+        <?php   include('nav.php'); 
+                require('SQLconnect.php');
+        ?>
+    <div class = 'updateProfile'>
         <form method = 'POST' class = "viewProfile">
+        <div class = 'profileUser'>
             <?php
                 echo "<h3>Update your Profile {$_SESSION['firstName']}!</h3>\n";
                 echo "\t\t\t\t<h4>Updating your username will cause chats to be deleted.\n";
@@ -33,9 +38,9 @@
                 echo "style='max-width: 50%;'><br><br>\n"
             ?>
             <button class = 'update' type = 'submit'>Update Profile</button>
-            </form>
         </div>
-
+        </form>
+    </div>
         <?php
             $updateName = $_POST['updateName'];
             $updatelname = $_POST['updatelName'];
@@ -153,55 +158,6 @@
                 Choose Image : <input name="img" size="35" type="file"/><br/>
                 <input type="submit" name="submit" value="Upload"/>
         </form>
-        
-        
-        <?php
-            //echo $_SESSION['link'];
-            $updateMake = $_POST['updateMake'];
-            $updateModel = $_POST['updateModel'];
-            $updateYear = $_POST['updateYear'];
-            $updateColor = $_POST['updateColor'];
-            $updateLicensePlate = $_POST['updateLicensePlate'];
-
-            if (empty($_POST['updateMake']) and empty($_POST['updateModel']) and empty($_POST['updateYear']) and empty($_POST['updateColor']) and empty($_POST['updateLicensePlate']) and empty($_POST['updatePic'])){
-            }
-            if (!empty($_POST['updateMake'])){
-                $sql = "UPDATE Users SET make = '{$_POST['updateMake']}' WHERE userName = '{$_SESSION['userName']}'";
-                $db->query($sql);
-                $_SESSION['make'] = $_POST['updateMake'];
-                header('Location:profile.php');
-                echo "Make has been updated to {$_POST['updateMake']}\n<br><br>";
-            }
-            if (!empty($_POST['updateModel'])){
-                $sql = "UPDATE Users SET model = '{$_POST['updateModel']}' WHERE userName = '{$_SESSION['userName']}'";
-                $db->query($sql);
-                $_SESSION['model'] = $_POST['updateModel'];
-                header('Location:profile.php');
-                echo "Model has been updated to {$_POST['updateModel']}\n<br><br>";
-            }
-            if (!empty($_POST['updateYear'])){
-                $sql = "UPDATE Users SET year = '{$_POST['updateYear']}' WHERE userName = '{$_SESSION['userName']}'";
-                $db->query($sql);
-                $_SESSION['year'] = $_POST['updateYear'];
-                header('Location:profile.php');
-                echo "Year has been updated to {$_POST['updateYear']}\n<br><br>";
-            }
-            if (!empty($_POST['updateColor'])){
-                $sql = "UPDATE Users SET color = '{$_POST['updateColor']}' WHERE userName = '{$_SESSION['userName']}'";
-                $db->query($sql);
-                $_SESSION['color'] = $_POST['updateColor'];
-                header('Location:profile.php');
-                echo "Color has been updated to {$_POST['updateColor']}\n<br><br>";
-            }
-            if (!empty($_POST['updateLicensePlate'])){
-                $sql = "UPDATE Users SET licensePlate = '{$_POST['updateLicensePlate']}' WHERE userName = '{$_SESSION['userName']}'";
-                $db->query($sql);
-                $_SESSION['licensePlate'] = $_POST['updateLicensePlate'];
-                header('Location:profile.php');
-                echo "License Plate has been updated to {$_POST['updateLicensePlate']}\n<br><br>";
-            }
-
-        ?>
 
         <div class = 'updatePassword'>
             <button class = 'accordion'>Change Password</button>
@@ -283,7 +239,9 @@
             <button class = 'delete_btn' onclick = "deleteAccount('<?php echo $uName;?>')">Delete Account</button>
             <p id = 'delete_check'></p>
         </div>
-        <div id="display"></div>
+
+        <div id="deletestatus"></div>
+
         <script>
             function deleteAccount(uName)
             {
@@ -297,16 +255,14 @@
                         data:{userName:uName},
                         dataType: "html",
                         success:function(data){
-                            $("#display").html(data)
+                            $("#deletestatus").html(data)
+
+                            setTimeout(function(){ 
+                                window.location.replace("logout.php")
+                            }, 3000);  
                         }
                     });
-            //$sql = "delete from Users where email = '{$_SESSION['email']}';";
-            //$db->query($sql);
-            //$_SESSION['active'] = false;
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //echo "          txt = $sql;\n";
-            //echo "          txt = 'userName = {$_SESSION['userName']}';\n";
-                    txt = 'Account deleted';
+
                     setTimeout(location.reload.bind(location), 50000);
                 }
                 else{
