@@ -20,7 +20,7 @@
  
      echo "We are connected<br>";
     }
- 
+    
     //GLOBAL_VAR $db////////////////////
 
 ?>
