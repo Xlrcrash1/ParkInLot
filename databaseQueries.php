@@ -2,8 +2,7 @@
     
 session_start();
 
-if ($_SESSION['active'] && $_SESSION['access'] > 1){
-    ?>
+if ($_SESSION['active'] && $_SESSION['access'] > 1){    ?>
 
     <!Doctype html>
     <html lang = 'en'>
@@ -11,6 +10,7 @@ if ($_SESSION['active'] && $_SESSION['access'] > 1){
         <head>
 
             <title>DataBase Queries</title>
+
             <?php   include('./CSS/bootStrap.html');    ?>
             <link rel = 'stylesheet' type='text/css' href = './CSS/style.css'>
         </head>
@@ -20,7 +20,7 @@ if ($_SESSION['active'] && $_SESSION['access'] > 1){
 
             require('SQLconnect.php');
 
-            //echo "POST: $_POST[usersTable]\n\n<br>";
+            //echo "POST: $_POST[usersTable] $_POST[spotHistory]\n\n<br>";
 
             $sql = "$_POST[usersTable]";
             //echo "SQL Statement: $sql\n<br>";
@@ -29,7 +29,7 @@ if ($_SESSION['active'] && $_SESSION['access'] > 1){
 
                 //echo "succssful sql query<br>\n";
                 $row = $res->FETCH_ASSOC();
-                //echo "row check : {$row['chatNum']}<br>\n";
+                //echo "1st  Fetch Assoc successful<br>\n";
 
                 //Sub query for max number of entries 
                 $sql2 = "select max(userID) from Users;";
@@ -40,6 +40,7 @@ if ($_SESSION['active'] && $_SESSION['access'] > 1){
                     //echo "successful second sql query<br>\n";
 
                     $row = $res->FETCH_ASSOC();
+                    //echo "2nd Fetch Assoc successful<br>\n";
 
                     $maxUsers = $row['max(userID)'];
                     //echo "maxUsers = $maxUsers<br>\n";   
@@ -52,10 +53,12 @@ if ($_SESSION['active'] && $_SESSION['access'] > 1){
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">userID</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Password</th>
-                        <th scope="col">Email</th>
+                        <th scope="col">firstName</th>
+                        <th scope="col">lastName</th>
+                        <th scope="col">userName</th>
+                        <th scope="col">password</th>
+                        <th scope="col">email</th>
+                        <th scope="col">access</th>
                     </tr>
                 </thead>
 
@@ -72,7 +75,7 @@ if ($_SESSION['active'] && $_SESSION['access'] > 1){
                             if ($res = $db->query($sql)){
 
                                 //echo "Successful for loop subquery<br>\n";
-                                $row = $res->FETCH_ASSOC();
+                                if ($row = $res->FETCH_ASSOC()){
 
                                 //Testing row assign
                                 //echo "Testing Row Assign: {$row['userID']}<br>\n";
@@ -81,9 +84,12 @@ if ($_SESSION['active'] && $_SESSION['access'] > 1){
                                     echo    "<th scope='row'>{$row['userID']}</th>\n";
                                     echo    "<td>{$row['firstName']}</td>\n";
                                     echo    "<td>{$row['lastName']}</td>\n";
+                                    echo    "<td>{$row['userName']}</td>\n";
                                     echo    "<td>{$row['password']}</td>\n";
                                     echo    "<td>{$row['email']}</td>\n";
+                                    echo    "<td>{$row['access']}</td>\n";
                                 echo    "</tr>\n";
+                                }
                             }
                         }
                     }
