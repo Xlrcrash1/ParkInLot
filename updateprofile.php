@@ -1,22 +1,15 @@
 <!DOCTYPE = html>
 <html>
     <head>
-        
         <title>
-            
             <?php echo "{$_SESSION['firstName']}'s Profile\n";?>
         </title>
-
         <?php   include('./CSS/bootStrap.html');   ?>     
         <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
-        
     </head>
     <body>
 
-        <?php   include('nav.php'); 
-        require('SQLconnect.php');  ?>
-
-        
+        <?php   include('nav.php'); ?>
         <div class = 'profileUser'>
         <form method = 'POST' class = "viewProfile">
             <?php
@@ -54,7 +47,7 @@
             $updateYear = $_POST['updateYear'];
             $updateColor = $_POST['updateColor'];
             $updateLicensePlate = $_POST['updateLicensePlate'];
-
+            
             //echo "updateName = $updateName and updateEmail = $updateEmail and updateUserName = $updateUserName\n";
 
             if (empty($_POST['updateName']) and empty($_POST['updatelName']) and empty($_POST['updateEmail']) and empty($_POST['updateUserName'])){
@@ -284,16 +277,29 @@
         </script>
         <br><br><br>
 
+        <?php $uName = $_SESSION['userName']; ?>
+
         <div class = 'delete_account'>
-            <button class = 'delete_btn' onclick = 'deleteAccount()'>Delete Account</button>
+            <button class = 'delete_btn' onclick = "deleteAccount('<?php echo $uName;?>')">Delete Account</button>
             <p id = 'delete_check'></p>
         </div>
+        <div id="display"></div>
         <script>
-            function deleteAccount()
+            function deleteAccount(uName)
             {
                 var txt;
                 var r = confirm('Are you sure you want to delete your account?');
                 if (r == true){
+
+                    $.ajax({
+                        method: "POST",
+                        url: "deleteuser.php",
+                        data:{userName:uName},
+                        dataType: "html",
+                        success:function(data){
+                            $("#display").html(data)
+                        }
+                    });
             //$sql = "delete from Users where email = '{$_SESSION['email']}';";
             //$db->query($sql);
             //$_SESSION['active'] = false;
@@ -310,6 +316,8 @@
             }
         </script>
 
-        <?php   include('./javaScript/javaScript.html');  ?>
+     <?php 
+     include('./javaScript/javaScript.html');  
+     ?>
     </body>
 </html>
