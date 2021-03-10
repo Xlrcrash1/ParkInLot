@@ -17,8 +17,6 @@ if ($_SESSION['active'] == false){
     </head>
     
     <body>
-    
-        <div class ='appBackground'>
 
         <?php
         if ($_SESSION['active'] == true){   
@@ -44,18 +42,15 @@ if ($_SESSION['active'] == false){
                     <form action = 'databaseQueries.php' target='_blank' method='post'>
 
                         <input type='radio' id='usersTable' name='usersTable' value='select * from Users'>
-                        <label for='usersTable'>usersTable</label><br><br>
+                        <label for='usersTable'>Users Table</label><br>
+                        <input type='radio' id='spotHistory' name='spotHistory' value='select * from spotsHistory'>
+                        <label for='spotHistory'>Spot History</label><br>
                         <input type ='submit' value = 'Submit'>
                     </form>
                 </div>
-                <!--<div class = "databaseQuery">
-                
-                    <?php include('databaseQueries.php'); ?>
-                </div>-->
-                <?php    
+            <?php
             }
-        }   ?>
-        </div>
-        <?php   include('./javaScript/javaScript.html');    ?>
+        }   
+        include('./javaScript/javaScript.html')  ?>
     </body>
 </html>
