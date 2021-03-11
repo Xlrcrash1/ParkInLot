@@ -2,8 +2,7 @@
 <html>
     <head>
         
-        <title>REGISTER</title>
-
+        <title>Register</title>
         <?php   include("./CSS/bootStrap.html");    ?>
         <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
         <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -15,6 +14,9 @@
         
         require('SQLconnect.php');?>
 
+        <h1>Register for ParkInLot</h1>
+        <h4>Please complete all fields</h4>
+        <br>
         <div class = 'register_box'>
     
             <form method = 'POST'>
@@ -31,7 +33,6 @@
                 <h5>Year: <input type = 'number' placeholder = '2017' name = 'year'></h5>
                 <h5>Last 4 of LicensePlate: <input type = 'text' placeholder = 'C777' name = 'licensePlate'></h5>
                 <h5>Color: <input type = 'text' placeholder = 'Grey' name = 'color'></h5>
-                <h5>Photo: <input type = 'text' placeholder = 'asdf.jpg' name = 'photo'></h5>
                 <div class='g-recaptcha' data-sitekey='6LcdvfkZAAAAANZYnLTRvlsXFYDtim_Kz33h16m5'></div>
                 <button class = 'nav_btn' type = 'submit'>Create</button>
             </form>
@@ -113,19 +114,35 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
                 $db->query($sql);
 
                 $_SESSION['active'] = true;
-                $_SESSION['firstName'] = $row['firstName'];
-                $_SESSION['lname'] = $row['lastName'];
-                $_SESSION['access'] = $row['access'];
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['userName'] = $row['userName'];
-                $_SESSION['make'] = $row['make'];
-                $_SESSION['model'] = $row['model'];
-                $_SESSION['year'] = $row['year'];
-                $_SESSION['color'] = $row['color'];
-                $_SESSION['licensePlate'] = $row['licensePlate'];
+                // $_SESSION['firstName'] = $row['firstName'];
+                // $_SESSION['lastName'] = $row['lastName'];
+                // $_SESSION['access'] = $row['access'];
+                // $_SESSION['email'] = $row['email'];
+                // $_SESSION['userName'] = $row['userName'];
+                // $_SESSION['make'] = $row['make'];
+                // $_SESSION['model'] = $row['model'];
+                // $_SESSION['year'] = $row['year'];
+                // $_SESSION['color'] = $row['color'];
+                // $_SESSION['licensePlate'] = $row['licensePlate'];
+
+                $_SESSION['firstName'] = $name;
+                $_SESSION['lastName'] = $lname;
+                $_SESSION['access'] = "1";
+                $_SESSION['email'] = $email;
+                $_SESSION['userName'] = $userName;
+                $_SESSION['make'] = $make;
+                $_SESSION['model'] = $model;
+                $_SESSION['year'] = $year;
+                $_SESSION['color'] = $color;
+                $_SESSION['licensePlate'] = $licensePlate;
                 //$_SESSION['photo'] = $row['carPhoto'];
 
-                header('Location: login.php');
+                header('Location: carupload.php');
+                // echo "<script type='text/javascript'>\n";
+                // echo "window.location = 'carupload.php';\n";
+                // echo "</script>\n";
+
+                //include('carupload.php');
             }
         }
         //echo "passwords matched\n";
@@ -143,7 +160,7 @@ else{
 
         $error .= 'FirstNAME<br>';
     }
-    if (empty($_POST['lname'])){
+    if (empty($_POST['lastName'])){
 
         $error .= 'LastNAME<br>';
     }

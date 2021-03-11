@@ -237,10 +237,8 @@
 
         <div class = 'delete_account'>
             <button class = 'delete_btn' onclick = "deleteAccount('<?php echo $uName;?>')">Delete Account</button>
-            <p id = 'delete_check'></p>
+            <div id="delete_status"></div>
         </div>
-
-        <div id="deletestatus"></div>
 
         <script>
             function deleteAccount(uName)
@@ -255,8 +253,7 @@
                         data:{userName:uName},
                         dataType: "html",
                         success:function(data){
-                            $("#deletestatus").html(data)
-
+                            $("#delete_status").html(data)
                             setTimeout(function(){ 
                                 window.location.replace("logout.php")
                             }, 3000);  
@@ -267,8 +264,8 @@
                 }
                 else{
                     txt = 'Account deletion aborted';
+                    document.getElementById('delete_status').innerHTML = txt;
                 }
-                document.getElementById('delete_check').innerHTML = txt;
             }
         </script>
 

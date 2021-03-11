@@ -30,12 +30,13 @@ if(isset($_POST['submit'])){
    //echo "$url";
 
    $safe_url = mysqli_real_escape_string($database_connection_object, $url);
-   $sql = "UPDATE Users SET carPhoto = '$url' WHERE userName = '{$_SESSION['userName']}'";
-   $db->query($sql);
+   $stmt = "UPDATE Users SET carPhoto = '$url' WHERE userName = '{$_SESSION['userName']}'";
+   $db->query($stmt);
    //$_SESSION['photo'] = $row['carPhoto'];
 
    $_SESSION['photo'] = $url;
    $_SESSION['link'] = $url;
+   
    header("location: profile.php");
 
   }else{
