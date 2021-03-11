@@ -237,26 +237,24 @@
 
         <div class = 'delete_account'>
             <button class = 'delete_btn' onclick = "deleteAccount('<?php echo $uName;?>')">Delete Account</button>
-            <p id = 'delete_check'></p>
+            <div id="delete_status"></div>
         </div>
-
-        <div id="deletestatus"></div>
 
         <script>
             function deleteAccount(uName)
             {
-                var txt;
                 var r = confirm('Are you sure you want to delete your account?');
+                var status = document.getElementById('delete_status');
+                status.innerHTML = "";
+                
                 if (r == true){
-
                     $.ajax({
                         method: "POST",
                         url: "deleteuser.php",
                         data:{userName:uName},
                         dataType: "html",
                         success:function(data){
-                            $("#deletestatus").html(data)
-
+                            $("#delete_status").html(data)
                             setTimeout(function(){ 
                                 window.location.replace("logout.php")
                             }, 3000);  
@@ -266,9 +264,12 @@
                     setTimeout(location.reload.bind(location), 50000);
                 }
                 else{
-                    txt = 'Account deletion aborted';
+                    var abort = document.createElement('div');
+                    abort.className = 'alert alert-danger';
+                    var txt = document.createTextNode("Account deletion aborted");
+                    abort.appendChild(txt);
+                    status.appendChild(abort);
                 }
-                document.getElementById('delete_check').innerHTML = txt;
             }
         </script>
 
