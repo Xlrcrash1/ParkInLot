@@ -243,10 +243,11 @@
         <script>
             function deleteAccount(uName)
             {
-                var txt;
                 var r = confirm('Are you sure you want to delete your account?');
+                var status = document.getElementById('delete_status');
+                status.innerHTML = "";
+                
                 if (r == true){
-
                     $.ajax({
                         method: "POST",
                         url: "deleteuser.php",
@@ -263,8 +264,11 @@
                     setTimeout(location.reload.bind(location), 50000);
                 }
                 else{
-                    txt = 'Account deletion aborted';
-                    document.getElementById('delete_status').innerHTML = txt;
+                    var abort = document.createElement('div');
+                    abort.className = 'alert alert-danger';
+                    var txt = document.createTextNode("Account deletion aborted");
+                    abort.appendChild(txt);
+                    status.appendChild(abort);
                 }
             }
         </script>
