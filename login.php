@@ -35,12 +35,12 @@ if ($_SESSION['active']){
         <form method = "POST" class = "loginForm">
             <div class="form-group">
                 <!--<label for="exampleInputEmail1">UserName/Email</label>-->
-                <input type="Uname" class="form-control" id="Uname" aria-describedby="emailHelp" placeholder="Enter UserName or Email" name = "Uname">
-                <small id="emailHelp" class="form-text text-muted"><a href="#">Forgot your username?</a></small>
+                <input type="Uname" class="form-control loginFormInput" id="Uname" aria-describedby="emailHelp" placeholder="Enter UserName or Email" name = "Uname">
+                <small id="emailHelp" class="form-text text-muted"><a href="forgotUsername.php">Forgot your username?</a></small>
             </div>
             <div class="form-group">
                 <!--<label for="exampleInputPassword1">Password</label>-->
-                <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Password" name = "password">
+                <input type="password" class="form-control loginFormInput" id="password" aria-describedby="passwordHelp" placeholder="Password" name = "password">
                 <small id="passwordHelp" class="form-text text-muted"><a href="#">Forgot your password?</a></small>
             </div>
             <div class="form-check">
