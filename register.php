@@ -72,7 +72,6 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
     $year = htmlspecialchars(trim($_POST['year']));/////////////////ADD SANATIZATION
     $licensePlate = htmlspecialchars(trim($_POST['licensePlate']));
     $color = htmlspecialchars(trim($_POST['color']));
-    //$photo = htmlspecialchars(trim($_POST['photo']));
     //$name = $_POST['name'];
     //$lname = $_POST['lname'];
     //$userName = $_POST['userName'];
@@ -114,17 +113,6 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
                 $db->query($sql);
 
                 $_SESSION['active'] = true;
-                // $_SESSION['firstName'] = $row['firstName'];
-                // $_SESSION['lastName'] = $row['lastName'];
-                // $_SESSION['access'] = $row['access'];
-                // $_SESSION['email'] = $row['email'];
-                // $_SESSION['userName'] = $row['userName'];
-                // $_SESSION['make'] = $row['make'];
-                // $_SESSION['model'] = $row['model'];
-                // $_SESSION['year'] = $row['year'];
-                // $_SESSION['color'] = $row['color'];
-                // $_SESSION['licensePlate'] = $row['licensePlate'];
-
                 $_SESSION['firstName'] = $name;
                 $_SESSION['lastName'] = $lname;
                 $_SESSION['access'] = "1";
@@ -135,14 +123,9 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
                 $_SESSION['year'] = $year;
                 $_SESSION['color'] = $color;
                 $_SESSION['licensePlate'] = $licensePlate;
-                //$_SESSION['photo'] = $row['carPhoto'];
 
                 header('Location: carupload.php');
-                // echo "<script type='text/javascript'>\n";
-                // echo "window.location = 'carupload.php';\n";
-                // echo "</script>\n";
 
-                //include('carupload.php');
             }
         }
         //echo "passwords matched\n";
@@ -160,7 +143,7 @@ else{
 
         $error .= 'FirstNAME<br>';
     }
-    if (empty($_POST['lastName'])){
+    if (empty($_POST['lname'])){
 
         $error .= 'LastNAME<br>';
     }
@@ -200,8 +183,7 @@ else{
 
         $error .= 'LicensePlate<br>';
     }
-
-
+    
     //echo "TEST that is nothing is posted\n";
     echo "$error\n";
 }
