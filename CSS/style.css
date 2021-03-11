@@ -40,9 +40,8 @@
 
   width: 500px;
 }
+.loginFormInput{
 
-.form-control{
-  
   border: 0;
   outline: 0;
   background: transparent;
@@ -114,4 +113,11 @@
 
     width: 100%;
   }
+}
+
+
+/*          EMAIL TEMPLATE      */
+.emailLogo{
+
+  width: 100%;
 }
