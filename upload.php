@@ -32,8 +32,11 @@ if(isset($_POST['submit'])) {
             //echo "$url";
 
             $safe_url = mysqli_real_escape_string($database_connection_object, $url);
-            $stmt = "UPDATE Users SET carPhoto = '$url' WHERE userName = '{$_SESSION['userName']}'";
-            $db->query($stmt);
+            // $stmt = "UPDATE Users SET carPhoto = '$url' WHERE userName = '{$_SESSION['userName']}'";
+            // $db->query($stmt);
+            $sql = $db->prepare("UPDATE Users SET carPhoto = ? WHERE userName = ?");
+            $sql->bind_param('ss', $url, $_SESSION['userName']);
+            $sql->execute();
 
             $_SESSION['photo'] = $url;
             $_SESSION['link'] = $url;
@@ -41,9 +44,9 @@ if(isset($_POST['submit'])) {
             if ($_SESSION['active'] == true){   
                 header("location: profile.php");    // After updating profile
             }
-            else{
+            else{   // After registration
                 echo "<script> 
-                
+
                 alert('Account Registration is complete');
                 window.location = 'login.php';
             
