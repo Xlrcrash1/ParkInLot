@@ -112,7 +112,7 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
                 $sql = "insert into Users (firstName, lastName, userName, password, email, make, model, year, color, licensePlate) values('$name','$lname','$userName','$hashedPassword','$email', '$make', '$model', '$year', '$color', '$licensePlate');";
                 $db->query($sql);
 
-                $_SESSION['active'] = true;
+                $_SESSION['active'] = false;
                 $_SESSION['firstName'] = $name;
                 $_SESSION['lastName'] = $lname;
                 $_SESSION['access'] = "1";
@@ -183,7 +183,7 @@ else{
 
         $error .= 'LicensePlate<br>';
     }
-    
+
     //echo "TEST that is nothing is posted\n";
     echo "$error\n";
 }
