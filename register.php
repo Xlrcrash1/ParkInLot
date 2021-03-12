@@ -115,8 +115,8 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['firstName']) && !em
                 // $db->query($sql);
 
                 $_SESSION['active'] = false;
-                $_SESSION['firstName'] = $name;
-                $_SESSION['lastName'] = $lname;
+                $_SESSION['firstName'] = $firstName;
+                $_SESSION['lastName'] = $lastName;
                 $_SESSION['access'] = "1";
                 $_SESSION['email'] = $email;
                 $_SESSION['userName'] = $userName;
