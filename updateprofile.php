@@ -107,6 +107,7 @@
                 $sql = "update Users set userName = '{$_POST['updateUserName']}' where userName = '{$_SESSION['userName']}'";
                 //echo "sql statement: $sql\n";
                 $db->query($sql);
+                
                 //echo "Username has been updated to {$_POST['updateUserName']}\n<br><br>";
                 //header('Location: profile.php');
                 $_SESSION['userName'] = $_POST['updateUserName'];
@@ -246,7 +247,7 @@
                 var r = confirm('Are you sure you want to delete your account?');
                 var status = document.getElementById('delete_status');
                 status.innerHTML = "";
-                
+
                 if (r == true){
                     $.ajax({
                         method: "POST",

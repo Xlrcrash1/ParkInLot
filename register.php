@@ -21,8 +21,8 @@
     
             <form method = 'POST'>
         
-                <h5>First Name: <input type = 'text' placeholder = 'Tony' name = 'name'></h5>
-                <h5>Last Name: <input type = 'text' placeholder = 'Cervantes' name = 'lname'></h5>
+                <h5>First Name: <input type = 'text' placeholder = 'Tony' name = 'firstName'></h5>
+                <h5>Last Name: <input type = 'text' placeholder = 'Cervantes' name = 'lastName'></h5>
                 <h5>UserName: <input type = 'text' placeholder = 'XLR8' name = 'userName'></h5>
                 <h5>Email: <input type = 'email' placeholder = 'email@email.com' name = 'email'></h5>
                 <h5>Password: <input type = 'password' placeholder = '*****' name = 'password'></h5>
@@ -57,11 +57,11 @@
 </script>-->
 
 <?php
-if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($_POST['lname']) && !empty($_POST['userName']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])){
+if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['userName']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])){
 
     //this converts the post parameters from HTML into PHP parameters as well as we sanatize it to avoid sql queries being interjected
-    $name = htmlspecialchars(trim($_POST['name']));/////////////////ADD SANATIZATION
-    $lname = htmlspecialchars(trim($_POST['lname']));
+    $firstName = htmlspecialchars(trim($_POST['firstName']));/////////////////ADD SANATIZATION
+    $lastName = htmlspecialchars(trim($_POST['lastName']));
     $userName = htmlspecialchars(trim($_POST['userName']));/////////////////ADD SANATIZATION
     $email = htmlspecialchars(trim($_POST['email']));
     $password = htmlspecialchars(trim($_POST['password']));/////////////////ADD SANATIZATION
@@ -72,19 +72,17 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
     $year = htmlspecialchars(trim($_POST['year']));/////////////////ADD SANATIZATION
     $licensePlate = htmlspecialchars(trim($_POST['licensePlate']));
     $color = htmlspecialchars(trim($_POST['color']));
-    //$name = $_POST['name'];
-    //$lname = $_POST['lname'];
-    //$userName = $_POST['userName'];
-    //$email = $_POST['email'];
-    //$password = $_POST['password'];
-    //$confirm_password = $_POST['confirm_password'];
+
 
     //echo "name: $name , lastname: $lname, userName: $userName , email: $email , password: $password , confirm: $confirm_password, Make: $make, Model = $model, Year: $year, licenseplate: $licensePlate";
     
     if ($password == $confirm_password){
 
-        $sql = "select * from Users where userName = '$userName' or email = '$email' or licensePlate = '$licensePlate'";
-        if ($res = $db->query($sql)){
+        $sql = $db->prepare("SELECT * FROM Users WHERE userName = ? OR email = ? OR licensePlate = ?");
+        $sql->bind_param('sss', $userName, $email, $licensePlate);
+        $sql->execute();
+        //"select * from Users where userName = '$userName' or email = '$email' or licensePlate = '$licensePlate'";
+        if ($res = $sql->get_result()){
 
             $row = $res->FETCH_ASSOC();
             
@@ -109,8 +107,12 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
             else{
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 //echo "email or userName is not taken<br>\n";
-                $sql = "insert into Users (firstName, lastName, userName, password, email, make, model, year, color, licensePlate) values('$name','$lname','$userName','$hashedPassword','$email', '$make', '$model', '$year', '$color', '$licensePlate');";
-                $db->query($sql);
+                $sql = $db->prepare("INSERT INTO Users (firstName, lastName, userName, password, email, make, model, year, color, licensePlate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $sql->bind_param('ssssssssss', $firstName, $lastName, $userName, $hashedPassword, $email, $make, $model, $year, $color, $licensePlate);
+                $sql->execute();
+                $sql->close();
+                // $sql = "insert into Users (firstName, lastName, userName, password, email, make, model, year, color, licensePlate) values('$name','$lname','$userName','$hashedPassword','$email', '$make', '$model', '$year', '$color', '$licensePlate');";
+                // $db->query($sql);
 
                 $_SESSION['active'] = false;
                 $_SESSION['firstName'] = $name;
@@ -123,7 +125,6 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
                 $_SESSION['year'] = $year;
                 $_SESSION['color'] = $color;
                 $_SESSION['licensePlate'] = $licensePlate;
-
                 header('Location: carupload.php');
 
             }
@@ -139,11 +140,11 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
 else{
 
     $error = 'You forgot to enter the following:<br><br>';
-    if (empty($_POST['name'])){
+    if (empty($_POST['firstName'])){
 
         $error .= 'FirstNAME<br>';
     }
-    if (empty($_POST['lname'])){
+    if (empty($_POST['lastName'])){
 
         $error .= 'LastNAME<br>';
     }
