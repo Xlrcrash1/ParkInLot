@@ -15,18 +15,18 @@ if ($_SESSION['active'] == false){
         <?php   include('./CSS/bootStrap.html');    ?>
         <link rel = 'stylesheet' type='text/css' href = './CSS/style.css'>
     </head>
-    
+
     <body>
 
         <?php
         if ($_SESSION['active'] == true){   
-            
-            
+
+
             include('nav.php'); ?>
 
-            
+
             <p>You are signed in! Cool!</p>
-            <p>You currently have <?php {$_SESSION['tokens']} ?> tokens!</p>
+            <?php echo"You currently have {$_SESSION['tokens']} tokens!\n";?>
             <br>
 
             <?php   
@@ -35,7 +35,7 @@ if ($_SESSION['active'] == false){
 
                 <br><br>
 
-            
+
 
                 <div id = 'Database_Query_Options'>
 
@@ -51,7 +51,7 @@ if ($_SESSION['active'] == false){
                 </div>
             <?php
             }
-        }   
+        }          
         include('./javaScript/javaScript.html')  ?>
     </body>
 </html>
