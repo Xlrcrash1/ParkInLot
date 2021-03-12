@@ -3,7 +3,6 @@
 <head>
     <title>Register</title>
     <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     <?php
         include('nav.php');
         // require('SQLconnect.php');
