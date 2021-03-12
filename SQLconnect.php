@@ -18,9 +18,9 @@
     }
     else{
  
-     echo "We are connected<br>";
+     //echo "We are connected<br>";
     }
- 
+    
     //GLOBAL_VAR $db////////////////////
 
 ?>

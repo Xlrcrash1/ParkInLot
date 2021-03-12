@@ -1,51 +1,62 @@
+<!DOCTYPE = HTML>
+<html>
+    <head>
+        
+        <title>Register</title>
+        <?php   include("./CSS/bootStrap.html");    ?>
+        <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+    </head>
+    
+    <body>
+
+        <?php   include('nav.php');   
+        
+        require('SQLconnect.php');?>
+
+        <h1>Register for ParkInLot</h1>
+        <h4>Please complete all fields</h4>
+        <br>
+        <div class = 'register_box'>
+    
+            <form method = 'POST'>
+        
+                <h5>First Name: <input type = 'text' placeholder = 'Tony' name = 'name'></h5>
+                <h5>Last Name: <input type = 'text' placeholder = 'Cervantes' name = 'lname'></h5>
+                <h5>UserName: <input type = 'text' placeholder = 'XLR8' name = 'userName'></h5>
+                <h5>Email: <input type = 'email' placeholder = 'email@email.com' name = 'email'></h5>
+                <h5>Password: <input type = 'password' placeholder = '*****' name = 'password'></h5>
+                <h5>Confirm Password: <input type = 'password' placeholder = '*****' name = 'confirm_password'></h5>
+
+                <h5>Make: <input type = 'text' placeholder = 'Toyota' name = 'make'></h5>
+                <h5>Model: <input type = 'text' placeholder = 'GT86' name = 'model'></h5>
+                <h5>Year: <input type = 'number' placeholder = '2017' name = 'year'></h5>
+                <h5>Last 4 of LicensePlate: <input type = 'text' placeholder = 'C777' name = 'licensePlate'></h5>
+                <h5>Color: <input type = 'text' placeholder = 'Grey' name = 'color'></h5>
+                <div class='g-recaptcha' data-sitekey='6LcdvfkZAAAAANZYnLTRvlsXFYDtim_Kz33h16m5'></div>
+                <button class = 'nav_btn' type = 'submit'>Create</button>
+            </form>
+        </div>
+        <?php   include("./javaScript/javaScript.html"); ?>
+    </body>
+</html>
+
+<!--<script>
+    function checkCaptcha(){
+
+        var response = grecaptcha.getResponse();
+        if (response.length == 0){
+        
+            alert('Please verify you are human!')
+            return false;\n}
+        else{
+            
+            return true;
+        }
+    }
+</script>-->
+
 <?php
-
-require('SQLconnect.php');
-
-echo "<!DOCTYPE = HTML>\n";
-echo "<html>\n";
-echo "  <head>\n";
-echo "      <title>REGISTER</title>\n";
-echo "      <link rel = 'stylesheet' type = 'text/css' href = 'style.css'>\n";
-echo "      <script src='https://www.google.com/recaptcha/api.js'></script>\n";
-echo "  </head>\n";
-echo "  <body>\n";
-
-include('nav.php');
-
-echo "      <div class = 'register_box'>\n";
-echo "          <form method = 'POST'>\n";
-echo "              <h5>First Name: <input type = 'text' placeholder = 'Tony' name = 'name'></h5>\n";
-echo "              <h5>Last Name: <input type = 'text' placeholder = 'Cervantes' name = 'lname'></h5>\n";
-echo "              <h5>UserName: <input type = 'text' placeholder = 'XLR8' name = 'userName'></h5>\n";
-echo "              <h5>Email: <input type = 'email' placeholder = 'email@email.com' name = 'email'></h5>\n";
-echo "              <h5>Password: <input type = 'password' placeholder = '*****' name = 'password'></h5>\n";
-echo "              <h5>Confirm Password: <input type = 'password' placeholder = '*****' name = 'confirm_password'></h5>\n";
-
-echo "              <h5>Make: <input type = 'text' placeholder = 'Toyota' name = 'make'></h5>\n";
-echo "              <h5>Model: <input type = 'text' placeholder = 'GT86' name = 'model'></h5>\n";
-echo "              <h5>Year: <input type = 'number' placeholder = '2017' name = 'year'></h5>\n";
-echo "              <h5>Last 4 of LicensePlate: <input type = 'text' placeholder = 'C777' name = 'licensePlate'></h5>\n";
-echo "              <h5>Color: <input type = 'text' placeholder = 'Grey' name = 'color'></h5>\n";
-//echo "              <h5>Photo: <input type = 'text' placeholder = 'asdf.jpg' name = 'photo'></h5>\n";
-echo "              <div class='g-recaptcha' data-sitekey='6LcdvfkZAAAAANZYnLTRvlsXFYDtim_Kz33h16m5'></div>";
-echo "              <button class = 'nav_btn' type = 'submit'>Create</button>\n";
-echo "          </form>\n";
-echo "      </div>\n";
-
-echo "  </body>\n";
-echo "</html>\n";
-
-//echo "<script>\n";
-//echo "function checkCaptcha(){\n";
-//echo "var response = grecaptcha.getResponse();\n";
-//echo "if (response.length == 0)\n";
-//echo "{ alert('Please verify you are human!')\n";
-//echo "return false;\n}\n";
-//echo "else{return true;}\n}\n";
-//echo "</script>\n";
-
-
 if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($_POST['lname']) && !empty($_POST['userName']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])){
 
     //this converts the post parameters from HTML into PHP parameters as well as we sanatize it to avoid sql queries being interjected
@@ -61,7 +72,6 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
     $year = htmlspecialchars(trim($_POST['year']));/////////////////ADD SANATIZATION
     $licensePlate = htmlspecialchars(trim($_POST['licensePlate']));
     $color = htmlspecialchars(trim($_POST['color']));
-    //$photo = htmlspecialchars(trim($_POST['photo']));
     //$name = $_POST['name'];
     //$lname = $_POST['lname'];
     //$userName = $_POST['userName'];
@@ -102,20 +112,20 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['name']) && !empty($
                 $sql = "insert into Users (firstName, lastName, userName, password, email, make, model, year, color, licensePlate) values('$name','$lname','$userName','$hashedPassword','$email', '$make', '$model', '$year', '$color', '$licensePlate');";
                 $db->query($sql);
 
-                $_SESSION['active'] = true;
-                $_SESSION['firstName'] = $row['firstName'];
-                $_SESSION['lname'] = $row['lastName'];
-                $_SESSION['access'] = $row['access'];
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['userName'] = $row['userName'];
-                $_SESSION['make'] = $row['make'];
-                $_SESSION['model'] = $row['model'];
-                $_SESSION['year'] = $row['year'];
-                $_SESSION['color'] = $row['color'];
-                $_SESSION['licensePlate'] = $row['licensePlate'];
-                //$_SESSION['photo'] = $row['carPhoto'];
+                $_SESSION['active'] = false;
+                $_SESSION['firstName'] = $name;
+                $_SESSION['lastName'] = $lname;
+                $_SESSION['access'] = "1";
+                $_SESSION['email'] = $email;
+                $_SESSION['userName'] = $userName;
+                $_SESSION['make'] = $make;
+                $_SESSION['model'] = $model;
+                $_SESSION['year'] = $year;
+                $_SESSION['color'] = $color;
+                $_SESSION['licensePlate'] = $licensePlate;
 
-                header('Location: login.php');
+                header('Location: carupload.php');
+
             }
         }
         //echo "passwords matched\n";
@@ -173,7 +183,6 @@ else{
 
         $error .= 'LicensePlate<br>';
     }
-
 
     //echo "TEST that is nothing is posted\n";
     echo "$error\n";

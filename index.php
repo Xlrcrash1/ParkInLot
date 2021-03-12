@@ -6,50 +6,52 @@ if ($_SESSION['active'] == false){
     header('location: login.php'); exit();
 }
 
-echo "<!DOCTYPE HTML>\n";
-echo "<html>\n";
-echo "  <head>\n";
-echo "      <title>ParkInLot</title>\n";
-echo "      <link rel = 'stylesheet' type='text/css' href = 'style.css'>\n";
-echo "  </head>\n";
-echo "  <body>\n";
-include('nav.php');
-
-
-if ($_SESSION['active'] == true){
-
-
-    echo "      <div class = 'dropdown'>\n";
-
-    echo "          <button class = 'dropbtn'>HI {$_SESSION['firstName']} ^</button>\n";
-    echo "          <div class = 'dropdown-content'>\n";
-    echo "              <a href = 'profile.php'>View Profile</a>\n";
-    echo "              <a href = 'logout.php'>Log Out</a>\n";
-    echo "          </div>\n";
-    echo "      </div>\n";
-    
-    echo "You are signed in! Cool!\n";
-    echo "You currently have {$_SESSION['tokens']} tokens!\n";
-    if ($_SESSION['access'] == 10){
-
-        //This is where I will add an option to view our Database and be able to send queries and all that 
-
-        echo "<br><br>\n";
-        echo "              <div id = 'Database_Query_Options'>\n";
-        echo "              Which table would you like to look at?<br> \n";
-        
-        echo "                  <form action = 'database.php' target='_blank' method='post'>\n";
-        echo "                       <input type='radio' id='UsersTable' name='UsersTable' value='select * from Users;'>\n";
-        echo "                      <label for='UsersTable'>UsersTable</label><br><br>\n";
-        echo "                      <input type ='submit' value = 'Submit'>\n";
-        echo "                  </form\n";
-        echo "              </div>\n";
-    }
-    
-
-}
-
-echo "  </body>\n";
-echo "</html>\n";
-
 ?>
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>ParkInLot</title>
+        <?php   include('./CSS/bootStrap.html');    ?>
+        <link rel = 'stylesheet' type='text/css' href = './CSS/style.css'>
+    </head>
+    
+    <body>
+
+        <?php
+        if ($_SESSION['active'] == true){   
+            
+            
+            include('nav.php'); ?>
+
+            
+            <p>You are signed in! Cool!</p>
+            <p>You currently have <?php {$_SESSION['tokens']} ?> tokens!</p>
+            <br>
+
+            <?php   
+            if ($_SESSION['access'] == 10){
+                //This is where I will add an option to view our Database and be able to send queries and all that ?>
+
+                <br><br>
+
+            
+
+                <div id = 'Database_Query_Options'>
+
+                    <p>Which table would you like to look at?</p><br>
+                    <form action = 'databaseQueries.php' target='_blank' method='post'>
+
+                        <input type='radio' id='usersTable' name='usersTable' value='select * from Users'>
+                        <label for='usersTable'>Users Table</label><br>
+                        <input type='radio' id='spotHistory' name='spotHistory' value='select * from spotsHistory'>
+                        <label for='spotHistory'>Spot History</label><br>
+                        <input type ='submit' value = 'Submit'>
+                    </form>
+                </div>
+            <?php
+            }
+        }   
+        include('./javaScript/javaScript.html')  ?>
+    </body>
+</html>
