@@ -59,9 +59,14 @@ if ($_SESSION['active']){
                 $userName = htmlspecialchars(trim($_POST['Uname']));/////////////////ADD SANATIZATION
                 $password = htmlspecialchars(trim($_POST['password']));
                 echo "info: $userName and $password";
-                $sql = "select * from Users where userName = '$userName' or email = '$userName'";
-                if ($res = $db->query($sql)){
-
+                //$sql = "select * from Users where userName = '$userName' or email = '$userName'";
+                $sql = $db->prepare("SELECT * FROM Users WHERE userName = ? OR email = ?");
+                $sql->bind_param('ss', $userName, $userName);
+                $sql->execute();
+                
+                // if ($res = $db->query($sql)){
+                if ($res = $sql->get_result()){
+                    
                     $row = $res->FETCH_ASSOC();
                     if(password_verify($password, $row['password']) OR $row['password'] == $password) {
 
