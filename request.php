@@ -15,7 +15,7 @@ if ($_SESSION['active'] == false){
     <?php 
         require('SQLconnect.php');
         include('./CSS/bootStrap.html');
-        $_SESSION['statusCode'] = 1;
+        $_SESSION['statusCode'] = 1;    // Requesting parking spot & offerer not found yet
     ?>
     <script src="./javaScript/checkSpots.js"></script>
     <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
