@@ -84,7 +84,7 @@ if ($_SESSION['active']){
                         $_SESSION['licensePlate'] = $row['licensePlate'];
                         $_SESSION['photo'] = $row['carPhoto'];
                         $_SESSION['tokens'] = $row['tokens'];
-
+                        $_SESSION['userID'] = $row['userID'];
 
                         // Status Codes
                         // 0 - Not requesting, not offering
