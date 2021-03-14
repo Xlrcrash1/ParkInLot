@@ -83,6 +83,17 @@ if ($_SESSION['active']){
                         $_SESSION['color'] = $row['color'];
                         $_SESSION['licensePlate'] = $row['licensePlate'];
                         $_SESSION['photo'] = $row['carPhoto'];
+                        $_SESSION['tokens'] = $row['tokens'];
+
+
+                        // Status Codes
+                        // 0 - Not requesting, not offering
+                        // 1 - Requesting a parking spot
+                        // 10 - Requesting and found a parking spot
+                        // 2 - Offering a parking spot
+                        // 20 - Offering and found a requester
+                        $_SESSION['statusCode'] = 0;
+                    
                         //echo "email: {$_SESSION['email']}\n";
                         //echo "<br>Session active = {$_SESSION['active']}";
                         //echo "<br>Session name = {$_SESSION['name']}<br>";
