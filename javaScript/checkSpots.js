@@ -9,7 +9,7 @@ var spotCheck = setInterval(function()
             $("#request_status").html(data)
 
             $.ajax({
-                method: "POST",
+                method:"POST",
                 url:"checkstatus.php",
                 datatype:"json",
                 success:function(statusCode){
