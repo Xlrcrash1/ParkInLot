@@ -15,7 +15,7 @@ if ($_SESSION['active'] == false){
     <?php 
         require('SQLconnect.php');
         include('./CSS/bootStrap.html');
-        $_SESSION['statusCode'] = 1;
+        $_SESSION['statusCode'] = 1;    // Requesting parking spot & offerer not found yet
     ?>
     <script src="./javaScript/checkSpots.js"></script>
     <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
@@ -55,18 +55,7 @@ if ($_SESSION['active'] == false){
                     clearInterval(spotCheck);
                 }
             </script> -->
-
-            
-        <?php
-            if ($_SESSION['statusCode'] == 10){
-                
-                echo "HERE";?>
-                <script>
-                    stopCheck();
-                    clearInterval(spotCheck);
-                </script>
         <?php       
-            }
             // Check for available spot 
             $sql = "SELECT userID, userName, parkingLot, Spots.time 
                     FROM SpotsDetails 
