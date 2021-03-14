@@ -15,7 +15,9 @@ if ($_SESSION['active'] == false){
     <?php 
         require('SQLconnect.php');
         include('./CSS/bootStrap.html');
+        $_SESSION['statusCode'] = 1;
     ?>
+    <script src="./javaScript/checkSpots.js"></script>
     <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
 
     </head>
@@ -33,9 +35,39 @@ if ($_SESSION['active'] == false){
                     <?php echo $_SESSION['tokens']; ?> token(s)</strong> in your account.
                 <br>Please click <strong>Cancel</strong> if you would like to cancel your request
             </div>
+
+            <!-- <script>
+                var spotCheck = setInterval(function()
+                { 
+                    $.ajax({
+                        method:"POST",
+                        url:"checkspots.php",
+                        data:{userName: "test"},
+                        datatype:"html",
+                        success:function(data){
+                            //do something with response data
+                            $("#request_status").html(data)
+                        }
+                    });
+                }, 5000);//time in milliseconds 
+
+                function stopCheck(){
+                    clearInterval(spotCheck);
+                }
+            </script> -->
+
             
         <?php
-            // Check for available spot
+            if ($_SESSION['statusCode'] == 10){
+                
+                echo "HERE";?>
+                <script>
+                    stopCheck();
+                    clearInterval(spotCheck);
+                </script>
+        <?php       
+            }
+            // Check for available spot 
             $sql = "SELECT userID, userName, parkingLot, Spots.time 
                     FROM SpotsDetails 
                     INNER JOIN Spots ON userID = pUserID 
@@ -47,8 +79,8 @@ if ($_SESSION['active'] == false){
 
             while($row = $res->FETCH_ASSOC())
             {
-               echo "User Name: {$row['userName']} ---------- Parking Lot: {$row['parkingLot']}";
-               echo "<br>";
+                echo "User Name: {$row['userName']} ---------- Parking Lot: {$row['parkingLot']}";
+                echo "<br>";
             }
 
 
