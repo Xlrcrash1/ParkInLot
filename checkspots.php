@@ -21,6 +21,12 @@
                     style='max-width: 50%;'><br>";
             
             $_SESSION['statusCode'] = 10;
+
+            $stmt = $db->prepare("UPDATE Spots SET rUserID = ? WHERE pUserID = ?");
+            $stmt->bind_param('ss', $_SESSION['userID'], $row['userID']);
+            if($stmt->execute()){
+                echo "<p>You're now paired with user: {$row['userName']}</p>";
+            }
         }
         else{
             echo "<p><strong>We're looking for a spot! </strong>You have <strong>
