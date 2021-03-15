@@ -49,7 +49,7 @@ else{
                 }
                 else{
 
-                    //echo "Youre link is still active<br>\n";
+                    echo "Your link is still active<br>\n";
 
                     $email = $row['email'];
                     //echo "email: $email<br>\n";
@@ -59,12 +59,44 @@ else{
 
                     $timeExpires = $row['timeExpires'];
                     //echo "Time Expires: $timeExpires<br>\n";
+
+                    $getTimestamp = "select current_timestamp";
+
+                    if ($res = $db->query($getTimestamp)){
+
+                        echo "queried database for time<br>\n";
+                        $row = $res->FETCH_ASSOC();
+                        $currentTimestamp = $row['current_timestamp'];
+                        echo "Current TimeStamp: $currentTimestamp<br>\n";
+                    }
+                    else{
+
+                        echo "Getting current time failed, notify an Administrator. Error code 65 on passwordReset.<br>\n";
+                    }
+                    if ($currentTimestamp >= $timeExpires){
+
+                        $zero = 0;
+                        $deactivate = "update passwordReset set active = '$zero' where token = '$token'";
+                        //echo "deactivate: $deactivate<br>\n";
+
+                        $res = $db->query($deactivate);
+                        
+                        //echo "Sorry, token expired<br>\n";/*
+                        echo "<script> 
+                                    
+                            alert('Sorry :/  This token is no longer active,  please request a new one.');
+                            window.location = 'emailPasswordReset.php';
+                                    
+                        </script><br>\n";
+                        exit();
+
+                    }
                 }
             }
         }
         else{
 
-            echo "Querying the database failed, Alert an Administrator. Error 67 on passwordReset!<br>\n";
+            echo "Querying the database failed, Alert an Administrator. Error 81 on passwordReset!<br>\n";
         }
     }
     ?>
@@ -128,7 +160,7 @@ else{
                         }
                         else{
 
-                            echo "Getting current time failed, notify an Administrator. Error code 131 on passwordReset.<br>\n";
+                            echo "Getting current time failed, notify an Administrator. Error code 146 on passwordReset.<br>\n";
                         }
 
                         //checking if current time is between requested and expired
