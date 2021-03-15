@@ -156,6 +156,7 @@ else{
                         }
                         elseif($currentTimestamp >= $timeExpires){
 
+                            $zero = 0;
                             $deactivate = "update passwordReset set active = '$zero' where token = '$token'";
                             //echo "deactivate: $deactivate<br>\n";
 
