@@ -41,7 +41,7 @@ if ($_SESSION['active']){
             <div class="form-group">
                 <!--<label for="exampleInputPassword1">Password</label>-->
                 <input type="password" class="form-control loginFormInput" id="password" aria-describedby="passwordHelp" placeholder="Password" name = "password">
-                <small id="passwordHelp" class="form-text text-muted"><a href="#">Forgot your password?</a></small>
+                <small id="passwordHelp" class="form-text text-muted"><a href="emailPasswordReset.php">Forgot your password?</a></small>
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="rememberMe">

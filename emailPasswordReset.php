@@ -1,28 +1,26 @@
-<?php   require('SQLconnect.php');  
+<?php   require('SQLconnect.php');
 
 if ($_SESSION['active']){
 
-    header('location: index.php'); exit();
+header('location: index.php'); exit();
 }   ?>
 
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Find UserName</title>
+        <title>Email Password Reset</title>
         <?php   include('./CSS/bootStrap.html');    ?>
         <link rel = 'stylesheet' type='text/css' href = './CSS/style.css'>
     </head>
     
     <body>
-        <div class = "findUserName">
+        <div class = "findPassword">
 
-            <h2>Forgot Your UserName?</h2>
-            <p>Did you forget your UserName? Enter the email associated with your account below and if it matches what is on file,
-                an email with the UserName will be sent.
-            </p>
-            <p>Did you know you can just sign in with your email address as well? - <a href='login.php'>Give it a try</a></p>
+            <h2>Don't remember your password?</h2>
+            <p>If you forgot your password, enter your email and a PasswordReset Link will be sent to you.</p>
+            <p>Happen to remember that password? <a href='login.php'>Give it a try</a></p>
             
-            <form method = "POST" action = "forgotUsername.php" class = "findUserNameForm">
+            <form method = "POST" action = "emailPasswordReset.php" class = "findUserNameForm">
                 
                 <div class="form-group">
                     
@@ -79,6 +77,15 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
 
             $userName = $row['userName'];
             //echo "User's userName: $userName<br>\n";
+            
+            $token = bin2hex(random_bytes(50));
+            
+            $assignToken = "insert into passwordReset (email, token) values('$checkEmail','$token');";
+            //assign token to user's email in passwordReset table
+
+            $db->query($assignToken);
+            //Save in Database
+            
 
             $emailTxt = "
 
@@ -86,12 +93,21 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
                     
                     <head>
 
-                        <title> ParkInLot - Forgot UserName </title>
+                        <title> ParkInLot - Password Reset </title>
                     </head>
 
                     <body>
-                        Hi $user, Did you forget your UserName? It's $userName<br><br>
-                        Now that you have your UserName, <a href = 'https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/login.php'>Log In</a>\n
+                        Hi $user, It seeems that you forgot your password.<br><br>
+                        To reset it, please click the following link to <a href = 'https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/passwordReset.php?Token=$token'>Reset It</a><br><br>
+                        If you did not request the Password Reset, please <a href = 'https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/login.php'>Log In</a> to change<br>
+                        your password on your User Profile<br>
+                        
+
+                        <img src='https://m.promofeatures.com/iwq?start_date=timed-m-yTh:m:sZ+h:m' border='0' alt='https://promofeatures.com'/>
+
+                        \n
+
+                        
                     </body>
                 </html>
             ";
@@ -117,7 +133,8 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
                     <body>
                     
                         Hi $user, It doesn't seem like you have an account, would you like to 
-                        <a href='https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/register.php'>Sign Up</a><br>\n
+                        <a href='https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/register.php'>Sign Up</a><br>
+                        Our application allows you to find Parking very easily and quickly*\n
                     </body>    
                 </html>
             ";
@@ -127,7 +144,7 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
         }
         echo "<script> 
             
-            alert('Memory is Tricky, Huh? An email has been sent to $checkEmail!');
+            alert('Memory is Tricky, Huh? Maybe you saved the password somewhere? Regardless, an email has been sent to $checkEmail!');
             window.location = 'login.php';
         
         </script><br>\n";
@@ -144,7 +161,7 @@ function email($to, $txt){
 
     //echo "<br><br><br>\n";
     //echo "TO: $to<br>\n";
-    $subject = "ParkInLot - Forgot UserName";
+    $subject = "ParkInLot - Password Reset";
     //echo "TEXT: $txt<br>\n";
    
 
