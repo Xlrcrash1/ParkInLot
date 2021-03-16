@@ -22,6 +22,8 @@
 
             if ($sql2->execute()){
                 echo "<div class='alert alert-success'>Your parking spot has been posted.</div>";
+            } else{
+                echo "<div class='alert alert-danger'>You've already submitted a spot</div>";
             }
         }
     }
