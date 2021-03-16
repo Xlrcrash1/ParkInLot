@@ -17,7 +17,7 @@ if ($_SESSION['active'] == false){
         include('./CSS/bootStrap.html');
         $_SESSION['statusCode'] = 0;    // Offering parking spot & requester not found yet
     ?>
-    <!-- <script src="./javaScript/offerSpots.js"></script> -->
+    <script src="./javaScript/offerSpots.js"></script>
     <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
 
     </head>
@@ -53,38 +53,17 @@ if ($_SESSION['active'] == false){
                     <option value="M">M</option>
                 </select>
             </div>
-            <div class="alert alert-info" id="offer_status">
+            <div id="offer_status">
+            <div class = "alert alert-info">
                 <strong>You are not yet offering your parking spot. </strong>
                 <br>Please enter your parking lot to continue or you can click <strong>Cancel</strong> if you would like to cancel your offer.
             </div>
+            </div>
 
-            <button type="button" class="btn btn-success" id="btnOffer" onclick="getParkingLot()">Offer my Spot</button>
-            <button type="button" class="btn btn-danger" id="btnCancel">Cancel</button>
+            <button type="button" class="btn btn-success" id="btnOffer" onclick="submitOffer()">Offer my Spot</button>
+            <button type="button" class="btn btn-danger" id="btnCancel" onclick="cancelOffer()">Cancel</button>
         </div>
 
-        <script>
-            function getParkingLot() {
-                var select = document.getElementById("parking_lot");
-                var parkingLot = select.value;
-                console.log(typeof select);
-                offerParkingSpot(parkingLot);
-            };
-
-            function offerParkingSpot(parkingLot){
-                // var lotStr = JSON.stringify(lot);
-                // console.log(lot)
-                // console.log(typeof lot);
-                $.ajax({
-                    method: "POST",
-                    url: "addspot.php",
-                    data: {parkingLot:parkingLot},
-                    dataType: "html",
-                    success:function(data){
-                        $("#offer_status").html(data)
-                    }
-                });
-            }
-        </script>
         <?php
         }
         ?>
