@@ -197,7 +197,7 @@ else{
 
                             echo "<script> 
                                         
-                                alert('Password has been reset successfully {$hashedPassword}, try logging in now! :)');
+                                alert('Password has been reset successfully, try logging in now! :)');
                                 window.location = 'login.php';
                                         
                             </script><br>\n";
