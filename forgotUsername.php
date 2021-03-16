@@ -91,7 +91,7 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
 
                     <body>
                         Hi $user, Did you forget your UserName? It's $userName<br><br>
-                        Now that you have your UserName, <a href = 'https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/login.php'>Log In</a>\n
+                        Now that you have your UserName, <a href = 'https://odin.cs.csub.edu/~spstudios/ParkInLot/login.php'>Log In</a>\n
                     </body>
                 </html>
             ";
@@ -117,7 +117,7 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
                     <body>
                     
                         Hi $user, It doesn't seem like you have an account, would you like to 
-                        <a href='https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/register.php'>Sign Up</a><br>\n
+                        <a href='https://odin.cs.csub.edu/~spstudios/ParkInLot/register.php'>Sign Up</a><br>\n
                     </body>    
                 </html>
             ";
@@ -136,7 +136,7 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
     }
 }
 
-//header('Refresh: 5; URL=https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/login.php');
+//header('Refresh: 5; URL=https://odin.cs.csub.edu/~spstudios/ParkInLot/login.php');
 
 //header("forgotUsername.php");
 
