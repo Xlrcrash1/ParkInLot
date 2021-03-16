@@ -175,10 +175,12 @@ else{
                         //checking if current time is between requested and expired
                         if ($currentTimestamp >= $timeRequested && $currentTimestamp <= $timeExpires){
 
+                            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
                             //echo "Time is still good, password is resetting<br>\n";
                             // $passwordResetAccount = "update Users set password = '$password' where email = '$email'";
                             $passwordResetAccount = $db->prepare("UPDATE Users SET password = ? WHERE email = ?");
-                            $passwordResetAccount->bind_param('ss', $password, $email);
+                            $passwordResetAccount->bind_param('ss', $hashedPassword, $email);
                             //echo "Password Reset for: $passwordResetAccount<br>\n";
 
                             // $res = $db->query($passwordResetAccount);
@@ -195,7 +197,7 @@ else{
 
                             echo "<script> 
                                         
-                                alert('Password has been reset successfully, try logging in now! :)');
+                                alert('Password has been reset successfully {$hashedPassword}, try logging in now! :)');
                                 window.location = 'login.php';
                                         
                             </script><br>\n";

@@ -107,8 +107,8 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
 
                     <body>
                         Hi $user, It seems that you forgot your password.<br><br>
-                        To reset it, please click the following link to <a href = 'https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/passwordReset.php?Token=$token'>Reset It</a><br><br>
-                        If you did not request the Password Reset, please <a href = 'https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/login.php'>Log In</a> to change<br>
+                        To reset it, please click the following link to <a href = 'https://odin.cs.csub.edu/spstudios/ParkInLot/passwordReset.php?Token=$token'>Reset It</a><br><br>
+                        If you did not request the Password Reset, please <a href = 'https://odin.cs.csub.edu/spstudios/ParkInLot/login.php'>Log In</a> to change<br>
                         your password on your User Profile<br>
                         
 
@@ -142,7 +142,7 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
                     <body>
                     
                         Hi $user, It doesn't seem like you have an account, would you like to 
-                        <a href='https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/register.php'>Sign Up</a><br>
+                        <a href='https://odin.cs.csub.edu/spstudios/ParkInLot/register.php'>Sign Up</a><br>
                         Our application allows you to find Parking very easily and quickly*\n
                     </body>    
                 </html>
@@ -162,7 +162,7 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
     }
 }
 
-//header('Refresh: 5; URL=https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/login.php');
+//header('Refresh: 5; URL=https://odin.cs.csub.edu/spstudios/ParkInLot/login.php');
 
 //header("forgotUsername.php");
 
