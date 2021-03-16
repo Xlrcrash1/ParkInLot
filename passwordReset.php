@@ -26,10 +26,16 @@ else{
         //echo "Token is not empty: $token<br>\n";
 
         require('SQLconnect.php'); 
-        $sql = "select * from passwordReset where token = '$token' limit 1";
+        
+        // $sql = "select * from passwordReset where token = '$token' limit 1";
+        $sql = $db->prepare("SELECT * FROM passwordReset WHERE token = ? LIMIT 1");
+        $sql->bind_param('s', $token);
+
+        $sql->execute();
         //echo "SQL = $sql<br>\n";
 
-        if ($res = $db->query($sql)){
+        // if ($res = $db->query($sql)){
+        if ($res = $sql->get_result()){
 
             //echo "Querying the database was successful<br>\n";
        
@@ -76,11 +82,14 @@ else{
                     if ($currentTimestamp >= $timeExpires){
 
                         $zero = 0;
-                        $deactivate = "update passwordReset set active = '$zero' where token = '$token'";
+                        //$deactivate = "update passwordReset set active = '$zero' where token = '$token'";
+                        $deactivate = $db->prepare("UPDATE passwordReset SET active = ? WHERE token = ?");
+                        $deactivate->bind_param('is', $zero, $token);
+                        
                         //echo "deactivate: $deactivate<br>\n";
 
-                        $res = $db->query($deactivate);
-                        
+                        // $res = $db->query($deactivate);
+                        $deactivate->execute();
                         //echo "Sorry, token expired<br>\n";/*
                         echo "<script> 
                                     
@@ -167,16 +176,22 @@ else{
                         if ($currentTimestamp >= $timeRequested && $currentTimestamp <= $timeExpires){
 
                             //echo "Time is still good, password is resetting<br>\n";
-                            $passwordResetAccount = "update Users set password = '$password' where email = '$email'";
+                            // $passwordResetAccount = "update Users set password = '$password' where email = '$email'";
+                            $passwordResetAccount = $db->prepare("UPDATE Users SET password = ? WHERE email = ?");
+                            $passwordResetAccount->bind_param('ss', $password, $email);
                             //echo "Password Reset for: $passwordResetAccount<br>\n";
 
-                            $res = $db->query($passwordResetAccount);
+                            // $res = $db->query($passwordResetAccount);
+                            $passwordResetAccount->execute();
 
                             $zero = 0;
-                            $deactivate = "update passwordReset set active = '$zero' where token = '$token'";
+                            // $deactivate = "update passwordReset set active = '$zero' where token = '$token'";
+                            $deactivate = $db->prepare("UPDATE passwordReset SET active = ? WHERE token = ?");
+                            $deactivate->bind_param('is')
                             //echo "deactivate: $deactivate<br>\n";
+                            $deactivate->execute();
 
-                            $res = $db->query($deactivate);
+                            // $res = $db->query($deactivate);
 
                             echo "<script> 
                                         
@@ -189,10 +204,13 @@ else{
                         elseif($currentTimestamp >= $timeExpires){
 
                             $zero = 0;
-                            $deactivate = "update passwordReset set active = '$zero' where token = '$token'";
+                            // $deactivate = "update passwordReset set active = '$zero' where token = '$token'";
+                            $deactivate = $db->prepare("UPDATE passwordReset SET active = ? WHERE token = ?");
+                            $deactivate->bind_param('is', $zero, $token);
                             //echo "deactivate: $deactivate<br>\n";
 
-                            $res = $db->query($deactivate);
+                            // $res = $db->query($deactivate);
+                            $deactivate->execute();
                             
                             //echo "Sorry, token expired<br>\n";/*
                             echo "<script> 

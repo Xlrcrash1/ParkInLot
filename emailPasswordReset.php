@@ -17,7 +17,7 @@ header('location: index.php'); exit();
         <div class = "findPassword">
 
             <h2>Don't remember your password?</h2>
-            <p>If you forgot your password, enter your email and a PasswordReset Link will be sent to you.</p>
+            <p>If you forgot your password, enter your email and a Password Reset Link will be sent to you.</p>
             <p>Happen to remember that password? <a href='login.php'>Give it a try</a></p>
             
             <form method = "POST" action = "emailPasswordReset.php" class = "findUserNameForm">
@@ -60,11 +60,16 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
 
     //echo "Email Entered: $checkEmail<br>\n";
 
-    $sql = "Select * from Users where email = '$checkEmail'";
+    // $sql = "Select * from Users where email = '$checkEmail'";
+    $sql = $db->prepare("SELECT * FROM Users WHERE email = ?");
+    $sql->bind_param('s', $checkEmail);
+
+    $sql->execute();
     //echo "SQL Statement: $sql<br>\n";
 
-    if ($res = $db->query($sql)){
+    // if ($res = $db->query($sql)){
 
+    if ($res = $sql->get_result()){
         //echo "first if statement: Successful<br>\n";
         
         if ($row = $res->FETCH_ASSOC()){
@@ -80,10 +85,14 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
             
             $token = bin2hex(random_bytes(50));
             
-            $assignToken = "insert into passwordReset (email, token) values('$checkEmail','$token');";
+            // $assignToken = "insert into passwordReset (email, token) values('$checkEmail','$token');";
+            $assignToken = $db->prepare("INSERT INTO passwordReset (email, token) VALUES (?, ?)");
+            $assignToken->bind_param('ss', $checkEmail, $token);
+
             //assign token to user's email in passwordReset table
 
-            $db->query($assignToken);
+            // $db->query($assignToken);
+            $assignToken->execute();
             //Save in Database
             
 
@@ -97,7 +106,7 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
                     </head>
 
                     <body>
-                        Hi $user, It seeems that you forgot your password.<br><br>
+                        Hi $user, It seems that you forgot your password.<br><br>
                         To reset it, please click the following link to <a href = 'https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/passwordReset.php?Token=$token'>Reset It</a><br><br>
                         If you did not request the Password Reset, please <a href = 'https://odin.cs.csub.edu/~tcervantes/SeniorSem/ParkInLot/login.php'>Log In</a> to change<br>
                         your password on your User Profile<br>
