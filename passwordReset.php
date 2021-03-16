@@ -189,7 +189,7 @@ else{
                             $zero = 0;
                             // $deactivate = "update passwordReset set active = '$zero' where token = '$token'";
                             $deactivate = $db->prepare("UPDATE passwordReset SET active = ? WHERE token = ?");
-                            $deactivate->bind_param('is')
+                            $deactivate->bind_param('is', $zero, $token);
                             //echo "deactivate: $deactivate<br>\n";
                             $deactivate->execute();
 
