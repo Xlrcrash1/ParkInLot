@@ -1,3 +1,16 @@
+function cancelRequest(){
+    // $_SESSION['statusCode'] = 0
+    $.ajax({
+        method:"POST",
+        url:"manageRequest.php",
+        data:{action:"cancel", status:0},
+        datatype:"html",
+        success:function(data){
+            $("#request_status").html(data)
+        }
+    });
+    clearInterval(spotCheck)
+};
 var spotCheck = setInterval(function()
 { 
     $.ajax({
@@ -6,6 +19,7 @@ var spotCheck = setInterval(function()
         datatype:"html",
         success:function(data){
             //do something with response data
+            document.getElementById("request_status").innerHTML = "";
             $("#request_status").html(data)
 
             $.ajax({
@@ -13,9 +27,10 @@ var spotCheck = setInterval(function()
                 url:"checkstatus.php",
                 datatype:"json",
                 success:function(statusCode){
-                    if (statusCode == 10){
+                    if (statusCode != 1){
                         clearInterval(spotCheck)
-                    }
+                        console.log(statusCode);
+                    } 
                 }
             });
         }
@@ -25,3 +40,8 @@ var spotCheck = setInterval(function()
 function stopCheck(){
     clearInterval(spotCheck);
 };
+
+// function submitRequest(){
+//     $_SESSION['statusCode'] = 1
+//     location.reload('request.php')
+// };
