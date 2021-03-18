@@ -15,7 +15,7 @@ if ($_SESSION['active'] == false){
     <?php 
         require('SQLconnect.php');
         include('./CSS/bootStrap.html');
-        $_SESSION['statusCode'] = 1;    // Requesting parking spot & offerer not found yet
+            // Requesting parking spot & offerer not found yet
     ?>
     <script src="./javaScript/checkSpots.js"></script>
     <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
@@ -29,32 +29,27 @@ if ($_SESSION['active'] == false){
 
     <div id='status'>
         <?php
+        $_SESSION['statusCode'] = 1;
             if ($_SESSION['tokens'] > 0){ ?>
-            <div class="alert alert-info" id="request_status">
+            
+            <div id="request_status">
+                <div class="alert alert-info">
                 <strong>We're looking for a spot! </strong>You have <strong>
                     <?php echo $_SESSION['tokens']; ?> token(s)</strong> in your account.
                 <br>Please click <strong>Cancel</strong> if you would like to cancel your request
+                </div>
             </div>
 
-            <!-- <script>
-                var spotCheck = setInterval(function()
-                { 
-                    $.ajax({
-                        method:"POST",
-                        url:"checkspots.php",
-                        data:{userName: "test"},
-                        datatype:"html",
-                        success:function(data){
-                            //do something with response data
-                            $("#request_status").html(data)
-                        }
-                    });
-                }, 5000);//time in milliseconds 
+            <button type="button" class="btn btn-success" id="btnRequest" onclick="submitRequest()">Request a Spot</button>
+            <button type="button" class="btn btn-danger" id="btnCancel" onclick="cancelRequest()">Cancel</button>
+            <script>
+            function submitRequest(){
+                // $_SESSION['statusCode'] = 1
+                location.reload()
+            };
 
-                function stopCheck(){
-                    clearInterval(spotCheck);
-                }
-            </script> -->
+            </script>
+
         <?php       
             // Check for available spot 
             $sql = "SELECT userID, userName, parkingLot, Spots.time 
@@ -77,6 +72,7 @@ if ($_SESSION['active'] == false){
             <div class="alert alert-info">
                 <strong>Sorry you do not have any tokens in your account.</strong> You can earn tokens by offering parking spots.
             </div>
+
         <?php
         } ?>
     </div>

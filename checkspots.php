@@ -29,11 +29,12 @@
             }
         }
         else{
-            echo "<p><strong>We're looking for a spot! </strong>You have <strong>
+            echo "<div class = 'alert alert-info'><strong>We're looking for a spot! </strong>You have <strong>
                     {$_SESSION['tokens']} token(s)</strong> in your account.
-                    <br>Please click <strong>Cancel</strong> if you would like to cancel your request</p>";
-            $_SESSION['statusCode'] = 1;
+                    <br>Please click <strong>Cancel</strong> if you would like to cancel your request</div>";
         }   
+    } elseif ($_SESSION['statusCode'] == 0){
+        echo "<div class = 'alert alert-success'>We've successfully cancelled your parking spot request</div>";
     }
 
 ?>
