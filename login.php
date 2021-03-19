@@ -39,7 +39,7 @@ if ($_SESSION['active']){
             <div class="form-group">
                 <!--<label for="exampleInputPassword1">Password</label>-->
                 <input type="password" class="form-control loginFormInput" id="password" aria-describedby="passwordHelp" placeholder="Password" name = "password">
-                <small id="passwordHelp" class="form-text text-muted"><a href="#">Forgot your password?</a></small>
+                <small id="passwordHelp" class="form-text text-muted"><a href="emailPasswordReset.php">Forgot your password?</a></small>
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="rememberMe">
@@ -57,9 +57,14 @@ if ($_SESSION['active']){
                 $userName = htmlspecialchars(trim($_POST['Uname']));/////////////////ADD SANATIZATION
                 $password = htmlspecialchars(trim($_POST['password']));
                 echo "info: $userName and $password";
-                $sql = "select * from Users where userName = '$userName' or email = '$userName'";
-                if ($res = $db->query($sql)){
-
+                //$sql = "select * from Users where userName = '$userName' or email = '$userName'";
+                $sql = $db->prepare("SELECT * FROM Users WHERE userName = ? OR email = ?");
+                $sql->bind_param('ss', $userName, $userName);
+                $sql->execute();
+                
+                // if ($res = $db->query($sql)){
+                if ($res = $sql->get_result()){
+                    
                     $row = $res->FETCH_ASSOC();
                     if(password_verify($password, $row['password']) OR $row['password'] == $password) {
 
@@ -77,6 +82,17 @@ if ($_SESSION['active']){
                         $_SESSION['licensePlate'] = $row['licensePlate'];
                         $_SESSION['photo'] = $row['carPhoto'];
                         $_SESSION['tokens'] = $row['tokens'];
+                        $_SESSION['userID'] = $row['userID'];
+
+                        // Status Codes
+                        // 0 - Not requesting, not offering
+                        // 1 - Requesting a parking spot
+                        // 10 - Requesting and found a parking spot
+                        // 2 - Offering a parking spot
+                        // 20 - Offering and found a requester
+                        // 3 - Transaction completed
+                        $_SESSION['statusCode'] = 0;
+                    
                         //echo "email: {$_SESSION['email']}\n";
                         //echo "<br>Session active = {$_SESSION['active']}";
                         //echo "<br>Session name = {$_SESSION['name']}<br>";

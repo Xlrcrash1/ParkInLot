@@ -50,6 +50,21 @@ if ($_SESSION['active'] == false){
                     </form>
                 </div>
             <?php
+            } else if ($_SESSION['access'] == 1){
+                ?>
+                <div id = 'actions'>
+                    <div id = 'request'>                
+                        <button type="button" class="btn btn-outline-primary" 
+                                id="btnRequest" onclick="window.location.href='request.php';">Request a Spot</button>
+                    </div>
+
+                    <div id = 'offer'>
+                        <button type="button" class="btn btn-outline-secondary" 
+                                id="btnOffer" onclick="window.location.href='offer.php';">Offer a Spot</button>
+                    </div>
+                </div>
+                
+                <?php
             }
         }          
         include('./javaScript/javaScript.html')  ?>
