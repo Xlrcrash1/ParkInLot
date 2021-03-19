@@ -7,8 +7,6 @@ if ($_SESSION['active']){
     header('location: index.php'); exit();
 }   ?>
 
-<!DOCTYPE  HTML>
-<html>
 
     <head>
         <title>Login</title>
