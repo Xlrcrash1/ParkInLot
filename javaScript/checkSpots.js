@@ -11,6 +11,30 @@ function cancelRequest(){
     });
     clearInterval(spotCheck)
 };
+
+function submitRequest(){
+    // $_SESSION['statusCode'] = 1
+    $.ajax({
+        method:"POST",
+        url:"checkstatus.php",
+        datatype:"json",
+        success:function(statusCode){
+            if (statusCode == 1){
+                clearInterval(spotCheck)
+                console.log(statusCode);
+                output = "<div class = 'alert alert-danger'>You're already requesting a parking spot.</div>"
+                location.reload()
+            } else if (statusCode == 10){
+                output = "<div class = 'alert alert-danger'>We've already paired you with a parking spot. Please click cancel if you would like to cancel your request</div>";
+                $("#request_status").html(output);
+            } else if (statusCode == 0){
+                location.reload()
+            }
+            $("#request_status").html(output);
+        }
+    });
+};
+
 var spotCheck = setInterval(function()
 { 
     $.ajax({
@@ -37,9 +61,7 @@ var spotCheck = setInterval(function()
     });
 }, 5000);//time in milliseconds 
 
-function stopCheck(){
-    clearInterval(spotCheck);
-};
+
 
 // function submitRequest(){
 //     $_SESSION['statusCode'] = 1

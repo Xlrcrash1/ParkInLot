@@ -43,10 +43,6 @@ if ($_SESSION['active'] == false){
             <button type="button" class="btn btn-success" id="btnRequest" onclick="submitRequest()">Request a Spot</button>
             <button type="button" class="btn btn-danger" id="btnCancel" onclick="cancelRequest()">Cancel</button>
             <script>
-            function submitRequest(){
-                // $_SESSION['statusCode'] = 1
-                location.reload()
-            };
 
             </script>
 
@@ -67,6 +63,7 @@ if ($_SESSION['active'] == false){
                 echo "<br>";
             }
 
+            $res->close();
 
             } else { ?>
             <div class="alert alert-info">
