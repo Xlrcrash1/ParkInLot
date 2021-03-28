@@ -3,7 +3,26 @@
     session_start();
     echo "Status: {$_SESSION['statusCode']}<br>";
 
-    if ($_SESSION['statusCode'] == 1){
+    $checkExisting = "SELECT userID, userName, parkingLot, Spots.time, carPhoto FROM SpotsDetails 
+    INNER JOIN Spots ON userID = pUserID 
+    WHERE rUserID = {$_SESSION['userID']};";
+    echo "{$_SESSION['userID']}<br>";
+    // $checkExisting->bind_param('s', $_SESSION['userID']);
+    // $checkExisting->execute();
+    $res = $db->query($checkExisting);
+    echo "{$_SESSION['userID']}<br>";
+
+    if ($r = $res->FETCH_ASSOC()){
+        echo "{$_SESSION['userID']}<br>";
+
+        echo "<div class ='alert alert-success'><strong>You've already been paired with user {$r['userName']}</strong><br>
+        User Name: {$r['userName']}<br>
+        Parking Lot: {$r['parkingLot']}<br>
+        <img src='{$r['carPhoto']}' alt='Car Photo'
+                style='max-width: 50%;'><br>";
+        
+        $_SESSION['statusCode'] = 10;
+    } elseif ($_SESSION['statusCode'] == 1){
         $sql = "SELECT userID, userName, parkingLot, Spots.time, carPhoto
         FROM SpotsDetails 
         INNER JOIN Spots ON userID = pUserID 
