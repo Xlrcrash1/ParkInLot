@@ -7,12 +7,13 @@
 
     switch($action){
         case "cancel":
-            echo "<div class = 'alert alert-danger'>We've successfully cancelled your parking spot request</div>";
+            $sql = "UPDATE Spots SET rUserID = NULL, reqStat = 2 WHERE rUserID = {$_SESSION['userID']};";
 
-            $sql = $db->prepare("UPDATE Spots SET rUserID = NULL WHERE rUserID = ?");
-            $sql->bind_param('s', $_SESSION['userID']);
-
-            $sql->execute();
+            if ($db->query($sql)){
+                echo "<div class = 'alert alert-danger'>We've successfully cancelled your parking spot request</div>";
+            } else{
+                echo "<div class = 'alert alert-danger'>Something went wrong while cancelling your request</div>";
+            }
             $_SESSION['statusCode'] = 0;
             break;
         case "request":

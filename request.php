@@ -62,7 +62,6 @@ if ($_SESSION['active'] == false){
                 echo "User Name: {$row['userName']} ---------- Parking Lot: {$row['parkingLot']}";
                 echo "<br>";
             }
-
             $res->close();
 
             } else { ?>

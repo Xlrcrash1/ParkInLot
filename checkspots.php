@@ -1,19 +1,15 @@
 <?php
     require('SQLconnect.php');
     session_start();
-    echo "Status: {$_SESSION['statusCode']}<br>";
 
     $checkExisting = "SELECT userID, userName, parkingLot, Spots.time, carPhoto FROM SpotsDetails 
     INNER JOIN Spots ON userID = pUserID 
     WHERE rUserID = {$_SESSION['userID']};";
-    echo "{$_SESSION['userID']}<br>";
     // $checkExisting->bind_param('s', $_SESSION['userID']);
     // $checkExisting->execute();
     $res = $db->query($checkExisting);
-    echo "{$_SESSION['userID']}<br>";
 
     if ($r = $res->FETCH_ASSOC()){
-        echo "{$_SESSION['userID']}<br>";
 
         echo "<div class ='alert alert-success'><strong>You've already been paired with user {$r['userName']}</strong><br>
         User Name: {$r['userName']}<br>
@@ -22,6 +18,7 @@
                 style='max-width: 50%;'><br>";
         
         $_SESSION['statusCode'] = 10;
+        $res->close();
     } elseif ($_SESSION['statusCode'] == 1){
         $sql = "SELECT userID, userName, parkingLot, Spots.time, carPhoto
         FROM SpotsDetails 
@@ -41,11 +38,13 @@
             
             $_SESSION['statusCode'] = 10;
 
-            $stmt = $db->prepare("UPDATE Spots SET rUserID = ? WHERE pUserID = ?");
+            $stmt = $db->prepare("UPDATE Spots SET rUserID = ?, reqStat = 1 WHERE pUserID = ?");
             $stmt->bind_param('ss', $_SESSION['userID'], $row['userID']);
             if($stmt->execute()){
                 echo "<p>You're now paired with user: {$row['userName']}</p>";
+                $stmt->close();
             }
+            $res->close();
         }
         else{
             echo "<div class = 'alert alert-info'><strong>We're looking for a spot! </strong>You have <strong>
