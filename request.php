@@ -15,7 +15,6 @@ if ($_SESSION['active'] == false){
     <?php 
         require('SQLconnect.php');
         include('./CSS/bootStrap.html');
-            // Requesting parking spot & offerer not found yet
     ?>
     <script src="./javaScript/checkSpots.js"></script>
     <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
@@ -32,6 +31,7 @@ if ($_SESSION['active'] == false){
         $_SESSION['statusCode'] = 1;
             if ($_SESSION['tokens'] > 0){ ?>
             
+            <!-- Searching for a parking spot -->
             <div id="request_status">
                 <div class="alert alert-info">
                 <strong>We're looking for a spot! </strong>You have <strong>
@@ -47,7 +47,7 @@ if ($_SESSION['active'] == false){
             </script>
 
         <?php       
-            // Check for available spot 
+            // Check for and list available spots for debugging
             $sql = "SELECT userID, userName, parkingLot, Spots.time 
                     FROM SpotsDetails 
                     INNER JOIN Spots ON userID = pUserID 
@@ -64,7 +64,7 @@ if ($_SESSION['active'] == false){
             }
             $res->close();
 
-            } else { ?>
+            } else { // No tokens on the account?>
             <div class="alert alert-info">
                 <strong>Sorry you do not have any tokens in your account.</strong> You can earn tokens by offering parking spots.
             </div>
