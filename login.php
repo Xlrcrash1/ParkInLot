@@ -7,8 +7,6 @@ if ($_SESSION['active']){
     header('location: index.php'); exit();
 }   ?>
 
-<!DOCTYPE  HTML>
-<html>
 
     <head>
         <title>Login</title>
@@ -92,6 +90,7 @@ if ($_SESSION['active']){
                         // 10 - Requesting and found a parking spot
                         // 2 - Offering a parking spot
                         // 20 - Offering and found a requester
+                        // 3 - Transaction completed
                         $_SESSION['statusCode'] = 0;
                     
                         //echo "email: {$_SESSION['email']}\n";
