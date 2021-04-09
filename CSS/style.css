@@ -1,123 +1,398 @@
-.html{
+/* SPStudios
+ParkInLot
+style.css */
 
-  background-color: black;
-}
-.body{
-  
-  background-color: black;
-}
-.appBackground{
+/*    Global    */
+/* ------------------------------------------------------------ */
 
-  background-color: black;
-  color: white;
-}
-/*            Index & Login          */
-
-/*.sign_in{
-
-  float: right;
-}*/
-
-/*              Nav             */
-.navigation{
-
-  padding: 10px;
+html {
+    background-color: var(--black);
+    color: var(--white);
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-.dropdown{
-
-  float: right;
+body {
+    background-color: var(--black);
+    color: var(--white);
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-/*      Login.php       */
-
-.ParkInLotLogo{
-
-  text-align: center;
+.container {
+    max-width: 100%;
+    padding-left: 6vw;
+    padding-right: 6vw;
 }
+
+a {
+    color: var(--light1);
+}
+a:hover {
+    color: var(--light3);
+    text-decoration: none;
+}
+
+.side {
+    width: 0vw;
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.text_input {
+    color: var(--white);
+    font-size: var(--base);
+    margin-top: -0.5vh;
+    margin-bottom: 4vh;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 2px solid var(--white);
+    border-radius: 0;
+}
+.text_input:focus {
+    color: var(--white);
+    background-color: transparent;
+    box-shadow: none;
+}
+.text_input:active {
+    color: var(--white);
+}
+
+.btn-primary {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    font-size: var(--large2);
+    font-weight: 600;
+    background-color: var(--primary);
+    width: 100%;
+    border-radius: 15px;
+    height: 8vh;
+    vertical-align: middle;
+}
+.btn-primary:hover {
+    background-color: var(--light1);
+}
+.btn-primary:active {
+    background-color: var(--dark1);
+}
+
+.btn_icon {
+    font-size: var(--large4);
+    font-weight: 500;
+    padding-right: 4px;
+    vertical-align: middle;
+}
+
+/*    Nav    */
+/* ------------------------------------------------------------ */
+
+.navigation {
+    padding-top: 2vw;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    padding-bottom: 4vh;
+}
+
+.btn-nav {
+    font-size: var(--small1);
+    background-color: var(--primary);
+    color: var(--white);
+    width: 100%;
+    border-radius: 12px;
+    height: 6vh;
+    /* margin-top: 8px; */
+    /* margin-right: 6vw; */
+}
+.btn-nav:hover {
+    color: var(--white);
+    background-color: var(--light1);
+}
+.btn-nav:active {
+    background-color: var(--dark1);
+}
+
+.dropdown {
+    float: right;
+
+}
+
+.logo_nav {
+    /* padding: 5px; */
+    width: 15vw;
+}
+
+/*    Login    */
+/* ------------------------------------------------------------ */
 
 .loginLogo{
-
-  width: 500px;
-}
-.loginFormInput{
-
-  border: 0;
-  outline: 0;
-  background: transparent;
-  border-bottom: 1px solid black;
-
-  font-size: 50px;
-  width: 80%;
+    width: 80%;
+    margin-top: 6vh;
+    margin-bottom: 5vh;
 }
 
-.loginForm{
-
-  margin-top: 5%;
+.loginForm {
+    margin-top: 2vh;
 }
 
+.form-text {
+    font-size: var(--base);
+    text-align: right;
+    margin-top: -2.5vh;
+}
 
+.form-check {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 20px;
+    font-size: var(--base);
+}
 
+.form-check-label {
+    padding-left: 5px;
+}
 
-/*        Profile Page        */
+.btn-caption {
+    margin-top: -2.5vh;
+}
 
+/*    Register    */
+/* ------------------------------------------------------------ */
 
+.logo_medium {
+    width: 50%;
+    margin-top: 6vh;
+    margin-bottom: 5vh;
+}
+
+.register_title {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.register_title2 {
+    padding-top: 4vh;
+    padding-bottom: 2vh;
+    color: var(--primary);
+}
+
+.input_title {
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+/*    Forgot Username/Password    */
+/* ------------------------------------------------------------ */
+
+.forgot_title {
+    padding-top: 1vh;
+    padding-bottom: 3vh;
+}
+
+.forgot_text {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+/*    Profile    */
+/* ------------------------------------------------------------ */
+
+.profile_image {
+    /* background-image:url('../Images/default.jpg'); */
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 1.5vh;
+}
+
+.profile_subtitle {
+    color: var(--n60);
+    margin-top: -1vh;
+    margin-bottom: 2vh;
+}
+
+.tokens {
+    color: var(--light3);
+    margin-top: -0.75vh;
+}
+
+.divider {
+    background-color: var(--p30);
+    width: 100%;
+    height: 0.5px;
+    outline: 0;
+    margin-bottom: 4vh;
+}
+
+/*    Index    */
+/* ------------------------------------------------------------ */
+
+.btn-request {
+    background-color: var(--analogous2);
+    border-color: var(--analogous2);
+}
+
+.btn-offer {
+    /* background-color: var(--analogous2);
+    border-color: var(--analogous2); */
+}
+
+/*    Update    */
+/* ------------------------------------------------------------ */
+
+.update_title {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    color: var(--primary);
+}
 
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  text-align: left;
-  border: none;
-  outline: none;
-  transition: 0.4s;
+    /* background-color: #eee; */
+    /* color: #444; */
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
-  background-color: #ccc;
+    /* background-color: #ccc; */
 }
 
 /* Style the accordion panel. Note: hidden by default */
 .panel {
-  padding: 0 18px;
-  background-color: white;
-  display: none;
-  overflow: hidden;
+    padding: 0 18px;
+    /* background-color: white; */
+    display: none;
+    overflow: hidden;
 }
 
-.accordion:after{
-
+.accordion:after {
     content: '\02795'; /*unicode character for 'plus' sign (+) */
-    font-size: 13px;
-    color: #777;
+    /* font-size: 13px; */
+    /* color: #777; */
     float: right;
     margin-left: 5px;
 }
 
+/*    Mobile    */
+/* ------------------------------------------------------------ */
+@media only screen and (max-device-width: 896px) {
 
+    /*    Global    */
+    /* -------------------------------------------------------- */
 
-@media only screen and (max-width: 600px){
+    .text_input {
+        font-size: var(--mobile_large1);
+        margin-top: 0vh;
+    }
 
-  /*Login Page*/
+    .btn-primary {
+        font-size: var(--mobile_large4);
+        height: 7vh;
+    }
 
-  .loginForm{
+    /*    Nav    */
+    /* ------------------------------------------------------------ */
 
-    margin-top: 25%;
-  }
+    .navigation {
+        padding-top: 2vh;
+        padding-left: 4vw;
+        padding-right: 4vw;
+        padding-bottom: 3vh;
+    }
 
-  .ParkInLotLogo{
+    .btn-nav {
+        font-size: var(--mobile_small1);
+        height: 5vh;
+        margin-top: 20px;
+        /* margin-right: 25px; */
+    }
 
-    width: 100%;
-  }
-}
+    .logo_nav {
+        /* padding: 15px; */
+        margin-top: 1vh;
+        height: 4.5vh;
+        width: auto;
+    }
 
+    /*    Login.php    */
+    /* -------------------------------------------------------- */
 
-/*          EMAIL TEMPLATE      */
-.emailLogo{
+    .loginLogo{
+        width: 80%;
+        margin-top: 6vh;
+        margin-bottom: 8vh;
+    }
 
-  width: 100%;
+    .loginForm {
+        margin-top: 2vh;
+    }
+
+    .form-text {
+        font-size: var(--mobile_large1);
+        margin-top: -2.5vh;
+        padding-bottom: 1vh;
+    }
+
+    .form-check {
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        padding-left: 40px;
+        font-size: var(--mobile_base);
+    }
+
+    .form-check-input {
+        margin-top: 20px;
+        transform: scale(2);
+    }
+
+    /*    Register    */
+    /* ------------------------------------------------------------ */
+
+    .register_title2 {
+        padding-bottom: 3vh;
+    }
+
+    .input_title {
+        font-size: var(--mobile_large1);
+    }
+
+    /*    Profile    */
+    /* ------------------------------------------------------------ */
+
+    .profile_image {
+        /* background-image:url('../Images/default.jpg'); */
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-bottom: 1.5vh;
+    }
+
+    .profile_subtitle {
+        margin-top: 0vh;
+    }
+
+    .tokens {
+        color: var(--light3);
+        margin-top: -0.25vh;
+    }
+
+    /*    Update    */
+    /* ------------------------------------------------------------ */
+
+    .update_title {
+        padding-bottom: 4vh;
+    }
+
 }

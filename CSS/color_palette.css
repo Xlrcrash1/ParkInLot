@@ -1,0 +1,52 @@
+/* Color Palette */
+
+:root {
+
+    /* Main */
+    --primary: #4090C8;
+    --secondary: #EF9D38;
+    --analogous1: #41C8A6;
+    --analogous2: #4C41C8;
+    --black: #000000;
+    --white: #FAFAFA;
+
+    /* Notifications  */
+    --success: #64BC26;
+    --warning: #FD9900;
+    --error: #FE2712;
+
+    /* Tints */
+    --light1: #69a7d3;
+    --light2: #90bedf;
+    --light3: #b8d5ea;
+    --light4: #e0ecf6;
+
+    /* Shades */
+    --dark1: #3075a6;
+    --dark2: #25597e;
+    --dark3: #193d57;
+    --dark4: #141A1F;
+
+    /* Primary Grayscale */
+    --p10: #141a1f;
+    --p20: #29343d;
+    --p30: #3d4e5c;
+    --p40: #52687a;
+    --p50: #668299;
+    --p60: #859bad;
+    --p70: #a3b4c2;
+    --p80: #c2cdd6;
+    --p90: #e0e6eb;
+
+    /* Neutral Grayscale */
+    --n10: #1a1a1a;
+    --n20: #333333;
+    --n30: #4d4d4d;
+    --n40: #666666;
+    --n50: #808080;
+    --n60: #999999;
+    --n70: #b3b3b3;
+    --n80: #cccccc;
+    --n90: #e6e6e6;
+
+}
