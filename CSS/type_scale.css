@@ -1,0 +1,196 @@
+/* Type Scale */
+
+/* inter google font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* icons */
+@import url('./dist/css/style.css');
+
+:root {
+    /* Desktop */
+    /* ------------------------------------- */
+
+    --base: 16px;
+
+    --small1: 0.875rem;       /* 14px */
+    --small2: 0.75rem;        /* 12px */
+    --small3: 0.625rem;       /* 10px */
+
+    --large1: 1.125rem;       /* 18px */
+    --large2: 1.25rem;        /* 20px */
+    --large3: 1.5rem;         /* 24px */
+    --large4: 1.75rem;        /* 28px */
+    --large5: 2rem;           /* 32px */
+
+    --extra_large1: 2.375rem; /* 38px */
+    --extra_large2: 2.625rem; /* 42px */
+    --extra_large3: 2.875rem; /* 46px */
+
+
+    /* Mobile */
+    /* ------------------------------------- */
+    --mobile_base: 1.5rem;           /* 24px */
+
+    --mobile_small1: 1.375rem;       /* 22px */
+    --mobile_small2: 1.25rem;        /* 20px */
+    --mobile_small3: 1.125rem;       /* 18px */
+    --mobile_small4: 1rem;           /* 16px */
+
+    --mobile_large1: 1.625rem;       /* 26px */
+    --mobile_large2: 1.75rem;        /* 28px */
+    --mobile_large3: 1.875rem;       /* 30px */
+    --mobile_large4: 2rem;           /* 32px */
+    --mobile_large5: 2.125rem;       /* 34px */
+
+    --mobile_extra_large1: 2.375rem; /* 38px */
+    --mobile_extra_large2: 2.625rem; /* 42px */
+    --mobile_extra_large3: 2.875rem; /* 46px */
+    --mobile_extra_large4: 3.125rem; /* 50px */
+
+}
+
+/* Global Font Sizes */
+/* ------------------------------------- */
+
+html {
+    font-family: 'Inter', sans-serif;
+    font-size: var(--base);
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--white);
+}
+
+h1 {
+    font-size: var(--large5);
+    font-weight: 700;
+    line-height: 32px;
+}
+
+h2 {
+    font-size: var(--large4);
+    font-weight: 600;
+    line-height: 28px;
+}
+
+h3 {
+    font-size: var(--large3);
+    font-weight: 500;
+    line-height: 28px;
+}
+
+h4 {
+    font-size: var(--large2);
+    font-weight: 500;
+    line-height: 24px;
+}
+
+h5 {
+    font-size: var(--large1);
+    font-weight: 400;
+    line-height: 22px;
+}
+
+h6 {
+    font-size: var(--base);
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.body {
+    font-size: var(--base);
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.caption {
+    font-size: var(--small1);
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.endnote {
+    font-size: var(--small2);
+    font-weight: 400;
+    line-height: 14px;
+}
+
+.footnote {
+    font-size: var(--small3);
+    font-weight: 400;
+    line-height: 12px;
+}
+
+/*     Mobile    */
+/* ------------------------------------------------------------ */
+@media only screen and (max-device-width: 896px) {
+
+    html {
+        font-family: 'Inter', sans-serif;
+        font-size: var(--mobile_base);
+        font-weight: 400;
+        line-height: 40px;
+        color: var(--white);
+    }
+
+    h1 {
+        font-size: var(--mobile_extra_large4);
+        font-weight: 700;
+        line-height: 52px;
+    }
+
+    h2 {
+        font-size: var(--mobile_extra_large1);
+        font-weight: 600;
+        line-height: 40px;
+    }
+
+    h3 {
+        font-size: var(--mobile_large3);
+        font-weight: 500;
+        line-height: 32px;
+    }
+
+    h4 {
+        font-size: var(--mobile_large2);
+        font-weight: 500;
+        line-height: 30px;
+    }
+
+    h5 {
+        font-size: var(--mobile_large1);
+        font-weight: 400;
+        line-height: 30px;
+    }
+
+    h6 {
+        font-size: var(--mobile_base);
+        font-weight: 400;
+        line-height: 40px;
+    }
+
+    .body {
+        font-size: var(--mobile_base);
+        font-weight: 400;
+        line-height: 40px;
+    }
+
+    .caption {
+        font-size: var(--mobile_small1);
+        font-weight: 400;
+        line-height: 36px;
+    }
+
+    .endnote {
+        font-size: var(--mobile_small2);
+        font-weight: 400;
+        line-height: 34px;
+    }
+
+    .footnote {
+        font-size: var(--mobile_small3);
+        font-weight: 400;
+        line-height: 32px;
+    }
+
+
+}
