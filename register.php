@@ -1,41 +1,185 @@
 <!DOCTYPE = HTML>
 <html>
     <head>
-        
+
         <title>Register</title>
-        <?php   include("./CSS/bootStrap.html");    ?>
-        <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="./CSS/dist/css/style.css">
+        <link rel = 'stylesheet' type='text/css' href = './CSS/color_palette.css'>
+        <link rel = 'stylesheet' type='text/css' href = './CSS/type_scale.css'>
+        <link rel = 'stylesheet' type='text/css' href = './CSS/style.css'>
         <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
-    
+
     <body>
 
-        <?php   include('nav.php');   
-        
-        require('SQLconnect.php');?>
+        <?php
+           // include('nav.php');
+           require('SQLconnect.php');
+        ?>
 
-        <h1>Register for ParkInLot</h1>
-        <h4>Please complete all fields</h4>
-        <br>
-        <div class = 'register_box'>
-    
-            <form method = 'POST'>
-        
-                <h5>First Name: <input type = 'text' placeholder = 'Tony' name = 'firstName'></h5>
-                <h5>Last Name: <input type = 'text' placeholder = 'Cervantes' name = 'lastName'></h5>
-                <h5>UserName: <input type = 'text' placeholder = 'XLR8' name = 'userName'></h5>
-                <h5>Email: <input type = 'email' placeholder = 'email@email.com' name = 'email'></h5>
-                <h5>Password: <input type = 'password' placeholder = '*****' name = 'password'></h5>
-                <h5>Confirm Password: <input type = 'password' placeholder = '*****' name = 'confirm_password'></h5>
+        <div class = 'container'>
 
-                <h5>Make: <input type = 'text' placeholder = 'Toyota' name = 'make'></h5>
-                <h5>Model: <input type = 'text' placeholder = 'GT86' name = 'model'></h5>
-                <h5>Year: <input type = 'number' placeholder = '2017' name = 'year'></h5>
-                <h5>Last 4 of LicensePlate: <input type = 'text' placeholder = 'C777' name = 'licensePlate'></h5>
-                <h5>Color: <input type = 'text' placeholder = 'Grey' name = 'color'></h5>
-                <div class='g-recaptcha' data-sitekey='6LcdvfkZAAAAANZYnLTRvlsXFYDtim_Kz33h16m5'></div>
-                <button class = 'nav_btn' type = 'submit'>Create</button>
-            </form>
+            <!-- logo medium -->
+            <div class="row">
+                <div class="col-xs-0 col-lg-4 side"></div>
+                <div class="col main">
+                    <center>
+                    <a href="./login.php">
+                        <img src = './Images/ParkInLot_Logo_Blue.png' class='logo_medium'>
+                    </a>
+                    </center>
+                </div>
+                <div class="col-xs-0 col-lg-4 side"></div>
+            </div>
+
+            <!-- create account header -->
+            <div class="row">
+                <div class="col-xs-0 col-lg-4 side"></div>
+                <div class="col main">
+                    <h1 class="register_title">Create an account</h1>
+                </div>
+                <div class="col-xs-0 col-lg-4 side"></div>
+            </div>
+            <!-- <h1>Register for ParkInLot</h1> -->
+            <!-- <h4>Please complete all fields</h4> -->
+
+            <div class = 'register_box'>
+
+                <form method = 'POST' class="registerForm">
+                    <!-- User info -->
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <h2 class="register_title2">User information</h2>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <h6 class="input_title">First Name</h6>
+                            <input type = 'text' class="body form-control text_input loginFormInput" placeholder = 'Enter your first name' name = 'firstName'>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <h6 class="input_title">Last Name</h6>
+                            <input type = 'text' class="body form-control text_input loginFormInput"  placeholder = 'Enter your last name' name = 'lastName'>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <h6 class="input_title">Username</h6>
+                            <input type = 'text' class="body form-control text_input loginFormInput"  placeholder = 'Enter your username' name = 'userName'>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <h6 class="input_title">Email</h6>
+                            <input type = 'email' class="body form-control text_input loginFormInput"  placeholder = 'Enter your email' name = 'email'>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <h6 class="input_title">Password</h6>
+                            <input type = 'password' class="body form-control text_input loginFormInput" placeholder = 'Enter your password' name = 'password'>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <h6 class="input_title">Confirm Password</h6>
+                            <input type = 'password' class="body form-control text_input loginFormInput" class="body form-control text_input loginFormInput" placeholder = 'Confirm your password' name = 'confirm_password'>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+
+                    <!-- Car info -->
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <h2 class="register_title2">Car information</h2>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <h6 class="input_title">Make</h6>
+                            <input type = 'text' class="body form-control text_input loginFormInput" placeholder = "Enter make" name = 'make'>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <h6 class="input_title">Model</h6>
+                            <input type = 'text' class="body form-control text_input loginFormInput" placeholder = "Enter model" name = 'model'>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <h6 class="input_title"> Year</h6>
+                            <input type = 'number' class="body form-control text_input loginFormInput"  min="1881" max="2022" step="1"  placeholder = 'Enter year' name = 'year'>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <h6 class="input_title">Last 4 of car's license plate</h6>
+                            <input type = 'text' class="body form-control text_input loginFormInput" placeholder = 'Enter license plate' name = 'licensePlate'>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <h6 class="input_title">Color</h6>
+                            <input type = 'text' class="body form-control text_input loginFormInput" placeholder = "Enter color" name = 'color'>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <div class='g-recaptcha' data-sitekey='6LcdvfkZAAAAANZYnLTRvlsXFYDtim_Kz33h16m5'></div>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                        <div class="col main">
+                            <button class = 'btn btn-primary' type = 'submit'>
+                                <!-- <i class="iconly-Profile btn_icon"></i> -->
+                                Create Account
+                            </button>
+                        </div>
+                        <div class="col-xs-0 col-lg-4 side"></div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                    <div class="col main">
+                        <center>
+                            <p class="caption btn-caption">Already have an account? <a href="./login.php"> Log in</a></p>
+                        </center>
+                    </div>
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                </div>
+            </div>
         </div>
         <?php   include("./javaScript/javaScript.html"); ?>
     </body>
@@ -46,11 +190,11 @@
 
         var response = grecaptcha.getResponse();
         if (response.length == 0){
-        
+
             alert('Please verify you are human!')
             return false;\n}
         else{
-            
+
             return true;
         }
     }
@@ -75,7 +219,7 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['firstName']) && !em
 
 
     //echo "name: $name , lastname: $lname, userName: $userName , email: $email , password: $password , confirm: $confirm_password, Make: $make, Model = $model, Year: $year, licenseplate: $licensePlate";
-    
+
     if ($password == $confirm_password){
 
         $sql = $db->prepare("SELECT * FROM Users WHERE userName = ? OR email = ? OR licensePlate = ?");
@@ -85,9 +229,9 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['firstName']) && !em
         if ($res = $sql->get_result()){
 
             $row = $res->FETCH_ASSOC();
-            
+
             $exists = '';
-            
+
             if ($row['userName'] == $userName){
 
                 $exists .= 'UserName taken<br>';
