@@ -9,7 +9,7 @@ if ($_SESSION['active']){
 
 
     <head>
-        <title>Login</title>
+        <title>Log in</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="./CSS/dist/css/style.css">
         <link rel = 'stylesheet' type='text/css' href = './CSS/color_palette.css'>
@@ -147,7 +147,8 @@ if ($_SESSION['active']){
                         //echo "<br>Session name = {$_SESSION['name']}<br>";
                         //print_r($_SESSION);
                         //echo "<br>user = {$_SESSION['userName']}";
-                        header("location: index.php");
+                        echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
+                        // header("location: index.php");
                         exit();
                     }
                     else{
