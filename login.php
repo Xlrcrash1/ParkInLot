@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 
@@ -9,49 +9,99 @@ if ($_SESSION['active']){
 
 
     <head>
-        <title>Login</title>
-
-        <?php   include('./CSS/bootStrap.html');    ?>
-        <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
+        <title>Log in</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="./CSS/dist/css/style.css">
+        <link rel = 'stylesheet' type='text/css' href = './CSS/color_palette.css'>
+        <link rel = 'stylesheet' type='text/css' href = './CSS/type_scale.css'>
+        <link rel = 'stylesheet' type='text/css' href = './CSS/style.css'>
     </head>
-    
+
     <body>
-        
-        <?php   include('nav.php'); 
-        
-        require('SQLconnect.php'); ?>
-        
-        <p>You're not signed in yet...</p>
-        
-        <div class ='ParkInLotLogo'>
-            
-            <img src = './Images/ParkInLot.jpg' class='loginLogo'>
-        </div>
-        
+
+        <?php
+            // include('nav.php');
+            require('SQLconnect.php');
+        ?>
+
+        <!-- <p>You're not signed in yet...</p> -->
+
         <div class = 'container'>
-        
-        <form method = "POST" class = "loginForm">
-            <div class="form-group">
-                <!--<label for="exampleInputEmail1">UserName/Email</label>-->
-                <input type="Uname" class="form-control loginFormInput" id="Uname" aria-describedby="emailHelp" placeholder="Enter UserName or Email" name = "Uname">
-                <small id="emailHelp" class="form-text text-muted"><a href="forgotUsername.php">Forgot your username?</a></small>
-            </div>
-            <div class="form-group">
-                <!--<label for="exampleInputPassword1">Password</label>-->
-                <input type="password" class="form-control loginFormInput" id="password" aria-describedby="passwordHelp" placeholder="Password" name = "password">
-                <small id="passwordHelp" class="form-text text-muted"><a href="emailPasswordReset.php">Forgot your password?</a></small>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="rememberMe">
-                <label class="form-check-label" for="rememberMe">Remember Me</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
 
-        <p>Don't have an account? <a href="register.php">Sign Up</a></p>
-            
+            <!-- logo -->
+            <div class="row">
+                <div class="col-xs-0 col-lg-4 side"></div>
+                <div class="col main">
+                    <center>
+                    <a href="./login.php">
+                        <img src = './Images/ParkInLot_Logo_Blue.png' class='loginLogo'>
+                    </a>
+                    </center>
+                </div>
+                <div class="col-xs-0 col-lg-4 side"></div>
+            </div>
 
-            <?php
+            <!-- login header-->
+            <div class="row">
+                <div class="col-xs-0 col-lg-4 side"></div>
+                <div class="col main">
+                    <h1>Log in</h1>
+                </div>
+                <div class="col-xs-0 col-lg-4 side"></div>
+            </div>
+
+            <!-- login form -->
+            <form method = "POST" class = "loginForm">
+                <div class="row">
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                    <div class="col main form-group">
+                            <!--<label for="exampleInputEmail1">UserName/Email</label>-->
+                        <input type="Uname" class="body form-control text_input loginFormInput" id="Uname" aria-describedby="emailHelp" placeholder="Email or Username" name = "Uname">
+                        <small id="emailHelp" class="endnote form-text"><a href="forgotUsername.php">Forgot your username?</a></small>
+                    </div>
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                    <div class="col main form-group">
+                        <!--<label for="exampleInputPassword1">Password</label>-->
+                        <input type="password" class="body form-control text_input loginFormInput" id="password" aria-describedby="passwordHelp" placeholder="Password" name = "password">
+                        <small id="passwordHelp" class="endnote form-text"><a href="emailPasswordReset.php">Forgot your password?</a></small>
+                    </div>
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                    <div class="col main form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Remember Me</label>
+                    </div>
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                    <div class="col main">
+                        <button type="submit" class="btn btn-primary">
+                            <!-- <i class="iconly-Login btn_icon"></i> -->
+                            Log In
+                        </button>
+                    </div>
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                </div>
+            </form>
+                <div class="row">
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                    <div class="col main">
+                        <center>
+                            <p class="caption btn-caption">Don't have an account? <a href="register.php"> Sign Up</a></p>
+                        </center>
+                    </div>
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                </div>
+        <!-- </div> -->
+
+
+        <?php
             if (!empty($_POST['Uname']) && !empty($_POST['password'])){
 
                 $userName = htmlspecialchars(trim($_POST['Uname']));/////////////////ADD SANATIZATION
@@ -61,10 +111,10 @@ if ($_SESSION['active']){
                 $sql = $db->prepare("SELECT * FROM Users WHERE userName = ? OR email = ?");
                 $sql->bind_param('ss', $userName, $userName);
                 $sql->execute();
-                
+
                 // if ($res = $db->query($sql)){
                 if ($res = $sql->get_result()){
-                    
+
                     $row = $res->FETCH_ASSOC();
                     if(password_verify($password, $row['password']) OR $row['password'] == $password) {
 
@@ -92,13 +142,13 @@ if ($_SESSION['active']){
                         // 20 - Offering and found a requester
                         // 3 - Transaction completed
                         $_SESSION['statusCode'] = 0;
-                    
                         //echo "email: {$_SESSION['email']}\n";
                         //echo "<br>Session active = {$_SESSION['active']}";
                         //echo "<br>Session name = {$_SESSION['name']}<br>";
                         //print_r($_SESSION);
                         //echo "<br>user = {$_SESSION['userName']}";
-                        header("location: index.php");
+                        echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
+                        // header("location: index.php");
                         exit();
                     }
                     else{
@@ -115,11 +165,11 @@ if ($_SESSION['active']){
             }
             else{
 
-                echo "<br><br>Please enter UserName/Email with Password.<br>\n";
-            }   
+                // echo "<br><br>Please enter UserName/Email with Password.<br>\n";
+            }
             //$_session['uname'] = 'test';
             //$_session['password'] = 'password';
-            ?>
+        ?>
 
         </div>
         <?php   include('./javaScript/javaScript.html');    ?>

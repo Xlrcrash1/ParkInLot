@@ -1,4 +1,4 @@
-<?php   require('SQLconnect.php');  
+<?php   require('SQLconnect.php');
 
 if ($_SESSION['active']){
 
@@ -8,35 +8,86 @@ if ($_SESSION['active']){
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Find UserName</title>
-        <?php   include('./CSS/bootStrap.html');    ?>
+        <title>Find Username</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel = 'stylesheet' type='text/css' href = './CSS/color_palette.css'>
+        <link rel = 'stylesheet' type='text/css' href = './CSS/type_scale.css'>
         <link rel = 'stylesheet' type='text/css' href = './CSS/style.css'>
     </head>
-    
-    <body>
-        <div class = "findUserName">
 
-            <h2>Forgot Your UserName?</h2>
-            <p>Did you forget your UserName? Enter the email associated with your account below and if it matches what is on file,
-                an email with the UserName will be sent.
-            </p>
-            <p>Did you know you can just sign in with your email address as well? - <a href='login.php'>Give it a try</a></p>
-            
-            <form method = "POST" action = "forgotUsername.php" class = "findUserNameForm">
-                
-                <div class="form-group">
-                    
-                    <!--<label for="Email">UserName/Email</label>-->
-                    <input type="email" class="form-control" id="checkEmail" aria-describedby="userNameHelp" placeholder="Enter Email" name = "checkEmail">
-                    <!--<small id="userNameHelp" class="form-text text-muted"><a href="forgotUsername.php">Forgot your username?</a></small>-->
+    <body>
+        <div class = 'container'>
+
+            <!-- logo medium -->
+            <div class="row">
+                <div class="col-xs-0 col-lg-4 side"></div>
+                <div class="col main">
+                    <center>
+                    <a href="./login.php">
+                        <img src = './Images/ParkInLot_Logo_Blue.png' class='logo_medium'>
+                    </a>
+                    </center>
                 </div>
-                <button type="submit" class="btn btn-primary" onclick = "forgotUserNameConfirm()">Submit</button>
-                <p id = 'emailCheck'></p>
+                <div class="col-xs-0 col-lg-4 side"></div>
+            </div>
+
+            <!-- forgot username header -->
+            <div class="row">
+                <div class="col-xs-0 col-lg-4 side"></div>
+                <div class="col main">
+                    <h1 class="forgot_title">Forgot username</h1>
+                </div>
+                <div class="col-xs-0 col-lg-4 side"></div>
+            </div>
+
+            <!-- text -->
+            <div class="row">
+                <div class="col-xs-0 col-lg-4 side"></div>
+                <div class="col main">
+                    <p class="body forgot_text">
+                        Enter the email associated with your account below and if it matches what is on file, an email with your username will be sent to you.
+                    </p>
+                    <br>
+                </div>
+                <div class="col-xs-0 col-lg-4 side"></div>
+            </div>
+
+            <!-- input field for email -->
+            <form method = "POST" action = "forgotUsername.php" class = "findUserNameForm">
+                <div class="row">
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                    <div class="col main">
+                        <div class="form-group">
+                            <input type="email" class="form-control text_input" id="checkEmail" aria-describedby="userNameHelp" placeholder="Enter email" name = "checkEmail">
+                            <p id = 'emailCheck'></p>
+                        </div>
+                    </div>
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                </div>
+                <!-- submit button -->
+                <div class="row">
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                    <div class="col main">
+                        <button type="submit" class="btn btn-primary" onclick = "forgotUserNameConfirm()">Submit</button>
+                    </div>
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                </div>
             </form>
+
+            <!-- login link -->
+            <div class="row">
+                <div class="col-xs-0 col-lg-4 side"></div>
+                <div class="col main ">
+                    <center>
+                    <p class="caption btn-caption">Did you know you can log in with your email too?<br><a href='login.php'>Give it a try</a></p>
+                    </center>
+                </div>
+                <div class="col-xs-0 col-lg-4 side"></div>
+            </div>
         </div>
 
         <!--<script>
-            
+
             function forgotUserNameConfirm(){
 
                 var txt;
@@ -68,7 +119,7 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
     if ($res = $db->query($sql)){
 
         //echo "first if statement: Successful<br>\n";
-        
+
         if ($row = $res->FETCH_ASSOC()){
 
             //echo "YES, account found<br>\n";
@@ -83,7 +134,7 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
             $emailTxt = "
 
                 <html>
-                    
+
                     <head>
 
                         <title> ParkInLot - Forgot UserName </title>
@@ -97,39 +148,39 @@ if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
             ";
             //echo "Email Txt: $emailTxt<br>\n";
 
-            email("$checkEmail", "$emailTxt");        
+            email("$checkEmail", "$emailTxt");
         }
         else{
-        
+
             //echo "NO, account not found<br>\n";
             $user = "Guest";
             //echo "User's Name: $user<br>\n";
 
             $emailTxt = "
-            
+
                 <html>
-                    
+
                     <head>
 
                         <title> ParkInLot - Forgot UserName </title>
                     </head>
 
                     <body>
-                    
-                        Hi $user, It doesn't seem like you have an account, would you like to 
+
+                        Hi $user, It doesn't seem like you have an account, would you like to
                         <a href='https://odin.cs.csub.edu/~spstudios/ParkInLot/register.php'>Sign Up</a><br>\n
-                    </body>    
+                    </body>
                 </html>
             ";
             //echo "Email Txt: $emailTxt<br>\n";
 
             email("$checkEmail", "$emailTxt");
         }
-        echo "<script> 
-            
+        echo "<script>
+
             alert('Memory is Tricky, Huh? An email has been sent to $checkEmail!');
             window.location = 'login.php';
-        
+
         </script><br>\n";
         //sleep(10);
         //header('location: login.php');
@@ -146,13 +197,13 @@ function email($to, $txt){
     //echo "TO: $to<br>\n";
     $subject = "ParkInLot - Forgot UserName";
     //echo "TEXT: $txt<br>\n";
-   
+
 
     // Always set content-type when sending HTML email
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
     $headers .= "From: ParkInLot<parkinlot.com>";
- 
+
     mail($to,$subject,$txt,$headers);
 }
 ?>
