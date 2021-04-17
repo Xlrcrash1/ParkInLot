@@ -3,9 +3,9 @@
     session_start();
 
     // Check Spots table to see if the userID is already matched with a spot request
-    $checkExistingRequest = "SELECT userID, userName, parkingLot, Spots.time, carPhoto FROM SpotsDetails 
-    INNER JOIN Spots ON userID = pUserID 
-    WHERE rUserID = {$_SESSION['userID']};";
+    $checkExistingRequest = "SELECT Spots.pUserID, userName, parkingLot, Spots.time, carPhoto FROM SpotsDetails 
+    INNER JOIN Spots ON Spots.pUserID = SpotsDetails.pUserID 
+    WHERE Spots.rUserID = {$_SESSION['userID']};";
 
     $res = $db->query($checkExistingRequest);
 
@@ -22,10 +22,10 @@
 
         // Search for available parking spots
         // Take the oldest available spot in the Spots table
-        $sql = "SELECT userID, userName, parkingLot, Spots.time, carPhoto
+        $sql = "SELECT Spots.pUserID, userName, parkingLot, Spots.time, carPhoto
         FROM SpotsDetails 
-        INNER JOIN Spots ON userID = pUserID 
-        WHERE rUserID IS NULL 
+        INNER JOIN Spots ON Spots.pUserID = SpotsDetails.pUserID 
+        WHERE Spots.rUserID IS NULL 
         ORDER BY time ASC
         LIMIT 1;";
 
@@ -44,7 +44,7 @@
             // SQL Query to set user's ID to rUserID in the matched parking Spot
             // Esentially pairs the user with the spot
             $stmt = $db->prepare("UPDATE Spots SET rUserID = ?, reqStat = 1 WHERE pUserID = ?");
-            $stmt->bind_param('ss', $_SESSION['userID'], $row['userID']);
+            $stmt->bind_param('ss', $_SESSION['userID'], $row['pUserID']);
             if($stmt->execute()){
                 echo "<p>You're now paired with user: {$row['userName']}</p>";
                 $stmt->close();

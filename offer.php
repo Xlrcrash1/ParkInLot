@@ -11,11 +11,17 @@ if ($_SESSION['active'] == false){
 <!DOCTYPE = HTML>
 <html>
     <head>
-        <title>ParkInLot</title>
+    <title>ParkInLot</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="./CSS/dist/css/style.css">
+        <link rel = 'stylesheet' type='text/css' href = './CSS/color_palette.css'>
+        <link rel = 'stylesheet' type='text/css' href = './CSS/style.css'>
+        <link rel = 'stylesheet' type='text/css' href = './CSS/type_scale.css'>
+        
     <?php 
         require('SQLconnect.php');
         include('./CSS/bootStrap.html');
-        $_SESSION['statusCode'] = 0;    // Offering parking spot & requester not found yet
+        $_SESSION['statusCode'] = 0;    // statusCode 0 - User is not offering or requesting a parking spot
     ?>
     <script src="./javaScript/offerSpots.js"></script>
     <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
@@ -25,15 +31,14 @@ if ($_SESSION['active'] == false){
         <?php
         if ($_SESSION['active'] == true){   
             include('nav.php'); 
-        }
-            
-        if($_SESSION['statusCode'] == 2){
-            echo "Already Offering";
-        }
-        else{
-        ?>
+            include('updatestatus.php');
+            include('./javaScript/javaScript.html');  
 
-        <div id='status'>
+            echo $_SESSION['statusCode'] + "<br>";
+            update_status($db, $_SESSION['userID'], 0);
+            echo $_SESSION['statusCode'] + "<br>";
+            ?>
+        <div id='lot_choice'>
             <div class="form-group">
                 <label for="parking_lot">Parking Lot</label>
                 <select class="form-control" style="width:auto;" id="parking_lot">
@@ -53,6 +58,26 @@ if ($_SESSION['active'] == false){
                     <option value="M">M</option>
                 </select>
             </div>
+        </div>
+        <?php
+        }
+        if($_SESSION['statusCode'] == 2){
+            echo "<div id='offer_status'>
+                    <div class='alert alert-info'>You're already offering a parking spot. We're still looking for a requester.</div>
+                    </div>";
+        } elseif($_SESSION['statusCode'] == 20) {
+            echo "<div id='offer_status'>
+                    <div class='alert alert-info'>You're already paired with a user. Please click the More Information button to view more information.<br>
+                    <button type='button' class='btn btn-success' id='btnDetails' onclick='updateOffer()'>More Information</button>
+                    </div>
+                </div>";
+        } elseif($_SESSION['statusCode'] == 10){
+            echo "<div id='offer_status'>
+                <div class='alert alert-danger'>You're currently requesting a spot an paried with a user. Please cancel your request in the Spot Request page before offering a parking spot.</div>
+                </div>";
+        }else{
+        ?>
+
             <div id="offer_status">
             <div class = "alert alert-info">
                 <strong>You are not yet offering your parking spot. </strong>
@@ -60,15 +85,16 @@ if ($_SESSION['active'] == false){
             </div>
             </div>
 
-            <button type="button" class="btn btn-success" id="btnOffer" onclick="submitOffer()">Offer my Spot</button>
-            <button type="button" class="btn btn-danger" id="btnCancel" onclick="cancelOffer()">Cancel</button>
-        </div>
+            <!-- <button type="button" class="btn btn-success" id="btnOffer" onclick="submitOffer()">Offer my Spot</button> -->
+            <!-- <button type="button" class="btn btn-danger" id="btnCancel" onclick="cancelOffer()">Cancel</button> -->
 
         <?php
         }
         ?>
+            <button type="button" class="btn btn-success" id="btnOffer" onclick="submitOffer()">Offer my Spot</button>
+            <button type="button" class="btn btn-danger" id="btnCancel" onclick="cancelOffer()">Cancel</button>
         <?php 
-            include('./javaScript/javaScript.html');  
+            // include('./javaScript/javaScript.html');  
         ?>
     </body>
 </html>
