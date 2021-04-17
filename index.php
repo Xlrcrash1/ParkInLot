@@ -22,7 +22,10 @@ if ($_SESSION['active'] == false){
     <body>
         <?php
             if ($_SESSION['active'] == true){
+                require('SQLconnect.php');
                 include('nav.php');
+                include('updatestatus.php');
+                update_status($db, $_SESSION['userID'], 0);
         ?>
 
         <div class = 'container'>
