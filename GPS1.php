@@ -45,3 +45,18 @@
       
    </body>
 </html>
+
+<!--navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+        var marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            title: 'Your position'
+        });
+        map.setCenter(pos);
+    }, function() {
+        //handle location error (i.e. if user disallowed location access manually)
+    });-->
