@@ -1,5 +1,5 @@
 <?php
-    require('SQLconnect.php');
+    require('../SQLconnect.php');
     session_start();
 
     // Check Spots table to see if the userID is already matched with a spot request

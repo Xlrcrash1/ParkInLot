@@ -3,7 +3,7 @@
 session_start();
 if ($_SESSION['active'] == false){
 
-    header('location: login.php'); exit();
+    header('location: ../login.php'); exit();
 }
 
 ?>
@@ -13,23 +13,23 @@ if ($_SESSION['active'] == false){
     <head>
     <title>ParkInLot</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="./CSS/dist/css/style.css">
-        <link rel = 'stylesheet' type='text/css' href = './CSS/color_palette.css'>
-        <link rel = 'stylesheet' type='text/css' href = './CSS/style.css'>
-        <link rel = 'stylesheet' type='text/css' href = './CSS/type_scale.css'>
+        <link rel="stylesheet" href="../CSS/dist/css/style.css">
+        <link rel = 'stylesheet' type='text/css' href = '../CSS/color_palette.css'>
+        <link rel = 'stylesheet' type='text/css' href = '../CSS/style.css'>
+        <link rel = 'stylesheet' type='text/css' href = '../CSS/type_scale.css'>
     <?php 
-        require('SQLconnect.php');
-        include('./CSS/bootStrap.html');
+        require('../SQLconnect.php');
+        include('../CSS/bootStrap.html');
     ?>
-    <script src="./javaScript/checkSpots.js"></script>
-    <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
+    <script src="../javaScript/requestSpots.js"></script>
+    <link rel = 'stylesheet' type = 'text/css' href = '../CSS/style.css'>
 
     </head>
     <body>
         <?php
             if ($_SESSION['active'] == true){   
-                include('nav.php'); 
-                include('updatestatus.php');
+                include('./nav.php'); 
+                include('../updatestatus.php');
                 update_status($db, $_SESSION['userID'], 1);
         ?>
 
@@ -83,7 +83,7 @@ if ($_SESSION['active'] == false){
             }
             
         }
-            include('./javaScript/javaScript.html');  
+            include('../javaScript/javaScript.html');  
         ?>
         </div>
         <button type="button" class="btn btn-success" id="btnRequest" onclick="submitRequest()">Request a Spot</button>

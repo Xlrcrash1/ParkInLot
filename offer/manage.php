@@ -1,6 +1,6 @@
 <?php
-    require('SQLconnect.php');
-    include('updatestatus.php');
+    require('../SQLconnect.php');
+    include('../updatestatus.php');
 
     session_start();
 

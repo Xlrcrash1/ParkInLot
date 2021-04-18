@@ -3,7 +3,7 @@
 session_start();
 if ($_SESSION['active'] == false){
 
-    header('location: login.php'); exit();
+    header('location: ./login.php'); exit();
 }
 
 ?>
@@ -13,26 +13,26 @@ if ($_SESSION['active'] == false){
     <head>
     <title>ParkInLot</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="./CSS/dist/css/style.css">
-        <link rel = 'stylesheet' type='text/css' href = './CSS/color_palette.css'>
-        <link rel = 'stylesheet' type='text/css' href = './CSS/style.css'>
-        <link rel = 'stylesheet' type='text/css' href = './CSS/type_scale.css'>
+        <link rel="stylesheet" href="../CSS/dist/css/style.css">
+        <link rel = 'stylesheet' type='text/css' href = '../CSS/color_palette.css'>
+        <link rel = 'stylesheet' type='text/css' href = '../CSS/style.css'>
+        <link rel = 'stylesheet' type='text/css' href = '../CSS/type_scale.css'>
         
     <?php 
-        require('SQLconnect.php');
-        include('./CSS/bootStrap.html');
+        require('../SQLconnect.php');
+        include('../CSS/bootStrap.html');
         $_SESSION['statusCode'] = 0;    // statusCode 0 - User is not offering or requesting a parking spot
     ?>
-    <script src="./javaScript/offerSpots.js"></script>
-    <link rel = 'stylesheet' type = 'text/css' href = './CSS/style.css'>
+    <script src="../javaScript/offerSpots.js"></script>
+    <link rel = 'stylesheet' type = 'text/css' href = '../CSS/style.css'>
 
     </head>
     <body>
         <?php
         if ($_SESSION['active'] == true){   
-            include('nav.php'); 
-            include('updatestatus.php');
-            include('./javaScript/javaScript.html');  
+            include('./nav.php'); 
+            include('../updatestatus.php');
+            include('../javaScript/javaScript.html');  
 
             echo $_SESSION['statusCode'] + "<br>";
             update_status($db, $_SESSION['userID'], 0);
@@ -66,6 +66,7 @@ if ($_SESSION['active'] == false){
                     <div class='alert alert-info'>You're already offering a parking spot. We're still looking for a requester.</div>
                     </div>";
             echo "<div id='comp_status'></div>";
+            echo "<script>spotCheck();</script>";
 
         } elseif($_SESSION['statusCode'] == 20) {
             echo "<div id='offer_status'>
