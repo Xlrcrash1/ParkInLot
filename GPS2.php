@@ -12,25 +12,33 @@
     <p id="demo"></p>
 
     <script>
+        var counter = 0;
+
         var x = document.getElementById("demo");
 
-        //var timeout = setInterval(getLocation, 5000);
-
-        //function getLocation (){
-
+        var i = setInterval(function(){
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
             } else { 
                 x.innerHTML = "Geolocation is not supported by this browser.";
             }
 
-            //setInterval(getLocation, 5000);
-        //}
+    counter++;
+    /*if(counter === 10) {
+        clearInterval(i);
+    }*/
+}, 2000);
+        
+            /*if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }*/
         
 
         function showPosition(position) {
             x.innerHTML = "Latitude: " + position.coords.latitude + 
-            "<br>Longitude: " + position.coords.longitude;
+            "<br>Longitude: " + position.coords.longitude + "<br>counter: " + counter;
         }
 
     </script>
