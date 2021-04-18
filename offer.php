@@ -65,25 +65,34 @@ if ($_SESSION['active'] == false){
             echo "<div id='offer_status'>
                     <div class='alert alert-info'>You're already offering a parking spot. We're still looking for a requester.</div>
                     </div>";
+            echo "<div id='comp_status'></div>";
+
         } elseif($_SESSION['statusCode'] == 20) {
             echo "<div id='offer_status'>
                     <div class='alert alert-info'>You're already paired with a user. Please click the More Information button to view more information.<br>
-                    <button type='button' class='btn btn-success' id='btnDetails' onclick='updateOffer()'>More Information</button>
+                    <button type='button' class='btn btn-success' id='btnUpdate' onclick='updateOffer()'>More Information</button>
                     </div>
                 </div>";
+
+            echo "<div id='comp_status'></div>";
+
         } elseif($_SESSION['statusCode'] == 10){
             echo "<div id='offer_status'>
                 <div class='alert alert-danger'>You're currently requesting a spot an paried with a user. Please cancel your request in the Spot Request page before offering a parking spot.</div>
                 </div>";
+            echo "<div id='comp_status'></div>";
+
         }else{
         ?>
 
             <div id="offer_status">
-            <div class = "alert alert-info">
-                <strong>You are not yet offering your parking spot. </strong>
-                <br>Please enter your parking lot to continue or you can click <strong>Cancel</strong> if you would like to cancel your offer.
+                <div class = "alert alert-info">
+                    <strong>You are not yet offering your parking spot. </strong>
+                    <br>Please enter your parking lot to continue or you can click <strong>Cancel</strong> if you would like to cancel your offer.
+                </div>
             </div>
-            </div>
+
+            <div id='comp_status'></div>
 
             <!-- <button type="button" class="btn btn-success" id="btnOffer" onclick="submitOffer()">Offer my Spot</button> -->
             <!-- <button type="button" class="btn btn-danger" id="btnCancel" onclick="cancelOffer()">Cancel</button> -->

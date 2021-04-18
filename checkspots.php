@@ -14,7 +14,10 @@
         User Name: {$row['userName']}<br>
         Parking Lot: {$row['parkingLot']}<br>
         <img src='{$row['carPhoto']}' alt='Car Photo'
-                style='max-width: 50%;'><br>";
+                style='max-width: 50%;'><br>
+                <button type='button' class='btn btn-success' id='btnDetails' onclick='viewDetails()'>View Details</button>
+                <button type='button' class='btn btn-success' id='btnComplete' onclick='completeTrade()'>Complete Trade</button><br>
+                </div>";
         
         $_SESSION['statusCode'] = 10;   // Status code 10 - User has requested and been paired with a parking spot
         $res->close();
@@ -46,7 +49,10 @@
             $stmt = $db->prepare("UPDATE Spots SET rUserID = ?, reqStat = 1 WHERE pUserID = ?");
             $stmt->bind_param('ss', $_SESSION['userID'], $row['pUserID']);
             if($stmt->execute()){
-                echo "<p>You're now paired with user: {$row['userName']}</p>";
+                echo "<p>You're now paired with user: {$row['userName']}</p><br>
+                <button type='button' class='btn btn-success' id='btnDetails' onclick='viewDetails()'>View Details</button>
+                <button type='button' class='btn btn-success' id='btnComplete' onclick='completeTrade()'>Complete Trade</button>
+                </div>";
                 $stmt->close();
             }
             $res->close();
