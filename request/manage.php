@@ -1,6 +1,6 @@
 <?php
 
-    require('SQLconnect.php');
+    require('../SQLconnect.php');
     session_start();
     $action = $_POST['action']; // Action to perform when requesting a spot (Add, Cancel)
     $status = $_POST['status']; // Status of the user

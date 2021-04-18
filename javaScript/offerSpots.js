@@ -5,7 +5,7 @@ function getStatus(){
     var status = 0;
     $.ajax({
         method:"POST",
-        url:"checkstatus.php",
+        url:"../getstatus.php",
         datatype:"json",
         data:{isOnReqPage: 0},
         async: false,
@@ -37,7 +37,7 @@ function offerParkingSpot(parkingLot){
 
     $.ajax({
         method: "POST",
-        url: "manageOffer.php",
+        url: "manage.php",
         data: 
         {
             action:"add",
@@ -57,7 +57,7 @@ function cancelOffer(){
 
     $.ajax({
         method: "POST",
-        url: "manageOffer.php",
+        url: "manage.php",
         data: 
         {
             action:"cancel",
@@ -70,19 +70,19 @@ function cancelOffer(){
 };
 
 function spotCheck(){
-    var status = getStatus();
+    var statusCode = getStatus();
 
     spotLoop = setInterval(function(){
-        console.log(status);
-        if (status == 20){
+        console.log(statusCode);
+        if (statusCode == 20){
             clearInterval(spotLoop);
             checkCompletion();
             console.log("first check");
-        } else if (status == 2){
-            status = getStatus();
+        } else if (statusCode == 2){
+            statusCode = getStatus();
             $.ajax({
                 method:"POST",
-                url:"getofferstatus.php",
+                url:"offerstatus.php",
                 datatype:"html",
                 success:function(data){
                     $("#offer_status").html(data);
@@ -93,21 +93,21 @@ function spotCheck(){
             $("#offer_status").html(output);
         }
 
-        if (status == 20){
+        if (statusCode == 20){
             clearInterval(spotLoop);
             checkCompletion();
             console.log("second check");
 
         }
     }, 5000);
-    if (status == 20){
+    if (statusCode == 20){
         clearInterval(spotLoop);
         checkCompletion();
         console.log("third check");
     }
 };
 function offerDetails(){
-    location.href = "offerdetails.php";
+    location.href = "details.php";
 };
 
 function updateOffer(){
@@ -116,7 +116,7 @@ function updateOffer(){
 
     $.ajax({
         method: "POST",
-        url: "manageOffer.php",
+        url: "manage.php",
         data: 
         {
             action:"update",
@@ -124,6 +124,7 @@ function updateOffer(){
         dataType: "html",
         success:function(data){
             $("#offer_status").html(data)
+            checkCompletion();
         }
     });
 

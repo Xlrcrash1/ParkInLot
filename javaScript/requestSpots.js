@@ -1,7 +1,7 @@
 function cancelRequest(){ // Called when Cancel button is clicked
     $.ajax({    // Ajax function calls manageRequest.php and with "cancel" action
         method:"POST",
-        url:"manageRequest.php",
+        url:"manage.php",
         data:{action:"cancel", status:0},
         datatype:"html",
         success:function(data){
@@ -15,9 +15,9 @@ function submitRequest(){ // Called when Request button is clicked
 
     var status = getStatus();
     console.log('status' + status);
-    $.ajax({    // Ajax function calls checkstatus.php to check for the status code for the user
+    $.ajax({    // Ajax function calls getstatus.php to check for the status code for the user
         method:"POST",
-        url:"checkstatus.php",
+        url:"../getstatus.php",
         data:{isOnReqPage: 1},
         datatype:"json",
         success:function(statusCode){
@@ -52,7 +52,7 @@ function getStatus(){
     var status = 0;
     $.ajax({
         method:"POST",
-        url:"checkstatus.php",
+        url:"../getstatus.php",
         datatype:"json",
         data:{isOnReqPage: 1},
         async: false,
@@ -70,7 +70,7 @@ function getStatus(){
 };
 
 function viewDetails(){
-    location.href = "requestdetails.php";
+    location.href = "details.php";
 };
 
 function completeTrade(){
@@ -78,7 +78,7 @@ function completeTrade(){
 
     $.ajax({
         method:"POST",
-        url:"manageRequest.php",
+        url:"manage.php",
         data:{action:"complete"},
         datatype:"html",
         success:function(data){
@@ -93,21 +93,21 @@ var spotCheck = setInterval(function()  // Creating var spotCheck as a setInterv
 
     console.log(stat);
     if(stat == 1 || stat == 10 || stat == 0){
-        $.ajax({    // Ajax function which calls checkspots.php to check for available parking spots
+        $.ajax({    // Ajax function which calls requeststatus.php to check for available parking spots
             method:"POST",
-            url:"checkspots.php",
+            url:"requeststatus.php",
             datatype:"html",
             success:function(data){
                 
                 // Clear div #request_status
                 document.getElementById("request_status").innerHTML = "";
 
-                // Output new status based on html data received from checkspots.php
+                // Output new status based on html data received from requeststatus.php
                 $("#request_status").html(data)
 
-                $.ajax({    // Ajax function calls checkstatus.php to retrieve the user's status code
+                $.ajax({    // Ajax function calls getstatus.php to retrieve the user's status code
                     method:"POST",
-                    url:"checkstatus.php",
+                    url:"../getstatus.php",
                     data:{isOnReqPage: 1},
                     datatype:"json",
                     success:function(statusCode){

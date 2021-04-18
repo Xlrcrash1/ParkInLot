@@ -1,8 +1,8 @@
 <?php
 
     session_start();
-    require('SQLconnect.php');
-    include('updatestatus.php');
+    require('../SQLconnect.php');
+    include('../updatestatus.php');
 
     $spotQuery = "SELECT * FROM Spots WHERE pUserID = {$_SESSION['userID']};";
     

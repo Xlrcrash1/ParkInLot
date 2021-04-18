@@ -1,8 +1,8 @@
 <?php
-    require('SQLconnect.php');
+    require('../SQLconnect.php');
     session_start();
 
-    include('updatestatus.php');
+    include('../updatestatus.php');
     update_status($db, $_SESSION['userID'], 0);
 
     if($_SESSION['statusCode'] == 20){
