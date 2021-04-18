@@ -13,6 +13,7 @@ if ($_SESSION['active']){
         <link rel = 'stylesheet' type='text/css' href = './CSS/color_palette.css'>
         <link rel = 'stylesheet' type='text/css' href = './CSS/type_scale.css'>
         <link rel = 'stylesheet' type='text/css' href = './CSS/style.css'>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
 
     <body>
@@ -64,6 +65,13 @@ if ($_SESSION['active']){
                     </div>
                     <div class="col-xs-0 col-lg-4 side"></div>
                 </div>
+                <div class="row">
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                    <div class="col main">
+                        <div class='g-recaptcha' data-sitekey='6LcdvfkZAAAAANZYnLTRvlsXFYDtim_Kz33h16m5'></div>
+                    </div>
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                </div>
                 <!-- submit button -->
                 <div class="row">
                     <div class="col-xs-0 col-lg-4 side"></div>
@@ -107,7 +115,7 @@ if ($_SESSION['active']){
 </html>
 
 <?php
-if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail'])){
+if (isset($_POST['checkEmail']) & !empty($_POST['checkEmail']) && ($_POST["g-recaptcha-response"] != '')){
 
     $checkEmail = htmlspecialchars(trim($_POST['checkEmail']));/////////////////ADD SANATIZATION
 
