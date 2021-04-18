@@ -1,4 +1,5 @@
 var spotLoop;
+var completionLoop;
 
 function getStatus(){
     var status = 0;
@@ -75,6 +76,8 @@ function spotCheck(){
         console.log(status);
         if (status == 20){
             clearInterval(spotLoop);
+            checkCompletion();
+            console.log("first check");
         } else if (status == 2){
             status = getStatus();
             $.ajax({
@@ -92,10 +95,15 @@ function spotCheck(){
 
         if (status == 20){
             clearInterval(spotLoop);
+            checkCompletion();
+            console.log("second check");
+
         }
     }, 5000);
     if (status == 20){
         clearInterval(spotLoop);
+        checkCompletion();
+        console.log("third check");
     }
 };
 function offerDetails(){
@@ -119,7 +127,43 @@ function updateOffer(){
         }
     });
 
-}
+};
+
+function checkCompletion(){
+    var status = getStatus();
+
+    var compStatus = document.getElementById('comp_status');
+    compStatus.innerHTML = "";
+
+    completionLoop = setInterval(function(){
+        status = getStatus();
+
+        compStatus.innerHTML = "";
+
+        $.ajax({
+            method:"POST",
+            url:"checkcompletion.php",
+            datatype:"html",
+            success:function(data){
+                if(status == 0){
+                    clearInterval(completionLoop);
+                    $("#comp_status").html(data);
+                } else if (status == 2){
+                    clearInterval(completionLoop);
+                    $("#offer_status").html(data);
+                    spotCheck();
+                } else{
+                    $("#comp_status").html(data);
+                }
+            }
+        });
+
+        if(status == 0){
+            clearInterval(completionLoop);
+        }
+
+    }, 5000);
+};
 
 // document.getElementById("myButton").onclick = function () {
 //     location.href = "www.yoursite.com";

@@ -58,6 +58,23 @@
             $_SESSION['statusCode'] = 1;
         }
         // echo "updatestatusphp <br>" . $_SESSION['statusCode'] . "<br>";
+
+
+        // $tokenQuery = $conn->prepare("SELECT tokens FROM Users WHERE userID = ?");
+        // $tokenQuery->bind_param('s', $_SESSION['userID']);
+        $tokenQuery = "SELECT * FROM Users WHERE userID = {$userID};";
+
+        // $tokenResult = $conn->query($tokenQuery);
+        // $row3 = $tokenResult->FETCH_ASSOC();
+
+        $_SESSION['tokens'] = $row3['tokens'];
+        if ($tokenResult = $conn->query($tokenQuery)){
+            $row3 = $tokenResult->FETCH_ASSOC();
+            $_SESSION['tokens'] = $row3['tokens'];
+        }
+
+        $tokenResult->close();
+
     }
 
     ?>

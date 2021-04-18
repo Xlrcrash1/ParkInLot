@@ -68,6 +68,25 @@ function getStatus(){
     });
     return status;
 };
+
+function viewDetails(){
+    location.href = "requestdetails.php";
+};
+
+function completeTrade(){
+    document.getElementById("request_status").innerHTML = ""
+
+    $.ajax({
+        method:"POST",
+        url:"manageRequest.php",
+        data:{action:"complete"},
+        datatype:"html",
+        success:function(data){
+            $("#request_status").html(data)
+            console.log(data);
+        }
+    });
+};
 var spotCheck = setInterval(function()  // Creating var spotCheck as a setInterval function which runs every 5 seconds
 { 
     var stat = getStatus();
