@@ -140,7 +140,7 @@ if ($_SESSION['active'] == false){
             <div class="row">
                 <div class="col-xs-0 col-lg-4 side"></div>
                 <div class="col main">
-                    <button type="button" class="btn btn-primary btn-request" id="btnRequest" onclick="window.location.href='request.php';">
+                    <button type="button" class="btn btn-primary btn-request" id="btnRequest" onclick="window.location.href='./request/request.php';">
                         <!-- <i class="iconly-Location icli btn_icon"></i> -->
                         Find a Spot
                     </button>
@@ -151,7 +151,7 @@ if ($_SESSION['active'] == false){
             <div class="row">
                 <div class="col-xs-0 col-lg-4 side"></div>
                 <div class="col main">
-                    <button type="button" class="btn btn-primary btn-offer" id="btnOffer" onclick="window.location.href='offer.php';">
+                    <button type="button" class="btn btn-primary btn-offer" id="btnOffer" onclick="window.location.href='./offer/offer.php';">
                             Give a Spot
                     </button>
                 </div>
