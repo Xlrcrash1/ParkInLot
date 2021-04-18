@@ -21,7 +21,7 @@
     </style>
     <script>
 
-var lotA = {lat: 35.351902, lng: -119.103161};
+var lotA = {lat: 35.50950668816413, lng: -119.2692223161934};
 //var myLocation = {lat: 35.51323466431219, lng: -119.2874653723435};
 var bounds;
 
@@ -68,7 +68,8 @@ icon: './Images/googleMapsIcons/car2.png'
 
 marker = new google.maps.Marker({
   position: lotA,
-  map: map
+  map: map,
+  title: 'Parking Here'
 });
 
 bounds = new google.maps.LatLngBounds();
