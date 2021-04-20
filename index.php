@@ -119,10 +119,12 @@ if ($_SESSION['active'] == false){
                 <div class="row">
                     <div class="col-xs-0 col-lg-4 side"></div>
                     <div class="col main">
-                        <input type='radio' id='usersTable' name='usersTable' value='select * from Users'>
+                        <input type='radio' id='usersTable' name='databaseQuery' value='select * from Users'>
                         <label for='usersTable'>Users Table</label><br>
-                        <input type='radio' id='spotHistory' name='spotHistory' value='select * from spotsHistory'>
-                        <label for='spotHistory'>Spot History</label><br>
+                        <input type='radio' id='spotHistory' name='databaseQuery' value='select * from Spots'>
+                        <label for='spotHistory'>Available Spots</label><br>
+                        <input type='radio' id='passwordReset' name='databaseQuery' value='select * from passwordReset'>
+                        <label for='passwordReset'>Password Reset</label><br>
                         <button type ='submit' class="btn btn-primary" value = 'View Table'>
                             <!-- <i class="iconly-Paper btn_icon"></i> -->
                             View Table
