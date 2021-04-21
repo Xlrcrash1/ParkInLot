@@ -232,7 +232,7 @@
                 <div class="col-xs-0 col-lg-4 side"></div>
             </div>
 
-        </div>
+
 
         </form>
 
@@ -349,24 +349,60 @@
                 // echo "License Plate has been updated to {$_POST['updateLicensePlate']}\n<br><br>";
             }
         ?>
-
-        <form action="upload.php" enctype="multipart/form-data" method="POST">
-                Choose Image : <input name="img" size="35" type="file"/><br/>
-                <input type="submit" name="submit" value="Upload"/>
-        </form>
-
-        <div class = 'updatePassword'>
-            <button class = 'accordion'>Change Password</button>
-            <div class = 'panel'>
-                <form method = 'POST'>
-                    <h5>Current Password: <input type = 'password' name = 'current_password'></input>
-                    <h5>New Password: <input type = 'password' name = 'new_password'></input>
-                    <h5>Confirm Password: <input type = 'password' name = 'confirm_password'></input><br>
+        <br><br>
+        <div class="row">
+            <div class="col-xs-0 col-lg-4 side"></div>
+            <div class="col main">
+                <form action="upload.php" enctype="multipart/form-data" method="POST">
+                    <h4>Choose Image:</h4>
                     <br>
-                    <button class = 'update' type = 'submit'>Update Password</button>
+                    <input name="img" size="35" type="file"/>
+                    <br><br>
+                    <input type="submit" class="btn btn-outline" name="submit" value="Upload Image"/>
                 </form>
             </div>
+            <div class="col-xs-0 col-lg-4 side"></div>
         </div>
+        <br><br>
+        <div class="row">
+            <div class="col-xs-0 col-lg-4 side"></div>
+            <div class="col main">
+                <div class = 'updatePassword'>
+                    <button class = 'accordion'>Change Password</button>
+                    <div class = 'panel'>
+                        <form method = 'POST'>
+                            <div class="row">
+                                <div class="col main">
+                                    <h5>Current Password: <input type = 'password' name = 'current_password'></input>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col main">
+                                    <h5>New Password: <input type = 'password' name = 'new_password'></input>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col main">
+                                    <h5>Confirm Password: <input type = 'password' name = 'confirm_password'></input><br>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col main">
+                                    <button class = 'update' type = 'submit'>Update Password</button>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-0 col-lg-4 side"></div>
+        </div>
+
         <?php
             //echo "currentPassword = {$_POST['current_password']} and newpassword = {$_POST['new_password']} and confirm_password = {$_POST['confirm_password']}\n";
             if (!empty($_POST['current_password']) and !empty($_POST['new_password']) and !empty($_POST['confirm_password'])){
@@ -431,9 +467,15 @@
 
         <?php $uName = $_SESSION['userName']; ?>
 
-        <div class = 'delete_account'>
-            <button class = 'delete_btn' onclick = "deleteAccount('<?php echo $uName;?>')">Delete Account</button>
-            <div id="delete_status"></div>
+        <div class="row">
+            <div class="col-xs-0 col-lg-4 side"></div>
+            <div class="col main">
+                <div class = 'delete_account'>
+                    <button class = 'btn btn-danger delete_btn' onclick = "deleteAccount('<?php echo $uName;?>')">Delete Account</button>
+                    <div id="delete_status"></div>
+                </div>
+            </div>
+            <div class="col-xs-0 col-lg-4 side"></div>
         </div>
 
         <script>
@@ -468,9 +510,10 @@
                 }
             }
         </script>
-
+        <br><br><br>
      <?php
      include('./javaScript/javaScript.html');
      ?>
+     </div>
     </body>
 </html>
