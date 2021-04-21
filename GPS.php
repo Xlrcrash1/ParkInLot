@@ -1,3 +1,31 @@
+<?php
+ 
+session_start();
+require('SQLconnect.php');
+
+echo "testing\n";
+
+if ($_SESSION['active']){    
+
+  $sql = "select * from lotLocation where lotName='M'";
+  //echo "SQL Statement: $sql\n<br>";
+
+  if ($res = $db->query($sql)){
+
+  //echo "succssful sql query<br>\n";
+  $row = $res->FETCH_ASSOC();
+  //echo "1st  Fetch Assoc success\n<br>";
+  //echo    "<td>{$row['latitude']}</td><br>\n";
+  //echo    "<td>{$row['longitude']}</td><br>\n";
+  $gpslat = "{$row['latitude']}"; 
+  $gpslng = "{$row['longitude']}";
+
+  }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,20 +48,17 @@
 
     </style>
     <script>
+
+      var phptest = {lat: parseFloat(<?php echo $gpslat;?>), lng: parseFloat(<?php echo $gpslng;?>)};
+      //console.log(phptest);
+      //console.log(typeof phptest);
+
+
       var rMarker = 0
 
       var parkingSpotLocation = {lat: 35.351902, lng: -119.103161};
       var bounds;
 
-      function showLocation(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        alert("Latitude : " + latitude + " Longitude: " + longitude);
-      }
-      // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
       let map, infoWindow;
 
       function initMap() {
@@ -44,7 +69,7 @@
           disabledDoubleClickZoom: true,
           draggable: false,
           pancontrol: false,
-          //streetViewControl: false
+          streetViewControl: false
           disableDefaultUI: true
         });
 
@@ -73,8 +98,10 @@
 
 
               pMarker = new google.maps.Marker({
-                position: parkingSpotLocation,
-                map: map
+                //position: parkingSpotLocation,  //This one is hard-coded for testing
+                position: phptest,
+                map: map,
+                icon: './Images/googleMapsIcons/car2.png'
               });
 
               bounds = new google.maps.LatLngBounds();

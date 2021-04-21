@@ -122,12 +122,12 @@ if ($_SESSION['active'] && $_SESSION['access'] > 1){    ?>
                             $row = $res->FETCH_ASSOC();
                             //echo "2nd Fetch Assoc successful<br>\n";
         
-                            $maxUsers = $row['max(puserID)'];
-                            //echo "maxUsers = $maxUsers<br>\n";   
+                            $maxSpots = $row['max(puserID)'];
+                            //echo "maxUsers = $maxSpots<br>\n";   
                         }
                     }
         
-                    //echo "maxUsers right outside of loop: $maxUsers<br>\n";
+                    //echo "maxUsers right outside of loop: $maxSpots<br>\n";
                     ?>
                     <table class="table table-hover table-dark">
                         <thead class="thead-dark">
@@ -145,7 +145,7 @@ if ($_SESSION['active'] && $_SESSION['access'] > 1){    ?>
         
                         <tbody>
                             <?php 
-                            for ($num = 1; $num <= $maxUsers; $num++){
+                            for ($num = 1; $num <= $maxSpots; $num++){
                                 
                                 //echo "User number: $num<br>\n";
                                 if ($_SESSION['access'] > 1){
@@ -253,7 +253,75 @@ if ($_SESSION['active'] && $_SESSION['access'] > 1){    ?>
                             ?>
                         </tbody>
                     </table>   
-                <?php } 
+                    <?php 
+                }elseif ($sql == 'select * from lotLocation'){
+
+                    if ($res = $db->query($sql)){
+        
+                        //echo "succssful sql query<br>\n";
+                        $row = $res->FETCH_ASSOC();
+                        //echo "1st  Fetch Assoc successful<br>\n";
+        
+                        //Sub query for max number of entries 
+                        $sql2 = "select max(lotID) from lotLocation;";
+                        //echo "SQL2 Statement: $sql2<br>\n";
+        
+                        if ($res = $db->query($sql2)){
+        
+                            //echo "successful second sql query<br>\n";
+        
+                            $row = $res->FETCH_ASSOC();
+                            //echo "2nd Fetch Assoc successful<br>\n";
+        
+                            $maxLot = $row['max(lotID)'];
+                            //echo "maxUsers = $maxLot<br>\n";   
+                        }
+                    }
+        
+                    //echo "maxUsers right outside of loop: $maxLot<br>\n";
+                    ?>
+                    <table class="table table-hover table-dark">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">lotID</th>
+                                <th scope="col">lotName</th>
+                                <th scope="col">latitude</th>
+                                <th scope="col">longitude</th>
+                            </tr>
+                        </thead>
+        
+                        <tbody>
+                            <?php 
+                            for ($num = 1; $num <= $maxLot; $num++){
+                                
+                                //echo "User number: $num<br>\n";
+                                if ($_SESSION['access'] > 1){
+        
+                                    $sql = "{$_POST['databaseQuery']} where lotID=$num";
+                                    //echo "SQL statement inside for loop: $sql<br>\n";
+        
+                                    if ($res = $db->query($sql)){
+        
+                                        //echo "Successful for loop subquery<br>\n";
+                                        if ($row = $res->FETCH_ASSOC()){
+        
+                                        //Testing row assign
+                                        //echo "Testing Row Assign: {$row['userID']}<br>\n";
+        
+                                        echo    "<tr>\n";
+                                            echo    "<th scope='row'>{$row['lotID']}</th>\n";
+                                            echo    "<td>{$row['lotName']}</td>\n";
+                                            echo    "<td>{$row['latitude']}</td>\n";
+                                            echo    "<td>{$row['longitude']}</td>\n";
+                                        echo    "</tr>\n";
+                                        }
+                                    }
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>   
+                <?php }  
             
             include('./javaScript/javaScript.html');    ?>
         </body>
