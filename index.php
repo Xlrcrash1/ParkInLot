@@ -34,7 +34,7 @@ if ($_SESSION['active'] == false){
                 <div class="col-xs-0 col-lg-4 side"></div>
                 <div class="col main">
                     <img src = <?php echo "'{$_SESSION['photo']}'";?>
-                    alt='Car Photo' onerror="this.src='./Images/default.jpg';" class='profile_image'>
+                    <!-- alt='Car Photo' onerror="this.src='./Images/default.jpg';" class='profile_image'>
                 </div>
                 <div class="col-xs-0 col-lg-4 side"></div>
             </div>
@@ -144,7 +144,7 @@ if ($_SESSION['active'] == false){
             <div class="row">
                 <div class="col-xs-0 col-lg-4 side"></div>
                 <div class="col main">
-                    <button type="button" class="btn btn-primary btn-request" id="btnRequest" onclick="window.location.href='./request/request.php';">
+                    <button type="button" class="btn btn-outline" id="btnRequest" onclick="window.location.href='./request/request.php';">
                         <!-- <i class="iconly-Location icli btn_icon"></i> -->
                         Find a Spot
                     </button>
@@ -155,7 +155,7 @@ if ($_SESSION['active'] == false){
             <div class="row">
                 <div class="col-xs-0 col-lg-4 side"></div>
                 <div class="col main">
-                    <button type="button" class="btn btn-primary btn-offer" id="btnOffer" onclick="window.location.href='./offer/offer.php';">
+                    <button type="button" class="btn btn-primary" id="btnOffer" onclick="window.location.href='./offer/offer.php';">
                             Give a Spot
                     </button>
                 </div>

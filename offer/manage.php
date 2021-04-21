@@ -18,11 +18,12 @@
                 if($offerResult = $db->query($checkOfferStatus)){
                     $row = $offerResult->FETCH_ASSOC();
                     echo "<div class='alert alert-success'><strong>You've already been matched with a requester</strong><br>
-                    User Name: {$row['rUserName']}<br>
-                    <img src='{$row['rCarPhoto']}' alt='Car Photo'
-                    style='max-width: 50%;'><br>
+                    <img src='{$row['rCarPhoto']}' alt='Car Photo' onerror=\"this.src='../Images/default.jpg';\"
+                    class='profile_image_small'>
                     <br>
-                    <button type='button' class='btn btn-info' id='btnOfferDetails' onclick='offerDetails()'>View Details</button>
+                    &nbsp;{$row['rUserName']}<br>
+                    <br>
+                    <button type='button' class='btn btn-outline' id='btnOfferDetails' onclick='offerDetails()'>View Details</button>
                     <br>
                     </div>";
                 }
@@ -40,7 +41,7 @@
                     $row = $res->FETCH_ASSOC();
                     $updateSpots = $db->prepare("INSERT INTO Spots (pUserID, lPlate, parkingLot) VALUES (?, ?, ?)");
                     $updateSpots->bind_param('sss', $_SESSION['userID'], $row['licensePlate'], $parkingLot);
-        
+
                     if ($updateSpots->execute()){
                         echo "<div class='alert alert-success'>Your parking spot has been posted.<br>
                         We're looking for a requester for your spot</div>";
@@ -62,7 +63,7 @@
                 $setStatus->bind_param('i', $_SESSION['userID']);
                 $setStatus->execute();
                 $setStatus->close();
-                
+
                 $cancelOffer = $db->prepare("DELETE FROM Spots WHERE pUserID = ?");
                 $cancelOffer->bind_param('i', $_SESSION['userID']);
 
@@ -85,11 +86,12 @@
                 if($offerResult = $db->query($checkOfferStatus)){
                     $row = $offerResult->FETCH_ASSOC();
                     echo "<div class='alert alert-success'><strong>You've already been matched with a requester</strong><br>
-                    User Name: {$row['rUserName']}<br>
-                    <img src='{$row['rCarPhoto']}' alt='Car Photo'
-                    style='max-width: 50%;'><br>
+                    <img src='{$row['rCarPhoto']}' alt='Car Photo' onerror=\"this.src='../Images/default.jpg';\"
+                    class='profile_image_small'>
                     <br>
-                    <button type='button' class='btn btn-info' id='btnOfferDetails' onclick='offerDetails()'>View Details</button>
+                    &nbsp;{$row['rUserName']}<br>
+                    <br>
+                    <button type='button' class='btn btn-outline' id='btnOfferDetails' onclick='offerDetails()'>View Details</button>
                     <br>
                     </div>";
                 }
