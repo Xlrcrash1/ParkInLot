@@ -17,12 +17,13 @@
         // echo "Error: {$checkOfferStatus->error}";
         if($offerResult = $db->query($checkOfferStatus)){
             $row = $offerResult->FETCH_ASSOC();
-            echo "<div class='alert alert-success'><strong>Requester found for your parking spot</strong><br>
-            User Name: {$row['rUserName']}<br>
-            <img src='{$row['rCarPhoto']}' alt='Car Photo'
-            style='max-width: 50%;'><br>
+            echo "<div class='alert alert-info'><strong>Requester found for your parking spot</strong><br>
+            <img src='{$row['rCarPhoto']}' alt='Car Photo' onerror=\"this.src='../Images/default.jpg';\"
+            class='profile_image_small'>
             <br>
-            <button type='button' class='btn btn-info' id='btnOfferDetails' onclick='offerDetails()'>View Details</button>
+            &nbsp;{$row['rUserName']}<br>
+            <br>
+            <button type='button' class='btn btn-outline' id='btnOfferDetails' onclick='offerDetails()'>View Details</button>
             <br>
             </div>";
         }
@@ -32,5 +33,5 @@
     }
 
 
-                                
+
 ?>
