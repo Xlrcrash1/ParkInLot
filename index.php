@@ -125,6 +125,8 @@ if ($_SESSION['active'] == false){
                         <label for='spotHistory'>Available Spots</label><br>
                         <input type='radio' id='passwordReset' name='databaseQuery' value='select * from passwordReset'>
                         <label for='passwordReset'>Password Reset</label><br>
+                        <input type='radio' id='lotLocation' name='databaseQuery' value='select * from lotLocation'>
+                        <label for='lotLocation'>Lot Locations</label><br>
                         <button type ='submit' class="btn btn-primary" value = 'View Table'>
                             <!-- <i class="iconly-Paper btn_icon"></i> -->
                             View Table
