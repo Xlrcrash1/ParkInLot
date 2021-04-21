@@ -65,8 +65,8 @@ a:hover {
 }
 
 .btn-primary {
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
     font-size: var(--large2);
     font-weight: 600;
     background-color: var(--primary);
@@ -82,11 +82,100 @@ a:hover {
     background-color: var(--dark1);
 }
 
+.btn-outline {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    font-size: var(--large2);
+    font-weight: 600;
+    color: var(--white);
+    background-color: transparent;
+    border-color: var(--primary);
+    border-width: 3px;
+    width: 100%;
+    border-radius: 15px;
+    height: 8vh;
+    vertical-align: middle;
+}
+.btn-outline:hover {
+    border-color: var(--light1);
+    color: var(--n90);
+}
+.btn-outline:active {
+    border-color: var(--dark1);
+    color: var(--n50);
+}
+
+.btn-success {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    font-size: var(--large2);
+    font-weight: 600;
+    background-color: var(--success);
+    border-color: var(--success);
+    width: 100%;
+    border-radius: 15px;
+    height: 8vh;
+    vertical-align: middle;
+}
+.btn-success:hover {
+    background-color: var(--success_light);
+}
+.btn-success:active {
+    background-color: var(--success_dark);
+}
+
+.btn-danger {
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    font-size: var(--large2);
+    font-weight: 600;
+    background-color: var(--error);
+    border-color: var(--error);
+    width: 100%;
+    border-radius: 15px;
+    height: 8vh;
+    vertical-align: middle;
+}
+.btn-danger:hover {
+    background-color: var(--error_light);
+}
+.btn-danger:active {
+    background-color: var(--error_dark);
+}
+
 .btn_icon {
     font-size: var(--large4);
     font-weight: 500;
     padding-right: 4px;
     vertical-align: middle;
+}
+
+.alert {
+    color: var(--black);
+}
+
+.alert-info {
+    background-color: var(--dark4);
+    color: var(--white);
+    border-color: var(--primary);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.alert-success {
+    background-color: var(--dark4);
+    color: var(--white);
+    border-color: var(--success);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.alert-danger {
+    background-color: var(--dark4);
+    color: var(--white);
+    border-color: var(--error);
+    border-radius: 15px;
+    padding: 20px;
 }
 
 /*    Nav    */
@@ -232,15 +321,16 @@ a:hover {
 /*    Index    */
 /* ------------------------------------------------------------ */
 
-.btn-request {
-    background-color: var(--analogous2);
-    border-color: var(--analogous2);
+/* .btn-request {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
 }
 
 .btn-offer {
     /* background-color: var(--analogous2);
     border-color: var(--analogous2); */
-}
+/* }  */
+
 
 /*    Update    */
 /* ------------------------------------------------------------ */
@@ -285,6 +375,28 @@ a:hover {
     margin-left: 5px;
 }
 
+/*    Request/Offer    */
+/* ------------------------------------------------------------ */
+
+.spot_title {
+    padding-top: 1vh;
+    padding-bottom: 3vh;
+}
+
+.lot-form {
+    width: 20%;
+}
+
+.profile_image_small {
+    /* background-image:url('../Images/default.jpg'); */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 4vh;
+    margin-bottom: 1.5vh;
+}
+
+
 /*    Mobile    */
 /* ------------------------------------------------------------ */
 @media only screen and (max-device-width: 896px) {
@@ -300,6 +412,28 @@ a:hover {
     .btn-primary {
         font-size: var(--mobile_large4);
         height: 7vh;
+    }
+
+    .btn-outline {
+        font-size: var(--mobile_large4);
+        height: 7vh;
+        border-width: 4px;
+    }
+
+    .btn-success {
+        font-size: var(--mobile_large4);
+        height: 7vh;
+    }
+
+    .btn-danger {
+        font-size: var(--mobile_large4);
+        height: 7vh;
+    }
+
+    .alert {
+        font-size: var(--mobile_large2);
+        padding: 25px;
+        border-width: 2px;
     }
 
     /*    Nav    */
@@ -330,7 +464,7 @@ a:hover {
     /* -------------------------------------------------------- */
 
     .loginLogo{
-        width: 80%;
+        width: 75%;
         margin-top: 6vh;
         margin-bottom: 8vh;
     }
@@ -393,6 +527,18 @@ a:hover {
 
     .update_title {
         padding-bottom: 4vh;
+    }
+
+    /*    Request/Offer    */
+    /* ------------------------------------------------------------ */
+
+    .profile_image_small {
+        /* background-image:url('../Images/default.jpg'); */
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-top: 2vh;
+        margin-bottom: 0vh;
     }
 
 }
