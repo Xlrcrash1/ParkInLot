@@ -16,6 +16,7 @@
         <?php
            // include('nav.php');
            require('SQLconnect.php');
+           session_start();
         ?>
 
         <div class = 'container'>
@@ -269,7 +270,9 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['firstName']) && !em
                 $_SESSION['year'] = $year;
                 $_SESSION['color'] = $color;
                 $_SESSION['licensePlate'] = $licensePlate;
-                header('Location: carupload.php');
+                // header('Location: carupload.php');
+                echo "<script type='text/javascript'> document.location = 'carupload.php'; </script>";
+
 
             }
         }
@@ -283,53 +286,53 @@ if (($_POST["g-recaptcha-response"] != '') && !empty($_POST['firstName']) && !em
 }
 else{
 
-    $error = 'You forgot to enter the following:<br><br>';
-    if (empty($_POST['firstName'])){
+    // $error = 'You forgot to enter the following:<br><br>';
+    // if (empty($_POST['firstName'])){
 
-        $error .= 'FirstNAME<br>';
-    }
-    if (empty($_POST['lastName'])){
+    //     $error .= 'FirstNAME<br>';
+    // }
+    // if (empty($_POST['lastName'])){
 
-        $error .= 'LastNAME<br>';
-    }
-    if (empty($_POST['userName'])){
+    //     $error .= 'LastNAME<br>';
+    // }
+    // if (empty($_POST['userName'])){
 
-        $error .= 'USERNAME<br>';
-    }
-    if (empty($_POST['email'])){
+    //     $error .= 'USERNAME<br>';
+    // }
+    // if (empty($_POST['email'])){
 
-        $error .= 'EMAIL<br>';
-    }
-    if (empty($_POST['password'])){
+    //     $error .= 'EMAIL<br>';
+    // }
+    // if (empty($_POST['password'])){
 
-        $error .= 'PASSWORD<br>';
-    }
-    if ( empty($_POST['confirm_password'])){
+    //     $error .= 'PASSWORD<br>';
+    // }
+    // if ( empty($_POST['confirm_password'])){
 
-        $error .= 'CONFIRM PASSWORD<br>';
-    }
-    if (empty($_POST['make'])){
+    //     $error .= 'CONFIRM PASSWORD<br>';
+    // }
+    // if (empty($_POST['make'])){
 
-        $error .= 'Make<br>';
-    }
-    if (empty($_POST['model'])){
+    //     $error .= 'Make<br>';
+    // }
+    // if (empty($_POST['model'])){
 
-        $error .= 'model<br>';
-    }
-    if (empty($_POST['year'])){
+    //     $error .= 'model<br>';
+    // }
+    // if (empty($_POST['year'])){
 
-        $error .= 'year<br>';
-    }
-    if (empty($_POST['color'])){
+    //     $error .= 'year<br>';
+    // }
+    // if (empty($_POST['color'])){
 
-        $error .= 'color<br>';
-    }
-    if ( empty($_POST['licensePlate'])){
+    //     $error .= 'color<br>';
+    // }
+    // if ( empty($_POST['licensePlate'])){
 
-        $error .= 'LicensePlate<br>';
-    }
+    //     $error .= 'LicensePlate<br>';
+    // }
 
     //echo "TEST that is nothing is posted\n";
-    echo "$error\n";
+    // echo "$error\n";
 }
 ?>
