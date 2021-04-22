@@ -21,7 +21,10 @@
             <img src='{$row['rCarPhoto']}' alt='Car Photo' onerror=\"this.src='../Images/default.jpg';\"
             class='profile_image_small'>
             <br>
-            &nbsp;{$row['rUserName']}<br>
+            &nbsp;<h2>{$row['rUserName']}</h2><br>
+            <h4>{$row['rColor']} {$row['rYear']} {$row['rMake']} {$row['rModel']}</h4><br>
+            <h4>License Plate: {$row['rLicensePlate']}</h4><br>
+
             <br>
             <button type='button' class='btn btn-outline' id='btnOfferDetails' onclick='offerDetails()'>View Details</button>
             <br>

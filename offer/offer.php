@@ -28,7 +28,6 @@ if ($_SESSION['active'] == false){
 
     </head>
     <body>
-        <div class = 'container'>
         <?php
         if ($_SESSION['active'] == true){
             include('./nav.php');
@@ -40,6 +39,7 @@ if ($_SESSION['active'] == false){
             // echo $_SESSION['statusCode'] + "<br>";
             ?>
 
+        <div class = 'container'>
         <div class="row">
             <div class="col-xs-0 col-lg-4 side"></div>
             <div class="col main">

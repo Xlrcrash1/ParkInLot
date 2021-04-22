@@ -541,4 +541,25 @@ a:hover {
         margin-bottom: 0vh;
     }
 
+    /*    Details    */
+    /* ------------------------------------------------------------ */
+    .details_user_right {
+        padding-top: 1vh;
+        padding-bottom: 3vh;
+        text-align: right;
+    }
+
+    .details_title_blue {
+        color: var(--primary);
+        padding-top: 1vh;
+        padding-bottom: 3vh;
+    }
+
+    .details_subtitle_right {
+        color: var(--n60);
+        margin-top: -1vh;
+        margin-bottom: 2vh;
+        text-align: right;
+    }
+
 }
