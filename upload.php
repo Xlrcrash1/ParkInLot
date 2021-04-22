@@ -27,11 +27,11 @@ if(isset($_POST['submit'])) {
         $url=$pms['data']['link'];
 
         if($url!="") {
-            echo "<h2>Uploaded Without Any Problem</h2>";
+            // echo "<h2>Uploaded Without Any Problem</h2>";
             //echo "<img src='$url'/>";
             //echo "$url";
 
-            $safe_url = mysqli_real_escape_string($database_connection_object, $url);
+            // $safe_url = mysqli_real_escape_string($database_connection_object, $url);
             // $stmt = "UPDATE Users SET carPhoto = '$url' WHERE userName = '{$_SESSION['userName']}'";
             // $db->query($stmt);
             $sql = $db->prepare("UPDATE Users SET carPhoto = ? WHERE userName = ?");
@@ -45,6 +45,10 @@ if(isset($_POST['submit'])) {
                 header("location: profile.php");    // After updating profile
             }
             else{   // After registration
+
+                session_unset();
+                session_destroy();
+                
                 echo "<script> 
 
                 alert('Account Registration is complete');
