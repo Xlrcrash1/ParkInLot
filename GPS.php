@@ -3,9 +3,9 @@
 session_start();
 require('SQLconnect.php');
 
-echo "testing\n";
+//echo "testing SQL Lot Positions\n";
 
-if ($_SESSION['active']){    
+//if ($_SESSION['active']){    
 
   $sql = "select * from lotLocation where lotName='M'";
   //echo "SQL Statement: $sql\n<br>";
@@ -21,7 +21,7 @@ if ($_SESSION['active']){
   $gpslng = "{$row['longitude']}";
 
   }
-}
+//}
 ?>
 
 
@@ -69,7 +69,7 @@ if ($_SESSION['active']){
           disabledDoubleClickZoom: true,
           draggable: false,
           pancontrol: false,
-          streetViewControl: false
+          streetViewControl: false,
           disableDefaultUI: true
         });
 
