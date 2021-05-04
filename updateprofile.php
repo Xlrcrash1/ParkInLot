@@ -354,7 +354,7 @@
             <div class="col-xs-0 col-lg-4 side"></div>
             <div class="col main">
                 <form action="upload.php" enctype="multipart/form-data" method="POST">
-                    <h4>Choose Image:</h4>
+                    <h3>Change Profile Image</h3>
                     <br>
                     <input name="img" size="35" type="file"/>
                     <br><br>
@@ -363,7 +363,9 @@
             </div>
             <div class="col-xs-0 col-lg-4 side"></div>
         </div>
-        <br><br>
+
+<!--             
+            <br><br>
         <div class="row">
             <div class="col-xs-0 col-lg-4 side"></div>
             <div class="col main">
@@ -403,6 +405,58 @@
             <div class="col-xs-0 col-lg-4 side"></div>
         </div>
 
+             -->
+            
+            
+        <br>
+        <div class="row">
+            <div class="col-xs-0 col-lg-4 side"></div>
+            <div class="col main">
+                <hr style="background-color: gray;">
+            </div>
+            <div class="col-xs-0 col-lg-4 side"></div>
+        </div>
+        <br><br>
+
+        <div class="row">
+            <div class="col-xs-0 col-lg-4 side"></div>
+            <div class="col main">
+                <div class = 'updatePassword'>
+                    <button class = 'accordion'>Change Password</button>
+                    <div class = 'panel'>
+                        <form method = 'POST'>
+                            <br>
+                            <h5 class="input_title password_reset_title">
+                                Current Password
+                            </h5>
+                            <input type = 'password' class="body text_input password_reset" name = 'current_password'>
+
+                            <h5 class="input_title password_reset_title">
+                                New Password
+                            </h5>
+                            <input type = 'password' class="body text_input password_reset" name = 'new_password'>
+                            <h5 class="input_title password_reset_title">
+                                    Confirm Password
+                            </h5>
+                            <input type = 'password' class="body text_input password_reset" name = 'confirm_password'>
+                            <button class = 'update btn btn-primary' type = 'submit'>Update Password</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-0 col-lg-4 side"></div>
+        </div>
+
+        <br><br><br>
+        <div class="row">
+            <div class="col-xs-0 col-lg-4 side"></div>
+            <div class="col main">
+                <hr style="background-color: gray;">
+            </div>
+            <div class="col-xs-0 col-lg-4 side"></div>
+        </div>
+            
+            
         <?php
             //echo "currentPassword = {$_POST['current_password']} and newpassword = {$_POST['new_password']} and confirm_password = {$_POST['confirm_password']}\n";
             if (!empty($_POST['current_password']) and !empty($_POST['new_password']) and !empty($_POST['confirm_password'])){
