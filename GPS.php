@@ -49,7 +49,7 @@ require('SQLconnect.php');
     </style>
     <script>
 
-      var phptest = {lat: parseFloat(<?php echo $gpslat;?>), lng: parseFloat(<?php echo $gpslng;?>)};
+      var phpLocation = {lat: parseFloat(<?php echo $gpslat;?>), lng: parseFloat(<?php echo $gpslng;?>)};
       //console.log(phptest);
       //console.log(typeof phptest);
 
@@ -58,6 +58,17 @@ require('SQLconnect.php');
 
       var parkingSpotLocation = {lat: 35.351902, lng: -119.103161};
       var bounds;
+
+
+      var myStyles =[
+        {
+          featureType: "poi",
+          elementType: "labels",
+          stylers: [
+            { visibility: "off" }
+          ]
+        }
+      ];
 
       let map, infoWindow;
 
@@ -70,7 +81,9 @@ require('SQLconnect.php');
           draggable: false,
           pancontrol: false,
           streetViewControl: false,
-          disableDefaultUI: true
+          clickableIcons: false,
+          disableDefaultUI: true,
+          styles: myStyles
         });
 
         infoWindow = new google.maps.InfoWindow();
@@ -91,7 +104,7 @@ require('SQLconnect.php');
               rMarker = new google.maps.Marker({
               position: userLocation,
               map: map,
-              icon: './Images/googleMapsIcons/car2.png'
+              icon: './Images/googleMapsIcons/carMarkerBlue2.png'
               });
 
               console.log
@@ -99,9 +112,9 @@ require('SQLconnect.php');
 
               pMarker = new google.maps.Marker({
                 //position: parkingSpotLocation,  //This one is hard-coded for testing
-                position: phptest,
+                position: phpLocation,
                 map: map,
-                icon: './Images/googleMapsIcons/car2.png'
+                icon: './Images/googleMapsIcons/mapIconRed2.png'
               });
 
               bounds = new google.maps.LatLngBounds();
