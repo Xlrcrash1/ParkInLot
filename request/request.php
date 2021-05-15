@@ -19,6 +19,8 @@ if ($_SESSION['active'] == false){
         <link rel = 'stylesheet' type='text/css' href = '../CSS/style.css'>
     <?php
         require('../SQLconnect.php');
+        include('../javaScript/javaScript.html');
+
         // include('../CSS/bootStrap.html');
     ?>
     <script src="../javaScript/requestSpots.js"></script>
@@ -40,6 +42,9 @@ if ($_SESSION['active'] == false){
                 $_SESSION['statusCode'] = 1;
 
                 if ($_SESSION['tokens'] > 0){
+                    echo "<script>
+                    startSpotCheck();
+                    </script>";
             ?>
 
             <div class="row">
@@ -113,7 +118,7 @@ if ($_SESSION['active'] == false){
                 }
 
             }
-                include('../javaScript/javaScript.html');
+                // include('../javaScript/javaScript.html');
             ?>
         </div>
 
