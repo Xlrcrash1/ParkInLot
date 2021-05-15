@@ -1,3 +1,5 @@
+var spotCheck;
+
 function cancelRequest(){ // Called when Cancel button is clicked
     $.ajax({    // Ajax function calls manageRequest.php and with "cancel" action
         method:"POST",
@@ -87,39 +89,42 @@ function completeTrade(){
         }
     });
 };
-var spotCheck = setInterval(function()  // Creating var spotCheck as a setInterval function which runs every 5 seconds
-{ 
-    var stat = getStatus();
 
-    console.log(stat);
-    if(stat == 1 || stat == 10 || stat == 0){
-        $.ajax({    // Ajax function which calls requeststatus.php to check for available parking spots
-            method:"POST",
-            url:"requeststatus.php",
-            datatype:"html",
-            success:function(data){
-                
-                // Clear div #request_status
-                document.getElementById("request_status").innerHTML = "";
+function startSpotCheck(){
+    var spotCheck = setInterval(function()  // Creating var spotCheck as a setInterval function which runs every 5 seconds
+    { 
+        var stat = getStatus();
 
-                // Output new status based on html data received from requeststatus.php
-                $("#request_status").html(data)
+        console.log(stat);
+        if(stat == 1 || stat == 10 || stat == 0){
+            $.ajax({    // Ajax function which calls requeststatus.php to check for available parking spots
+                method:"POST",
+                url:"requeststatus.php",
+                datatype:"html",
+                success:function(data){
+                    
+                    // Clear div #request_status
+                    document.getElementById("request_status").innerHTML = "";
 
-                $.ajax({    // Ajax function calls getstatus.php to retrieve the user's status code
-                    method:"POST",
-                    url:"../getstatus.php",
-                    data:{isOnReqPage: 1},
-                    datatype:"json",
-                    success:function(statusCode){
-                        if (statusCode != 1){           // If status is not 1, then user should no longer be looking for a parking spot
-                            clearInterval(spotCheck);    // Stoping the spotCheck interval function
-                            console.log(statusCode);
-                        } 
-                    }
-                });
-            }
-        });
-    } else{
-        clearInterval(spotCheck);
-    }
-}, 5000);//time in milliseconds 
+                    // Output new status based on html data received from requeststatus.php
+                    $("#request_status").html(data)
+
+                    $.ajax({    // Ajax function calls getstatus.php to retrieve the user's status code
+                        method:"POST",
+                        url:"../getstatus.php",
+                        data:{isOnReqPage: 1},
+                        datatype:"json",
+                        success:function(statusCode){
+                            if (statusCode != 1){           // If status is not 1, then user should no longer be looking for a parking spot
+                                clearInterval(spotCheck);    // Stoping the spotCheck interval function
+                                console.log(statusCode);
+                            } 
+                        }
+                    });
+                }
+            });
+        } else{
+            clearInterval(spotCheck);
+        }
+    }, 5000);//time in milliseconds 
+};
