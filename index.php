@@ -34,7 +34,7 @@ if ($_SESSION['active'] == false){
                 <div class="col-xs-0 col-lg-4 side"></div>
                 <div class="col main">
                     <img src = <?php echo "'{$_SESSION['photo']}'";?>
-                    <!-- alt='Car Photo' onerror="this.src='./Images/default.jpg';" class='profile_image'>
+                    alt='Car Photo' onerror="this.src='./Images/default.jpg';" class='profile_image'>
                 </div>
                 <div class="col-xs-0 col-lg-4 side"></div>
             </div>
@@ -96,51 +96,7 @@ if ($_SESSION['active'] == false){
 
         <div class="container">
 
-            <?php
-                if ($_SESSION['access'] == 10){
-                    //This is where I will add an option to view our Database and be able to send queries and all that
-            ?>
 
-
-
-            <div class="row">
-                <!-- <div id = 'Database_Query_Options'> -->
-                <div class="col-xs-0 col-lg-4 side"></div>
-                <div class="col main">
-                    <p>
-                        Which table would you like to look at?
-                    </p>
-                </div>
-                <div class="col-xs-0 col-lg-4 side"></div>
-                <!-- </div> -->
-            </div>
-
-            <form action = 'databaseQueries.php' target='_blank' method='post'>
-                <div class="row">
-                    <div class="col-xs-0 col-lg-4 side"></div>
-                    <div class="col main">
-                        <input type='radio' id='usersTable' name='databaseQuery' value='select * from Users'>
-                        <label for='usersTable'>Users Table</label><br>
-                        <input type='radio' id='spotHistory' name='databaseQuery' value='select * from Spots'>
-                        <label for='spotHistory'>Available Spots</label><br>
-                        <input type='radio' id='passwordReset' name='databaseQuery' value='select * from passwordReset'>
-                        <label for='passwordReset'>Password Reset</label><br>
-                        <input type='radio' id='lotLocation' name='databaseQuery' value='select * from lotLocation'>
-                        <label for='lotLocation'>Lot Locations</label><br>
-                        <button type ='submit' class="btn btn-primary" value = 'View Table'>
-                            <!-- <i class="iconly-Paper btn_icon"></i> -->
-                            View Table
-                        </button>
-                    </div>
-                    <div class="col-xs-0 col-lg-4 side"></div>
-                </div>
-            </form>
-
-
-            <?php
-                }
-                else if ($_SESSION['access'] == 1){
-            ?>
             <div class="row">
                 <div class="col-xs-0 col-lg-4 side"></div>
                 <div class="col main">
@@ -162,9 +118,62 @@ if ($_SESSION['active'] == false){
                 <div class="col-xs-0 col-lg-4 side"></div>
             </div>
 
+            
+
+            <?php
+                if ($_SESSION['access'] >= 5){
+                    //This is where I will add an option to view our Database and be able to send queries and all that
+            ?>
+
+            <div class="row">
+                <div class="col-xs-0 col-lg-4 side"></div>
+                <div class="col main">
+                    <hr class="divider">
+                </div>
+                <div class="col-xs-0 col-lg-4 side"></div>
+            </div>  
+
+            <div class="row">
+            <!--<div id = 'Database_Query_Options'> -->
+                <div class="col-xs-0 col-lg-4 side"></div>
+                <div class="col main">
+                    <h1>
+                        Admin Views:
+                    </h1>
+                    <br>
+                    <p>
+                        Which table would you like to look at?
+                    </p>
+                </div>
+                <div class="col-xs-0 col-lg-4 side"></div>
+            <!--</div> -->
+            </div>
+
+            <form action = 'databaseQueries.php' target='_blank' method='post'>
+                <div class="row">
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                    <div class="col main">
+                        <input type='radio' id='usersTable' name='databaseQuery' value='select * from Users'>
+                        <label for='usersTable'>Users Table</label><br>
+                        <input type='radio' id='spotHistory' name='databaseQuery' value='select * from Spots'>
+                        <label for='spotHistory'>Available Spots</label><br>
+                        <input type='radio' id='passwordReset' name='databaseQuery' value='select * from passwordReset'>
+                        <label for='passwordReset'>Password Reset</label><br>
+                        <input type='radio' id='lotLocation' name='databaseQuery' value='select * from lotLocation'>
+                        <label for='lotLocation'>Lot Locations</label><br>
+                        <button type ='submit' class="btn btn-primary" value = 'View Table'>
+                        <!--<i class="iconly-Paper btn_icon"></i> -->
+                            View Table
+                        </button>
+                    </div>
+                    <div class="col-xs-0 col-lg-4 side"></div>
+                </div>
+            </form>
+
             <?php
                 }
             }
+
             include('./javaScript/javaScript.html')
             ?>
         </div>
