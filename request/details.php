@@ -99,7 +99,7 @@
                 <div class="col-xs-0 col-lg-4 side"></div>
                 <div class="col main">
                     <div id="map_display">
-                    <?php include('../lotlocation.php');?>
+                    <?php include('./spotlocation.php');?>
                     </div>
                 </div>
                 <div class="col-xs-0 col-lg-4 side"></div>

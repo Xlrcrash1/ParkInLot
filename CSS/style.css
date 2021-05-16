@@ -577,4 +577,8 @@ a:hover {
         text-align: right;
     }
 
+    #map_display{
+        height: 90vh;
+    }
+
 }
