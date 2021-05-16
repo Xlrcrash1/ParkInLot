@@ -81,6 +81,17 @@ if ($_SESSION['active'] == false){
                 </div>
                 <div class="col-xs-0 col-lg-4 side"></div>
             </div>
+            
+            <!-- rating -->
+            <div class="row">
+                <div class="col-xs-0 col-lg-4 side"></div>
+                <div class="col main">
+                    <h6 class="tokens">
+                        Your current rating is: <?php echo "{$_SESSION['rating']}";?> %
+                    </h6>
+                </div>
+                <div class="col-xs-0 col-lg-4 side"></div>
+            </div>
 
             <!-- divider -->
             <div class="row">

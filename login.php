@@ -133,6 +133,7 @@ if ($_SESSION['active']){
                         $_SESSION['photo'] = $row['carPhoto'];
                         $_SESSION['tokens'] = $row['tokens'];
                         $_SESSION['userID'] = $row['userID'];
+                        $_SESSION['rating'] = round($row['rating'], 1);
 
                         // Status Codes
                         // 0 - Not requesting, not offering
