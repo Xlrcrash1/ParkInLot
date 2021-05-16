@@ -166,6 +166,35 @@ function checkCompletion(){
     }, 5000);
 };
 
+function getPosition() {
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            $.ajax({
+                method:"POST",
+                url:"../offer/updatelocation.php",
+                data:{
+                    longitude: position.coords.longitude,
+                    latitude: position.coords.latitude
+                },
+                datatype:"html",
+                async: false,
+                success:function(data){
+                    // if (statusCode != 2)
+                    // {
+                    //     clearInterval(spotCheck);
+                    // }
+                }
+            });
+            var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
+            console.log(positionInfo);
+            submitOffer();
+
+        });
+    } else {
+        alert("Sorry, your browser does not support HTML5 geolocation.");
+    }
+};
+
 // document.getElementById("myButton").onclick = function () {
 //     location.href = "www.yoursite.com";
 // };

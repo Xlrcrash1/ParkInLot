@@ -149,7 +149,7 @@ if ($_SESSION['active'] == false){
         <div class="row">
             <div class="col-xs-0 col-lg-4 side"></div>
             <div class="col main">
-                <button type="button" class="btn btn-primary" id="btnOffer" onclick="submitOffer()">Offer my spot</button>
+                <button type="button" class="btn btn-primary" id="btnOffer" onclick="getPosition()">Offer my spot</button>
             </div>
             <div class="col-xs-0 col-lg-4 side"></div>
         </div>

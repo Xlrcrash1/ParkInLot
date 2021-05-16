@@ -93,7 +93,7 @@ require('../SQLconnect.php');
               rMarker = new google.maps.Marker({
               position: userLocation,
               map: map,
-              icon: '../Images/googleMapsIcons/car3.png'
+              icon: '../Images/googleMapsIcons/carMarkerBlue2.png'
               });
 
               console.log
@@ -103,7 +103,7 @@ require('../SQLconnect.php');
                 //position: parkingSpotLocation,  //This one is hard-coded for testing
                 position: parkingSpotLocation,
                 map: map,
-                icon: '../Images/googleMapsIcons/car2.png'
+                icon: '../Images/googleMapsIcons/mapIconRed2.png'
               });
 
               bounds = new google.maps.LatLngBounds();
