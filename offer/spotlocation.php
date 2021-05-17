@@ -8,7 +8,7 @@ require('../SQLconnect.php');
 //if ($_SESSION['active']){    
 
 //   echo "{$parkingLot}<br>";
-  $getSpotLocation = "SELECT * FROM SpotsDetails WHERE rUserID = '{$_SESSION['userID']}';";
+  $getSpotLocation = "SELECT * FROM SpotsDetails WHERE pUserID = '{$_SESSION['userID']}';";
 
 //   echo "SQL Statement: $sql\n<br>";
 
@@ -49,7 +49,6 @@ require('../SQLconnect.php');
       }
 
     </style>
-    <script src="../javaScript/requestSpots.js" type="text/javascript"></script>
     <script>
 
       var parkingSpotLocation = {lat: parseFloat(<?php echo $gpslat;?>), lng: parseFloat(<?php echo $gpslng;?>)};
@@ -81,7 +80,7 @@ require('../SQLconnect.php');
           // Try HTML5 geolocation.
         if (navigator.geolocation) {
           var myLocation = navigator.geolocation.watchPosition(
-              (position) => {
+            (position) => {
               const userLocation = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude,
@@ -90,11 +89,11 @@ require('../SQLconnect.php');
               if(typeof rMarker === 'object'){
                 rMarker.setMap(null);
               }
-              
+            
               rMarker = new google.maps.Marker({
               position: userLocation,
               map: map,
-              icon: '../Images/googleMapsIcons/carMarkerBlue2.png'
+              icon: '../Images/googleMapsIcons/mapIconRed2.png'
               });
 
               console.log
@@ -104,7 +103,7 @@ require('../SQLconnect.php');
                 //position: parkingSpotLocation,  //This one is hard-coded for testing
                 position: parkingSpotLocation,
                 map: map,
-                icon: '../Images/googleMapsIcons/mapIconRed2.png'
+                icon: '../Images/googleMapsIcons/carMarkerBlue2.png'
               });
 
               bounds = new google.maps.LatLngBounds();
@@ -112,7 +111,6 @@ require('../SQLconnect.php');
               bounds.extend(userLocation);
 
               map.fitBounds(bounds);
-              getPosition();
             },
             () => {
               handleLocationError(true, infoWindow, map.getCenter());

@@ -93,11 +93,11 @@
 
                     <h4>{$row['rColor']} {$row['rYear']} {$row['rMake']} {$row['rModel']}</h4><br>
                     <h4>License Plate: {$row['rLicensePlate']}</h4><br>
-                    
-                    <button type='button' class='btn btn-outline' id='btnOfferDetails' onclick='offerDetails()'>View Details</button>
                     <br>
-                    </div>";
-                }
+                    </div>
+                    " ;
+            }
+            
             }
     }
 

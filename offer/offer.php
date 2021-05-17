@@ -70,19 +70,24 @@ if ($_SESSION['active'] == false){
             echo "<div id='offer_status'>
                     <div class='alert alert-info'><strong>You're already paired with a user.</strong><br><br>
                     <button type='button' class='btn btn-outline' id='btnUpdate' onclick='updateOffer()'>More Information</button>
+                    ";
+            include('./spotlocation.php');
+            echo "
                     </div>
                 </div>";
             echo "</div>
                     <div class='col-xs-0 col-lg-4 side'></div>
                         </div>";
+            echo "<div class='row'>";
             echo "<div id='comp_status'></div>";
+            echo "</div>";
 
         } elseif($_SESSION['statusCode'] == 10){
             echo "<div class='row'>
                 <div class='col-xs-0 col-lg-4 side'></div>
                 <div class='col main'>";
             echo "<div id='offer_status'>
-                <div class='alert alert-danger'>You're currently requesting a spot and paried with a user. Please cancel your request in the Spot Request page before offering a parking spot.</div>
+                <div class='alert alert-danger'>You're currently requesting a spot and paired with a user. Please cancel your request in the Spot Request page before offering a parking spot.</div>
                 </div>";
             echo "</div>
                     <div class='col-xs-0 col-lg-4 side'></div>
@@ -113,7 +118,13 @@ if ($_SESSION['active'] == false){
         <?php
         }
         ?>
-
+        <div class="row">
+            <?  
+                if($_SESSION['statusCode'] == 20){
+                   include('./spotlocation.php');
+                }
+            ?>
+        </div>
         <div class="row">
             <div class="col-xs-0 col-lg-4 side"></div>
             <div class="col main">
@@ -145,7 +156,7 @@ if ($_SESSION['active'] == false){
             </div>
             <div class="col-xs-0 col-lg-4 side"></div>
         </div>
-
+        
         <div class="row">
             <div class="col-xs-0 col-lg-4 side"></div>
             <div class="col main">

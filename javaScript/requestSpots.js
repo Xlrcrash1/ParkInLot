@@ -116,8 +116,14 @@ function startSpotCheck(){
                         datatype:"json",
                         success:function(statusCode){
                             if (statusCode != 1){           // If status is not 1, then user should no longer be looking for a parking spot
+                                //if (statusCode == 10){
+                                //    getPosition();
+                                //    c
+                                //}
+                                //else (){
                                 clearInterval(spotCheck);    // Stoping the spotCheck interval function
                                 console.log(statusCode);
+                                //}
                             } 
                         }
                     });
@@ -127,4 +133,32 @@ function startSpotCheck(){
             clearInterval(spotCheck);
         }
     }, 5000);//time in milliseconds 
+};
+
+function getPosition() {
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            $.ajax({
+                method:"POST",
+                url:"../request/updatelocation.php",
+                data:{
+                    longitude: position.coords.longitude,
+                    latitude: position.coords.latitude
+                },
+                datatype:"html",
+                async: false,
+                success:function(data){
+                    // if (statusCode != 2)
+                    // {
+                    //     clearInterval(spotCheck);
+                    // }
+                }
+            });
+            var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
+            console.log(positionInfo);
+
+        });
+    } else {
+        alert("Sorry, your browser does not support HTML5 geolocation.");
+    }
 };
