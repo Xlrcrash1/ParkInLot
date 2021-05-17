@@ -10,7 +10,6 @@ require('../SQLconnect.php');
 //   echo "{$parkingLot}<br>";
 $getRequester = "SELECT * FROM SpotsDetails WHERE pUserID = '{$_SESSION['userID']}';";
 if ($res = $db->query($getRequester)){
-    echo "ECHOOO";
     $row = $res->FETCH_ASSOC();
     $rUserID = "{$row['rUserID']}";
     $getLocationRequester = "Select * from userLocation where userID = '{$rUserID}';";
