@@ -70,9 +70,6 @@ if ($_SESSION['active'] == false){
             echo "<div id='offer_status'>
                     <div class='alert alert-info'><strong>You're already paired with a user.</strong><br><br>
                     <button type='button' class='btn btn-outline' id='btnUpdate' onclick='updateOffer()'>More Information</button>
-                    ";
-            include('./spotlocation.php');
-            echo "
                     </div>
                 </div>";
             echo "</div>
@@ -81,6 +78,17 @@ if ($_SESSION['active'] == false){
             echo "<div class='row'>";
             echo "<div id='comp_status'></div>";
             echo "</div>";
+            echo "
+                <div class='row'>
+                    <div class='col-xs-0 col-lg-4 side'></div>
+                    <div class='col main'>
+                        <div id='map_display'>";
+                            include('./spotlocation.php');
+            echo "      </div>
+                    </div>
+                <div class='col-xs-0 col-lg-4 side'></div>
+                </div>
+            ";
 
         } elseif($_SESSION['statusCode'] == 10){
             echo "<div class='row'>

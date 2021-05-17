@@ -8,22 +8,18 @@ require('../SQLconnect.php');
 //if ($_SESSION['active']){    
 
 //   echo "{$parkingLot}<br>";
-  $getSpotLocation = "SELECT * FROM SpotsDetails WHERE pUserID = '{$_SESSION['userID']}';";
-
-//   echo "SQL Statement: $sql\n<br>";
-
-  if ($res = $db->query($getSpotLocation)){
-
-  //echo "succssful sql query<br>\n";
-  $row = $res->FETCH_ASSOC();
-  //echo "1st  Fetch Assoc success\n<br>";
-//   echo    "<td>{$row['latitude']}</td><br>\n";
-//   echo    "<td>{$row['longitude']}</td><br>\n";
-  $gpslat = "{$row['latitude']}"; 
-  $gpslng = "{$row['longitude']}";
-
-  }
-//}
+$getRequester = "SELECT * FROM SpotsDetails WHERE pUserID = '{$_SESSION['userID']}';";
+if ($res = $db->query($getRequester)){
+    echo "ECHOOO";
+    $row = $res->FETCH_ASSOC();
+    $rUserID = "{$row['rUserID']}";
+    $getLocationRequester = "Select * from userLocation where userID = '{$rUserID}';";
+    if ($res = $db->query($getLocationRequester)){
+        $row = $res->FETCH_ASSOC();
+        $gpslat = "{$row['latitude']}"; 
+        $gpslng = "{$row['longitude']}";
+    }
+}
 ?>
 
 
@@ -56,7 +52,7 @@ require('../SQLconnect.php');
       //console.log(typeof phptest);
 
 
-      var rMarker = 0
+      var rMarker = 0;
 
       var centerLocation = {lat: 35.351902, lng: -119.103161};
       var bounds;
@@ -93,7 +89,7 @@ require('../SQLconnect.php');
               rMarker = new google.maps.Marker({
               position: userLocation,
               map: map,
-              icon: '../Images/googleMapsIcons/mapIconRed2.png'
+              icon: '../Images/googleMapsIcons/carMarkerBlue2.png'
               });
 
               console.log
@@ -103,13 +99,12 @@ require('../SQLconnect.php');
                 //position: parkingSpotLocation,  //This one is hard-coded for testing
                 position: parkingSpotLocation,
                 map: map,
-                icon: '../Images/googleMapsIcons/carMarkerBlue2.png'
+                icon: '../Images/googleMapsIcons/mapIconRed2.png'
               });
 
               bounds = new google.maps.LatLngBounds();
               bounds.extend(parkingSpotLocation);
               bounds.extend(userLocation);
-
               map.fitBounds(bounds);
             },
             () => {
