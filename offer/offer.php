@@ -20,23 +20,19 @@ if ($_SESSION['active'] == false){
 
     <?php
         require('../SQLconnect.php');
-        // include('../CSS/bootStrap.html');
         $_SESSION['statusCode'] = 0;    // statusCode 0 - User is not offering or requesting a parking spot
     ?>
     <script src="../javaScript/offerSpots.js"></script>
-    <!-- <link rel = 'stylesheet' type = 'text/css' href = '../CSS/style.css'> -->
 
     </head>
     <body>
         <?php
-        if ($_SESSION['active'] == true){
+        if ($_SESSION['active'] == true){ // If session is active
             include('./nav.php');
             include('../updatestatus.php');
             include('../javaScript/javaScript.html');
 
-            // echo $_SESSION['statusCode'] + "<br>";
-            update_status($db, $_SESSION['userID'], 0);
-            // echo $_SESSION['statusCode'] + "<br>";
+            update_status($db, $_SESSION['userID'], 0); // Update SESSION statusCode
             ?>
 
         <div class = 'container'>
@@ -50,7 +46,7 @@ if ($_SESSION['active'] == false){
 
         <?php
         }
-        if($_SESSION['statusCode'] == 2){
+        if($_SESSION['statusCode'] == 2){ // If user is offering a spot and a requester has not been found
             echo "<div class='row'>
                 <div class='col-xs-0 col-lg-4 side'></div>
                 <div class='col main'>";
@@ -58,12 +54,12 @@ if ($_SESSION['active'] == false){
                     <div class='alert alert-info'>You're already offering a parking spot. We're still looking for a requester.</div>
                     </div>";
             echo "<div id='comp_status'></div>";
-            echo "<script>spotCheck();</script>";
+            echo "<script>spotCheck();</script>"; // Run spotCheck() function to look for a requester
             echo "</div>
                     <div class='col-xs-0 col-lg-4 side'></div>
                     </div>";
 
-        } elseif($_SESSION['statusCode'] == 20) {
+        } elseif($_SESSION['statusCode'] == 20) { // If a user is offering a spot and a requester has been found
             echo "<div class='row'>
                 <div class='col-xs-0 col-lg-4 side'></div>
                 <div class='col main'>";
@@ -82,7 +78,7 @@ if ($_SESSION['active'] == false){
             echo "<div id='comp_status'></div>";
             echo "</div>";
 
-        } elseif($_SESSION['statusCode'] == 10){
+        } elseif($_SESSION['statusCode'] == 10){ // If a user is requesting a spot and has been paired with an offerer
             echo "<div class='row'>
                 <div class='col-xs-0 col-lg-4 side'></div>
                 <div class='col main'>";
@@ -94,7 +90,7 @@ if ($_SESSION['active'] == false){
                         </div>";
             echo "<div id='comp_status'></div>";
 
-        }else{
+        }else{ // User has not yet offered a spot
         ?>
 
         <div class="row">
