@@ -11,13 +11,16 @@
 <body>
     <?php
     session_start();
-    if ($_SESSION['active'] == false){
+    if ($_SESSION['active'] == false){ // If session is not actie
         header('location: ../login.php'); exit();
-    }elseif($_SESSION['active'] == true){
-        $searchForRequester = "Select * from RequesterDetails where pUserID = {$_SESSION['userID']}";
+    }elseif($_SESSION['active'] == true){ // If session is acctive
+
+        $searchForRequester = "Select * from RequesterDetails where pUserID = {$_SESSION['userID']}"; // Search database for the matching requester
         $results = $db->query($searchForRequester);
         $row  = $results->FETCH_ASSOC();
         global $rUserName, $rMake, $rModel, $rYear, $rColor, $rLicensePlate, $rCarPhoto;
+
+        // Set requester details variables
         $rUserName = $row['rUserName'];
         $rMake = $row['rMake'];
         $rModel = $row['rModel'];
@@ -88,6 +91,7 @@
 
         <br>
         <div class = 'container'>
+            <!-- map display -->
             <div class="row">
                 <div class="col-xs-0 col-lg-4 side"></div>
                 <div class="col main">

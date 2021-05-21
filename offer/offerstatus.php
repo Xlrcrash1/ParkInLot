@@ -3,19 +3,13 @@
     session_start();
 
     include('../updatestatus.php');
-    update_status($db, $_SESSION['userID'], 0);
+    update_status($db, $_SESSION['userID'], 0); // Update SESSION statusCode variable
 
-    if($_SESSION['statusCode'] == 20){
+    if($_SESSION['statusCode'] == 20){ // If user is offering a spot and paired with a requester
 
-        // $checkOfferStatus = $db->prepare("SELECT * FROM RequesterDetails WHERE pUserID = ?");
-        // $checkOfferStatus->bind_param('s', $_SESSION['userID']);
-        $checkOfferStatus = "SELECT * FROM RequesterDetails WHERE pUserID = {$_SESSION['userID']}";
+        $checkOfferStatus = "SELECT * FROM RequesterDetails WHERE pUserID = {$_SESSION['userID']}"; // Query requester details
 
-        // $checkOfferStatus->execute();
-
-        // $offerResult = $db->query($checkOfferStatus);
-        // echo "Error: {$checkOfferStatus->error}";
-        if($offerResult = $db->query($checkOfferStatus)){
+        if($offerResult = $db->query($checkOfferStatus)){ // If query successful, output details message
             $row = $offerResult->FETCH_ASSOC();
             echo "<div class='alert alert-info'><strong>Requester found for your parking spot</strong><br>
             <img src='{$row['rCarPhoto']}' alt='Car Photo' onerror=\"this.src='../Images/default.jpg';\"
@@ -31,7 +25,7 @@
             </div>";
         }
         $offerResult->close();
-    } else{
+    } else{ // No requester found
         echo "<div class='alert alert-info'>Your parking spot has been posted and we're still looking for a requester</div>";
     }
 

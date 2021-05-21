@@ -16,6 +16,7 @@
     }elseif($_SESSION['active'] == true){
         global $parkingLot, $pUserName, $pMake, $pModel, $pYear, $pColor, $pLicensePlate, $pCarPhoto;
         
+        // Set parking spot details variables
         $parkingLot = $_POST['parkingLot'];
         $pUserName = $_POST['pUserName'];
         $pMake = $_POST['pMake'];
@@ -28,8 +29,7 @@
         require('../SQLconnect.php');
         include('./nav.php');
         include('../updatestatus.php');
-        update_status($db, $_SESSION['userID'], 0);
-        // echo $_SESSION['statusCode'];
+        update_status($db, $_SESSION['userID'], 0); // Update user's SESSION status code
         ?>
 
 <div class = 'container'>  
@@ -87,6 +87,7 @@
 
         <br>
         <div class = 'container'>
+            <!-- map display -->
             <div class="row">
                 <div class="col-xs-0 col-lg-4 side"></div>
                 <div class="col main">

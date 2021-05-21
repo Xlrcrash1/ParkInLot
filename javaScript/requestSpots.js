@@ -50,7 +50,7 @@ function submitRequest(){ // Called when Request button is clicked
     });
 };
 
-function getStatus(){
+function getStatus(){ // Function calls getstatus.php to retrieve the status code for the user
     var status = 0;
     $.ajax({
         method:"POST",
@@ -61,9 +61,9 @@ function getStatus(){
         success:function(statusCode){
             console.log(statusCode);
             console.log(typeof statusCode);
-            if (statusCode != 1 && statusCode != 10 && statusCode != 0)
+            if (statusCode != 1 && statusCode != 10 && statusCode != 0) // If user is no longer requesting a spot (Complete or cancelled request)
             {
-                clearInterval(spotCheck);
+                clearInterval(spotCheck);   // Stop spotCheck
             }
             status = statusCode;
         }
@@ -71,11 +71,11 @@ function getStatus(){
     return status;
 };
 
-function viewDetails(){
+function viewDetails(){ // Redirect to Request Details page
     location.href = "details.php";
 };
 
-function completeTrade(){
+function completeTrade(){ // Complete the trade
     document.getElementById("request_status").innerHTML = ""
 
     $.ajax({
@@ -84,7 +84,7 @@ function completeTrade(){
         data:{action:"complete"},
         datatype:"html",
         success:function(data){
-            $("#request_status").html(data)
+            $("#request_status").html(data) // Output request status message after trade is complete
             console.log(data);
         }
     });
@@ -135,7 +135,7 @@ function startSpotCheck(){
     }, 5000);//time in milliseconds 
 };
 
-function getPosition() {
+function getPosition() { // Get Position of the requester
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             $.ajax({
@@ -148,10 +148,7 @@ function getPosition() {
                 datatype:"html",
                 async: false,
                 success:function(data){
-                    // if (statusCode != 2)
-                    // {
-                    //     clearInterval(spotCheck);
-                    // }
+
                 }
             });
             var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";

@@ -3,26 +3,17 @@
 session_start();
 require('../SQLconnect.php');
 
-//echo "testing SQL Lot Positions\n";
 
-//if ($_SESSION['active']){    
-
-//   echo "{$parkingLot}<br>";
   $getLotLocation = "SELECT * FROM lotLocation WHERE lotName = '{$parkingLot}';";
-//   echo "SQL Statement: $sql\n<br>";
 
   if ($res = $db->query($getLotLocation)){
 
-  //echo "succssful sql query<br>\n";
   $row = $res->FETCH_ASSOC();
-  //echo "1st  Fetch Assoc success\n<br>";
-//   echo    "<td>{$row['latitude']}</td><br>\n";
-//   echo    "<td>{$row['longitude']}</td><br>\n";
+
   $gpslat = "{$row['latitude']}"; 
   $gpslng = "{$row['longitude']}";
 
   }
-//}
 ?>
 
 

@@ -38,10 +38,10 @@ if ($_SESSION['active'] == false){
     <div class = 'container'>
         <div id='status'>
             <?php
-            if ($_SESSION['statusCode'] == 0 || $_SESSION['statusCode'] == 1 || $_SESSION['statusCode'] == 10){
+            if ($_SESSION['statusCode'] == 0 || $_SESSION['statusCode'] == 1 || $_SESSION['statusCode'] == 10){ // If user is requesting a spot
                 $_SESSION['statusCode'] = 1;
 
-                if ($_SESSION['tokens'] > 0){
+                if ($_SESSION['tokens'] > 0){ // If user has tokens on their account
                     echo "<script>
                     startSpotCheck();
                     </script>";
@@ -101,7 +101,7 @@ if ($_SESSION['active'] == false){
 
             <?php
                 }
-            } elseif ($_SESSION['statusCode'] == 2 || $_SESSION['statusCode'] == 20){
+            } elseif ($_SESSION['statusCode'] == 2 || $_SESSION['statusCode'] == 20){ // If user is offering a spot, output warning message
             ?>
 
             <div class="row">

@@ -23,13 +23,13 @@
 
             break;
 
-        case "complete":
+        case "complete": // If user presses the complete button
 
-            $complete = "UPDATE Spots SET reqStat = 3 WHERE rUserID = {$_SESSION['userID']};";
+            $complete = "UPDATE Spots SET reqStat = 3 WHERE rUserID = {$_SESSION['userID']};"; // Set up SQL query for completion
             
-            if ($db->query($complete)){
+            if ($db->query($complete)){ // If query completes
                 
-                $deleteSpot = "DELETE FROM Spots WHERE rUserID = {$_SESSION['userID']};";
+                $deleteSpot = "DELETE FROM Spots WHERE rUserID = {$_SESSION['userID']};"; // Delete spot from the table
                 $db->query($deleteSpot);
                 
                 echo "<div class = 'alert alert-success'>The parking spot trade has successfully been completed.</div>";
